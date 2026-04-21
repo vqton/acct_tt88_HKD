@@ -3,9 +3,9 @@
 ## Tóm Tắt
 Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_HKD_TT88_2021.md), danh sách use cases (UC_HKD_TT88_2021.md), và tiêu chuẩn chất lượng mã nguồn (CODE_QUALITY.md), cùng với việc đánh giá mã nguồn hiện tại, tài liệu này cung cấp lộ trình triển khai chi tiết và kế hoạch thực thi cho dự án.
 
-## Trạng Thái Hiện Tại (Cập nhật sau khi hoàn thành Sprint 0)
-- **Mã nguồn đã triển khai**: 8/43 use cases hoàn thành (MD-01, MD-02, MD-03, MD-04, MD-06, MD-07, MD-08, CT-01)
-- **Cơ sở dữ liệu**: Đã thiết kế và triển khai 7 bảng (hkd_info, nghe_nghiep, ky_ke_toan, hang_hoa, nha_cung_cap, nguoi_lao_dong, tai_khoan_ngan_hang)
+## Trạng Thái Hiện Tại (Cập nhật sau khi hoàn thành Sprint 1)
+- **Mã nguồn đã triển khai**: 11/43 use cases hoàn thành (MD-01, MD-02, MD-03, MD-04, MD-06, MD-07, MD-08, CT-01, CT-02, TT-01, TT-02)
+- **Cơ sở dữ liệu**: Đã thiết kế và triển khai 10 bảng (hkd_info, nghe_nghiep, ky_ke_toan, hang_hoa, nha_cung_cap, nguoi_lao_dong, tai_khoan_ngan_hang, phieu_chi, quy_tien_mat, tien_gui_ngan_hang)
 - **Kiến trúc**: Sử dụng Clean Architecture với Riverpod để quản lý trạng thái
 - **Thư viện chính**: Flutter, Riverpod, Sqflite, GetIt/Injectable
 
@@ -33,11 +33,11 @@ Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_
 |-----|----|--------------|------------|------------|
 | 10 | CT-08 | Phê duyệt chứng từ (ký duyệt) | Cần triển khai | ⏸️ Chưa bắt đầu |
 | 11 | CT-01 | Lập phiếu thu | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
-| 12 | CT-02 | Lập phiếu chi | Cần triển khai | ⏸️ Chưa bắt đầu |
+| 12 | CT-02 | Lập phiếu chi | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
 | 13 | SK-07 | Ghi sổ quỹ tiền mặt (S6-HKD) | Cần triển khai | ⏸️ Chưa bắt đầu |
-| 14 | TT-01 | Quản lý quỹ tiền mặt | Cần triển khai | ⏸️ Chưa bắt đầu |
+| 14 | TT-01 | Quản lý quỹ tiền mặt | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
 | 15 | SK-08 | Ghi sổ tiền gửi ngân hàng (S7-HKD) | Cần triển khai | ⏸️ Chưa bắt đầu |
-| 16 | TT-02 | Quản lý tiền gửi ngân hàng | Cần triển khai | ⏸️ Chưa bắt đầu |
+| 16 | TT-02 | Quản lý tiền gửi ngân hàng | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
 
 ### Sprint 2 - Kho hàng (Tuần 6-8)
 **Mục tiêu**: Triển khai các chức năng quản lý kho hàng và tồn kho
@@ -145,7 +145,7 @@ Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_
 | Milestone | Thời gian | Tiêu chí hoàn thành |
 |-----------|-----------|-------------------|
 | **Hoàn thành Sprint 0** | Tuần 2 | Tất cả Master Data UC hoạt động (MD-01, MD-02, MD-03, MD-04, MD-06, MD-07, MD-08) |
-| Hoàn thành Sprint 1 | Tuần 5 | Hoàn thành chức năng phiếu thu/chi, quản lý quỹ tiền mặt và ngân hàng |
+| **Hoàn thành Sprint 1** | Tuần 5 | Hoàn thành chức năng phiếu thu/chi, quản lý quỹ tiền mặt và ngân hàng |
 | Hoàn thành Sprint 2 | Tuần 8 | Hoàn thành các chức năng kho hàng, nhập/xuất kho, tính giá xuất kho |
 | Hoàn thành Sprint 3 | Tuần 11 | Hoàn thành các chức năng hóa đơn, sổ doanh thu, sổ chi phí, lưu trữ chứng từ |
 | Hoàn thành Sprint 4 | Tuần 13 | Hoàn thành các chức năng thuế: GTGT, TNCN, theo dõi nộp thuế |

@@ -7,6 +7,9 @@ import 'package:hkd_accounting/features/master_data/presentation/pages/hang_hoa_
 import 'package:hkd_accounting/features/master_data/presentation/pages/nha_cung_cap_page.dart';
 import 'package:hkd_accounting/features/master_data/presentation/pages/nguoi_lao_dong_page.dart';
 import 'package:hkd_accounting/features/master_data/presentation/pages/tai_khoan_ngan_hang_page.dart';
+import 'package:hkd_accounting/features/ct/presentation/pages/phieu_chi_page.dart';
+import 'package:hkd_accounting/features/tt/presentation/pages/quy_tien_mat_page.dart';
+import 'package:hkd_accounting/features/tt/presentation/pages/tien_gui_ngan_hang_page.dart';
 
 class MainPage extends ConsumerStatefulWidget {
   const MainPage({super.key});
@@ -26,6 +29,9 @@ class _MainPageState extends ConsumerState<MainPage> {
     NhaCungCapPage(),
     NguoiLaoDongPage(),
     TaiKhoanNganHangPage(),
+    PhieuChiPage(),
+    QuyTienMatPage(),
+    TienGuiNganHangPage(),
   ];
 
   static const List<BottomNavigationBarItem> _bottomNavigationBarItems = <BottomNavigationBarItem>[
@@ -56,6 +62,18 @@ class _MainPageState extends ConsumerState<MainPage> {
     BottomNavigationBarItem(
       icon: Icon(Icons.account_balance),
       label: 'Tài khoản NH',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.receipt),
+      label: 'Phiếu chi',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.account_balance_wallet),
+      label: 'Quỹ TM',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.account_balance),
+      label: 'Tiền gửi NH',
     ),
   ];
 
