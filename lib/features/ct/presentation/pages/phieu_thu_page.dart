@@ -155,16 +155,30 @@ class _PhieuThuPageState extends ConsumerState<PhieuThuPage> {
                       decoration: const InputDecoration(labelText: 'Trạng thái'),
                     ),
                     const SizedBox(height: 20),
-                    ElevatedButton(
-                      onPressed: phieuThuState.isLoading ? null : _submitForm,
-                      child: phieuThuState.isLoading
-                          ? const SizedBox(
-                              width: 20,
-                              height: 20,
-                              child: CircularProgressIndicator(strokeWidth: 2),
-                            )
-                          : const Text('Tạo phiếu thu'),
-                    ),
+ElevatedButton(
+                       onPressed: phieuThuState.isLoading ? null : _submitForm,
+                       child: phieuThuState.isLoading
+                           ? const SizedBox(
+                               width: 20,
+                               height: 20,
+                               child: CircularProgressIndicator(strokeWidth: 2),
+                             )
+                           : const Text('Tạo phiếu thu'),
+                     ),
+                     const SizedBox(height: 10),
+                     ElevatedButton(
+                       onPressed: phieuThuState.isLoading ? null : _approvePhieuThu,
+                       child: phieuThuState.isLoading
+                           ? const SizedBox(
+                               width: 20,
+                               height: 20,
+                               child: CircularProgressIndicator(strokeWidth: 2),
+                             )
+                           : const Text('Tạo và duyệt phiếu thu'),
+                       style: ElevatedButton.styleFrom(
+                         backgroundColor: Colors.green,
+                       ),
+                     ),
                     if (phieuThuState.isError)
                       Padding(
                         padding: const EdgeInsets.only(top: 16.0),
@@ -188,7 +202,7 @@ class _PhieuThuPageState extends ConsumerState<PhieuThuPage> {
     );
   }
 
-  void _submitForm() {
+void _submitForm() {
     if (_formKey.currentState?.validate() ?? false) {
       final phieuThu = PhieuThu(
         id: DateTime.now().millisecondsSinceEpoch.toString(), // Simple ID generation
@@ -206,8 +220,39 @@ class _PhieuThuPageState extends ConsumerState<PhieuThuPage> {
         trangThai: _trangThaiController.text,
         createdAt: DateTime.now(),
       );
-
+ 
       phieuThuNotifier.createPhieuThu(phieuThu);
+    }
+  }
+
+  void _approvePhieuThu() {
+    if (_formKey.currentState?.validate() ?? false) {
+      // For approval, we need the ID of the voucher to approve
+      // In a real app, this would come from the voucher we're viewing/editing
+      // For simplicity, we'll use the same form data to create then approve
+      final phieuThu = PhieuThu(
+        id: DateTime.now().millisecondsSinceEpoch.toString(), // Simple ID generation
+        soPhieu: _soPhieuController.text,
+        ngayLap: DateTime.parse(_ngayLapController.text),
+        nguoiNop: _nguoiNopController.text,
+        diaChiNguoiNop: _diaChiNguoiNopController.text,
+        lyDoNop: _lyDoNopController.text,
+        soTien: int.parse(_soTienController.text),
+        soTienBangChu: _soTienBangChuController.text,
+        chungTuGocKemTheo: _chungTuGocKemTheoController.text,
+        hkdInfoId: _hkdInfoIdController.text,
+        khachHangId: _khachHangIdController.text,
+        kyKeToanId: _kyKeToanIdController.text,
+        trangThai: 'CHO_DUYET', // Set to pending approval initially
+        createdAt: DateTime.now(),
+      );
+
+      // First create the voucher
+      phieuThuNotifier.createPhieuThu(phieuThu).then((_) {
+        // Then approve it (using a placeholder ID - in reality we'd use the actual ID)
+        // For demo purposes, we'll just show a success message
+        phieuThuNotifier.approvePhieuThu(phieuThu.id);
+      });
     }
   }
 }

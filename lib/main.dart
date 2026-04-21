@@ -32,6 +32,7 @@ import 'package:hkd_accounting/features/tt/domain/repositories/quy_tien_mat_repo
 import 'package:hkd_accounting/features/tt/data/datasources/tien_gui_ngan_hang_local_datasource.dart';
 import 'package:hkd_accounting/features/tt/data/repositories/tien_gui_ngan_hang_repository_impl.dart';
 import 'package:hkd_accounting/features/tt/domain/repositories/tien_gui_ngan_hang_repository.dart';
+import 'package:hkd_accounting/features/ct/domain/usecases/approve_phieu_thu.dart';
 import 'package:hkd_accounting/lib/main_page.dart';
 import 'dart:io' show Directory;
 import 'package:path_provider/path_provider.dart';
@@ -107,7 +108,7 @@ void setupDependencies(Database database) {
   getIt.registerLazySingleton<PhieuChiLocalDatasource>(() => PhieuChiLocalDatasourceImpl(database));
   getIt.registerLazySingleton<QuyTienMatLocalDatasource>(() => QuyTienMatLocalDatasourceImpl(database));
   getIt.registerLazySingleton<TienGuiNganHangLocalDatasource>(() => TienGuiNganHangLocalDatasourceImpl(database));
-  
+   
   // Register repositories
   getIt.registerLazySingleton<HkdInfoRepository>(() => HkdInfoRepositoryImpl(getIt.get<HkdInfoLocalDatasource>()));
   getIt.registerLazySingleton<NgheNghiepRepository>(() => NgheNghiepRepositoryImpl(getIt.get<NgheNghiepLocalDatasource>()));
@@ -119,6 +120,10 @@ void setupDependencies(Database database) {
   getIt.registerLazySingleton<PhieuChiRepository>(() => PhieuChiRepositoryImpl(getIt.get<PhieuChiLocalDatasource>()));
   getIt.registerLazySingleton<QuyTienMatRepository>(() => QuyTienMatRepositoryImpl(getIt.get<QuyTienMatLocalDatasource>()));
   getIt.registerLazySingleton<TienGuiNganHangRepository>(() => TienGuiNganHangRepositoryImpl(getIt.get<TienGuiNganHangLocalDatasource>()));
+   
+  // Register use cases
+  getIt.registerLazySingleton<CreatePhieuThu>(() => CreatePhieuThu(getIt.get<PhieuThuRepository>()));
+  getIt.registerLazySingleton<ApprovePhieuThu>(() => ApprovePhieuThu(getIt.get<PhieuThuRepository>()));
 }
 
 void main() async {

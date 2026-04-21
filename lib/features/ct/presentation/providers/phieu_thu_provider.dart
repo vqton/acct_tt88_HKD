@@ -13,6 +13,7 @@ import 'package:get_it/get_it.dart';
 import 'package:hkd_accounting/core/error/failures.dart';
 import 'package:hkd_accounting/features/ct/domain/entities/phieu_thu.dart';
 import 'package:hkd_accounting/features/ct/domain/usecases/create_phieu_thu.dart';
+import 'package:hkd_accounting/features/ct/domain/usecases/approve_phieu_thu.dart';
 import 'package:hkd_accounting/features/kh/domain/entities/ky_ke_toan.dart'; // For ky ke toan selection
 import 'package:hkd_accounting/features/master_data/domain/entities/khach_hang.dart'; // For khach hang selection
 import 'package:hkd_accounting/features/master_data/domain/entities/hkd_info.dart'; // For hkd info
@@ -83,11 +84,12 @@ class PhieuThuNotifier extends StateNotifier<PhieuThuFormState> {
   /// Use case responsible for creating receipt vouchers
   final CreatePhieuThu createPhieuThuUseCase;
 
-  /// Creates a new notifier with the required use case dependency
+  /// Creates a new notifier with the required use case dependencies
   /// 
-  /// The use case is obtained from the GetIt service locator
+  /// The use cases are obtained from the GetIt service locator
   PhieuThuNotifier()
       : createPhieuThuUseCase = GetIt.instance.get<CreatePhieuThu>(),
+        approvePhieuThuUseCase = GetIt.instance.get<ApprovePhieuThu>(),
         super(const PhieuThuFormState());
 
   /// Creates a new receipt voucher using the provided data
@@ -111,6 +113,32 @@ class PhieuThuNotifier extends StateNotifier<PhieuThuFormState> {
         isLoading: false,
         isSuccess: true,
         successMessage: 'Phiếu thu đã được tạo thành công',
+        phieuThu: success,
+      ),
+    );
+  }
+
+  /// Approves a receipt voucher by its ID
+  /// 
+  /// This method handles the complete flow of approving a voucher:
+  /// 1. Sets loading state to true
+  /// 2. Calls the ApprovePhieuThu use case
+  /// 3. Updates state based on the result (success or error)
+  /// 
+  /// [id] The ID of the receipt voucher to approve
+  Future<void> approvePhieuThu(String id) async {
+    state = state.copyWith(isLoading: true, isError: false, isSuccess: false);
+    final result = await approvePhieuThuUseCase(id);
+    result.fold(
+      (failure) => state = state.copyWith(
+        isLoading: false,
+        isError: true,
+        errorMessage: _mapFailureToMessage(failure),
+      ),
+      (success) => state = state.copyWith(
+        isLoading: false,
+        isSuccess: true,
+        successMessage: 'Phiếu thu đã được duyệt thành công',
         phieuThu: success,
       ),
     );
