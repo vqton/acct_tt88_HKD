@@ -3,9 +3,9 @@
 ## Tóm Tắt
 Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_HKD_TT88_2021.md), danh sách use cases (UC_HKD_TT88_2021.md), và tiêu chuẩn chất lượng mã nguồn (CODE_QUALITY.md), cùng với việc đánh giá mã nguồn hiện tại, tài liệu này cung cấp lộ trình triển khai chi tiết và kế hoạch thực thi cho dự án.
 
-## Trạng Thái Hiện Tại (Cập nhật sau khi hoàn thành Sprint 1)
-- **Mã nguồn đã triển khai**: 14/43 use cases hoàn thành (MD-01, MD-02, MD-03, MD-04, MD-06, MD-07, MD-08, CT-01, CT-02, CT-08, SK-07, SK-08, TT-01, TT-02)
-- **Cơ sở dữ liệu**: Đã thiết kế và triển khai 10 bảng (hkd_info, nghe_nghiep, ky_ke_toan, hang_hoa, nha_cung_cap, nguoi_lao_dong, tai_khoan_ngan_hang, phieu_chi, quy_tien_mat, tien_gui_ngan_hang)
+## Trạng Thái Hiện Tại (Cập nhật sau khi hoàn thành CT-03, CT-04)
+- **Mã nguồn đã triển khai**: 16/43 use cases hoàn thành (MD-01, MD-02, MD-03, MD-04, MD-06, MD-07, MD-08, CT-01, CT-02, CT-03, CT-04, CT-08, SK-07, SK-08, TT-01, TT-02)
+- **Cơ sở dữ liệu**: Đã thiết kế và triển khai 14 bảng (hkd_info, nghe_nghiep, ky_ke_toan, hang_hoa, nha_cung_cap, nguoi_lao_dong, tai_khoan_ngan_hang, phieu_chi, phieu_nhap_kho, phieu_nhap_kho_chi_tiet, phieu_xuat_kho, phieu_xuat_kho_chi_tiet, quy_tien_mat, tien_gui_ngan_hang)
 - **Kiến trúc**: Sử dụng Clean Architecture với Riverpod để quản lý trạng thái
 - **Thư viện chính**: Flutter, Riverpod, Sqflite, GetIt/Injectable
 
@@ -42,15 +42,15 @@ Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_
 ### Sprint 2 - Kho hàng (Tuần 6-8)
 **Mục tiêu**: Triển khai các chức năng quản lý kho hàng và tồn kho
 
-| STT | UC | Tên Use Case | Mô tả ngắn |
-|-----|----|--------------|------------|
-| 17 | CT-03 | Lập phiếu nhập kho | Cần triển khai |
-| 18 | CT-04 | Lập phiếu xuất kho | Cần triển khai |
-| 19 | KH-04 | Tính giá xuất kho (Bình quân / FIFO) | Cần triển khai |
-| 20 | KH-01 | Nhập kho hàng hóa | Cần triển khai |
-| 21 | KH-02 | Xuất kho hàng hóa | Cần triển khai |
-| 22 | SK-03 | Ghi sổ chi tiết vật tư, hàng hóa (S2-HKD) | Cần triển khai |
-| 23 | KH-03 | Kiểm kê hàng tồn kho | Cần triển khai |
+| STT | UC | Tên Use Case | Mô tả ngắn | Trạng thái |
+|-----|----|--------------|------------|------------|
+| 17 | CT-03 | Lập phiếu nhập kho | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
+| 18 | CT-04 | Lập phiếu xuất kho | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
+| 19 | KH-04 | Tính giá xuất kho (Bình quân / FIFO) | Cần triển khai | ⏸️ Chưa bắt đầu |
+| 20 | KH-01 | Nhập kho hàng hóa | Cần triển khai | ⏸️ Chưa bắt đầu |
+| 21 | KH-02 | Xuất kho hàng hóa | Cần triển khai | ⏸️ Chưa bắt đầu |
+| 22 | SK-03 | Ghi sổ chi tiết vật tư, hàng hóa (S2-HKD) | Cần triển khai | ⏸️ Chưa bắt đầu |
+| 23 | KH-03 | Kiểm kê hàng tồn kho | Cần triển khai | ⏸️ Chưa bắt đầu |
 
 ### Sprint 3 - Doanh thu & Sổ Kế toán (Tuần 9-11)
 **Mục tiêu**: Xây dựng các chức năng liên quan đến doanh thu và ghi sổ kế toán
@@ -146,6 +146,7 @@ Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_
 |-----------|-----------|-------------------|
 | **Hoàn thành Sprint 0** | Tuần 2 | Tất cả Master Data UC hoạt động (MD-01, MD-02, MD-03, MD-04, MD-06, MD-07, MD-08) |
 | **Hoàn thành Sprint 1** | Tuần 5 | Hoàn thành chức năng phiếu thu/chi, quản lý quỹ tiền mặt và ngân hàng |
+| **Hoàn thành CT-03, CT-04** | Tuần 6 | Lập phiếu nhập kho (CT-03) & xuất kho (CT-04) |
 | Hoàn thành Sprint 2 | Tuần 8 | Hoàn thành các chức năng kho hàng, nhập/xuất kho, tính giá xuất kho |
 | Hoàn thành Sprint 3 | Tuần 11 | Hoàn thành các chức năng hóa đơn, sổ doanh thu, sổ chi phí, lưu trữ chứng từ |
 | Hoàn thành Sprint 4 | Tuần 13 | Hoàn thành các chức năng thuế: GTGT, TNCN, theo dõi nộp thuế |
@@ -158,10 +159,12 @@ Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_
 - Đã thiết lập cơ bản cho Clean Architecture
 - Sử dụng các thư viện hiện đại và phù hợp (Riverpod, GetIt, Sqflite)
 - Mã nguồn dễ đọc và tuân thủ một số nguyên tắc cơ bản
-- Đã hoàn thành 3/9 use cases trong Master Data (33% hoàn thành)
+- Đã hoàn thành 7/9 use cases trong Master Data (78% hoàn thành)
+- Đã triển khai CT-03 - Lập phiếu nhập kho hoàn chỉnh
+- Đã triển khai CT-04 - Lập phiếu xuất kho hoàn chỉnh
 
 ### Khoảng cách cần bridging
-1. **Cần triển khai các use case còn lại**: 40/43 use cases còn lại cần triển khai
+1. **Cần triển khai các use case còn lại**: 27/43 use cases còn lại cần triển khai
 2. **Cần hoàn thiện database schema**: Cần tạo bảng cho tất cả các entities còn lại
 3. **Cần triển khai các lớp còn lại**: Domain, Data, Presentation cho các UC còn lại
 4. **Cần viết tests**: Mở rộng test coverage cho tất cả các lớp
