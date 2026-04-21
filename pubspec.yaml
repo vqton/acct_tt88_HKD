@@ -1,0 +1,54 @@
+name: hkd_accounting
+description: Hệ thống Kế toán HKD/CNKD theo Thông tư 88/2021/TT-BTC
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  
+  # State Management
+  flutter_riverpod: ^2.4.0
+  riverpod_annotation: ^2.3.0
+  
+  # Database - Offline First
+  sqflite: ^2.3.0
+  path: ^1.8.3
+  
+  # Dependency Injection
+  get_it: ^7.6.4
+  injectable: ^2.3.2
+  
+  # Functional Programming
+  dartz: ^0.10.1
+  
+  # Utils
+  intl: ^0.18.1
+  uuid: ^4.2.1
+  equatable: ^2.0.5
+  pdf: ^3.10.4
+  printing: ^5.11.0
+  share_plus: ^7.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  build_runner: ^2.4.7
+  riverpod_generator: ^2.3.0
+  injectable_generator: ^2.4.1
+  mockito: ^5.4.3
+  mocktail: ^1.0.1
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/images/
+    - assets/icons/
