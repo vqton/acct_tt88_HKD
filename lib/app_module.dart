@@ -5,6 +5,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hkd_accounting/features/ct/data/datasources/phieu_thu_local_datasource.dart';
+import 'package:hkd_accounting/features/ct/data/repositories/phieu_thu_repository_impl.dart';
+import 'package:hkd_accounting/features/ct/domain/repositories/phieu_thu_repository.dart';
+import 'package:hkd_accounting/features/ct/domain/usecases/create_phieu_thu.dart';
 import 'package:hkd_accounting/features/master_data/data/datasources/nghe_nghiep_local_datasource.dart';
 import 'package:hkd_accounting/features/master_data/data/repositories/nghe_nghiep_repository_impl.dart';
 import 'package:hkd_accounting/features/master_data/domain/repositories/nghe_nghiep_repository.dart';
@@ -26,21 +30,33 @@ Future<void> setupDependencyInjection() async {
   // For this example, we'll create a simple implementation
   // In practice, you would inject the actual database instance
   
-  // Register the datasource
-  // getIt.registerLazySingleton<NgheNghiepLocalDatasource>(() {
-  //   // We would need to get the database instance here
-  //   // For now, returning null as placeholder
-  //   return null;
-  // });
+  // Register the datasources
+  getIt.registerLazySingleton<NgheNghiepLocalDatasource>(() {
+    // We would need to get the database instance here
+    // For now, returning null as placeholder
+    return null;
+  });
   
-  // Register the repository
-  // getIt.registerLazySingleton<NgheNghiepRepository>(() {
-  //   final datasource = getIt.get<NgheNghiepLocalDatasource>();
-  //   return NgheNghiepRepositoryImpl(datasource);
-  // });
+  getIt.registerLazySingleton<PhieuThuLocalDatasource>(() {
+    // We would need to get the database instance here
+    // For now, returning null as placeholder
+    return null;
+  });
   
-  // For now, we'll comment out the DI setup since we need to properly
-  // set up the database first. In a real implementation, this would be done.
+  // Register the repositories
+  getIt.registerLazySingleton<NgheNghiepRepository>(() {
+    final datasource = getIt.get<NgheNghiepLocalDatasource>();
+    return NgheNghiepRepositoryImpl(datasource);
+  });
   
-  // TODO: Properly set up database dependency injection
+  getIt.registerLazySingleton<PhieuThuRepository>(() {
+    final datasource = getIt.get<PhieuThuLocalDatasource>();
+    return PhieuThuRepositoryImpl(datasource);
+  });
+  
+  // Register the use cases
+  getIt.registerLazySingleton<CreatePhieuThu>(() {
+    final repository = getIt.get<PhieuThuRepository>();
+    return CreatePhieuThu(repository);
+  });
 }
