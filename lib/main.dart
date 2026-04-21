@@ -11,7 +11,18 @@ import 'package:hkd_accounting/features/master_data/data/models/hkd_info_model.d
 import 'package:hkd_accounting/features/master_data/data/datasources/ky_ke_toan_local_datasource.dart';
 import 'package:hkd_accounting/features/master_data/data/repositories/ky_ke_toan_repository_impl.dart';
 import 'package:hkd_accounting/features/master_data/domain/repositories/ky_ke_toan_repository.dart';
-import 'package:hkd_accounting/features/master_data/data/models/ky_ke_toan_model.dart';
+import 'package:hkd_accounting/features/master_data/data/datasources/hang_hoa_local_datasource.dart';
+import 'package:hkd_accounting/features/master_data/data/repositories/hang_hoa_repository_impl.dart';
+import 'package:hkd_accounting/features/master_data/domain/repositories/hang_hoa_repository.dart';
+import 'package:hkd_accounting/features/master_data/data/datasources/nha_cung_cap_local_datasource.dart';
+import 'package:hkd_accounting/features/master_data/data/repositories/nha_cung_cap_repository_impl.dart';
+import 'package:hkd_accounting/features/master_data/domain/repositories/nha_cung_cap_repository.dart';
+import 'package:hkd_accounting/features/master_data/data/datasources/nguoi_lao_dong_local_datasource.dart';
+import 'package:hkd_accounting/features/master_data/data/repositories/nguoi_lao_dong_repository_impl.dart';
+import 'package:hkd_accounting/features/master_data/domain/repositories/nguoi_lao_dong_repository.dart';
+import 'package:hkd_accounting/features/master_data/data/datasources/tai_khoan_ngan_hang_local_datasource.dart';
+import 'package:hkd_accounting/features/master_data/data/repositories/tai_khoan_ngan_hang_repository_impl.dart';
+import 'package:hkd_accounting/features/master_data/domain/repositories/tai_khoan_ngan_hang_repository.dart';
 import 'package:hkd_accounting/lib/main_page.dart';
 import 'dart:io' show Directory;
 import 'package:path_provider/path_provider.dart';
@@ -80,11 +91,19 @@ void setupDependencies(Database database) {
   getIt.registerLazySingleton<HkdInfoLocalDatasource>(() => HkdInfoLocalDatasourceImpl(database));
   getIt.registerLazySingleton<NgheNghiepLocalDatasource>(() => NgheNghiepLocalDatasourceImpl(database));
   getIt.registerLazySingleton<KyKeToanLocalDatasource>(() => KyKeToanLocalDatasourceImpl(database));
+  getIt.registerLazySingleton<HangHoaLocalDatasource>(() => HangHoaLocalDatasourceImpl(database));
+  getIt.registerLazySingleton<NhaCungCapLocalDatasource>(() => NhaCungCapLocalDatasourceImpl(database));
+  getIt.registerLazySingleton<NguoiLaoDongLocalDatasource>(() => NguoiLaoDongLocalDatasourceImpl(database));
+  getIt.registerLazySingleton<TaiKhoanNganHangLocalDatasource>(() => TaiKhoanNganHangLocalDatasourceImpl(database));
   
   // Register repositories
   getIt.registerLazySingleton<HkdInfoRepository>(() => HkdInfoRepositoryImpl(getIt.get<HkdInfoLocalDatasource>()));
   getIt.registerLazySingleton<NgheNghiepRepository>(() => NgheNghiepRepositoryImpl(getIt.get<NgheNghiepLocalDatasource>()));
   getIt.registerLazySingleton<KyKeToanRepository>(() => KyKeToanRepositoryImpl(getIt.get<KyKeToanLocalDatasource>()));
+  getIt.registerLazySingleton<HangHoaRepository>(() => HangHoaRepositoryImpl(getIt.get<HangHoaLocalDatasource>()));
+  getIt.registerLazySingleton<NhaCungCapRepository>(() => NhaCungCapRepositoryImpl(getIt.get<NhaCungCapLocalDatasource>()));
+  getIt.registerLazySingleton<NguoiLaoDongRepository>(() => NguoiLaoDongRepositoryImpl(getIt.get<NguoiLaoDongLocalDatasource>()));
+  getIt.registerLazySingleton<TaiKhoanNganHangRepository>(() => TaiKhoanNganHangRepositoryImpl(getIt.get<TaiKhoanNganHangLocalDatasource>()));
 }
 
 void main() async {
