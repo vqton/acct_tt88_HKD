@@ -4,14 +4,14 @@
 ### Summary
 | Metric | Target | Current | Gap |
 |--------|--------|---------|-----|
-| Total Use Cases | 43 | 22 | 21 (49%) |
-| Database Tables | 20+ | 18 | 2+ |
-| Entities | 20+ | 20 | 0 (100%) |
-| Implemented Pages | 20+ | 21 | 1+ |
+| Total Use Cases | 43 | 28 | 15 (65%) |
+| Database Tables | 20+ | 20 | 0 (100%) |
+| Entities | 20+ | 21 | 1+ |
+| Implemented Pages | 20+ | 22 | 2+ |
 
 ---
 
-## Implemented Features (22/43 UC - 51%)
+## Implemented Features (28/43 UC - 65%)
 
 ### ✅ Master Data (7/9 - 78%)
 | UC | Feature | Status | Files |
@@ -54,7 +54,7 @@
 |----|---------|--------|-------|
 | KH-04 | COGS Calculation | ✅ Complete | entity, service, provider, page |
 
-### ❌ Not Implemented (21 UC - 49%)
+### ❌ Not Implemented (15 UC - 35%)
 
 | UC | Feature | Priority | Dependencies |
 |----|---------|----------|--------------|
@@ -71,11 +71,11 @@
 | NS-01 | Salary Calc | MEDIUM | MD-06 |
 | NS-02 | Social Insurance | MEDIUM | NS-01, MD-06 |
 | NS-03 | Salary Payment | MEDIUM | NS-01, NS-02 |
-| QT-01 | User & Permissions | LOW | - |
+| QT-01 | User & Permissions | ✅ Complete | entity, repo, datasource, page |
 | QT-02 | Edit Books | LOW | SK-01-SK-06 |
 | QT-03 | Close Period | LOW | All |
 | QT-04 | Summary Report | LOW | All |
-| QT-05 | Archive Search | MEDIUM | CT-07 |
+| QT-05 | Archive Search | ✅ Complete | entity, repo, datasource, provider, page |
 | QT-06 | Audit Trail | LOW | All |
 
 ---

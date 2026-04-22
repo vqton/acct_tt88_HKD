@@ -11,6 +11,7 @@ import 'package:hkd_accounting/features/master_data/presentation/pages/tai_khoan
 import 'package:hkd_accounting/features/ct/presentation/pages/phieu_chi_page.dart';
 import 'package:hkd_accounting/features/tt/presentation/pages/quy_tien_mat_page.dart';
 import 'package:hkd_accounting/features/tt/presentation/pages/tien_gui_ngan_hang_page.dart';
+import 'package:hkd_accounting/features/qt/presentation/pages/tra_cuu_chung_tu_page.dart';
 
 class MainPage extends ConsumerStatefulWidget {
   const MainPage({super.key});
@@ -34,6 +35,7 @@ class _MainPageState extends ConsumerState<MainPage> {
     PhieuChiPage(),
     QuyTienMatPage(),
     TienGuiNganHangPage(),
+    TraCuuChungTuPage(),
   ];
 
   static const List<BottomNavigationBarItem> _bottomNavigationBarItems = <BottomNavigationBarItem>[
@@ -80,6 +82,10 @@ class _MainPageState extends ConsumerState<MainPage> {
     BottomNavigationBarItem(
       icon: Icon(Icons.account_balance),
       label: 'Tiền gửi NH',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.search),
+      label: 'Tra cứu CT',
     ),
   ];
 

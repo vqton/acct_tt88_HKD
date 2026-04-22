@@ -56,6 +56,9 @@ import 'package:hkd_accounting/features/master_data/domain/repositories/khach_ha
 import 'package:hkd_accounting/features/qt/data/datasources/nguoi_dung_local_datasource.dart';
 import 'package:hkd_accounting/features/qt/data/repositories/nguoi_dung_repository_impl.dart';
 import 'package:hkd_accounting/features/qt/domain/repositories/nguoi_dung_repository.dart';
+import 'package:hkd_accounting/features/qt/data/datasources/lich_su_chung_tu_local_datasource.dart';
+import 'package:hkd_accounting/features/qt/data/repositories/lich_su_chung_tu_repository_impl.dart';
+import 'package:hkd_accounting/features/qt/domain/repositories/lich_su_chung_tu_repository.dart';
 import 'package:hkd_accounting/features/kh/data/datasources/phieu_kiem_ke_local_datasource.dart';
 import 'package:hkd_accounting/features/kh/data/repositories/phieu_kiem_ke_repository_impl.dart';
 import 'package:hkd_accounting/features/kh/domain/repositories/phieu_kiem_ke_repository.dart';
@@ -344,6 +347,7 @@ void setupDependencies(Database database) {
   getIt.registerLazySingleton<KhachHangLocalDatasource>(() => KhachHangLocalDatasourceImpl(database));
   getIt.registerLazySingleton<NguoiDungLocalDatasource>(() => NguoiDungLocalDatasourceImpl(database));
   getIt.registerLazySingleton<PhieuKiemKeLocalDatasource>(() => PhieuKiemKeLocalDatasourceImpl(database));
+  getIt.registerLazySingleton<LichSuChungTuLocalDatasource>(() => LichSuChungTuLocalDatasource(database));
    
   // Register repositories
   getIt.registerLazySingleton<HkdInfoRepository>(() => HkdInfoRepositoryImpl(getIt.get<HkdInfoLocalDatasource>()));
@@ -365,6 +369,7 @@ void setupDependencies(Database database) {
   getIt.registerLazySingleton<KhachHangRepository>(() => KhachHangRepositoryImpl(getIt.get<KhachHangLocalDatasource>()));
   getIt.registerLazySingleton<NguoiDungRepository>(() => NguoiDungRepositoryImpl(getIt.get<NguoiDungLocalDatasource>()));
   getIt.registerLazySingleton<PhieuKiemKeRepository>(() => PhieuKiemKeRepositoryImpl(getIt.get<PhieuKiemKeLocalDatasource>()));
+  getIt.registerLazySingleton<LichSuChungTuRepository>(() => LichSuChungTuRepositoryImpl(getIt.get<LichSuChungTuLocalDatasource>()));
    
   // Register use cases
   getIt.registerLazySingleton<CreatePhieuThu>(() => CreatePhieuThu(getIt.get<PhieuThuRepository>()));
