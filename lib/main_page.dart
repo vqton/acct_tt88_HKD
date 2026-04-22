@@ -5,6 +5,7 @@ import 'package:hkd_accounting/features/master_data/presentation/pages/ky_ke_toa
 import 'package:hkd_accounting/features/master_data/presentation/pages/nghe_nghiep_page.dart';
 import 'package:hkd_accounting/features/master_data/presentation/pages/hang_hoa_page.dart';
 import 'package:hkd_accounting/features/master_data/presentation/pages/nha_cung_cap_page.dart';
+import 'package:hkd_accounting/features/master_data/presentation/pages/khach_hang_page.dart';
 import 'package:hkd_accounting/features/master_data/presentation/pages/nguoi_lao_dong_page.dart';
 import 'package:hkd_accounting/features/master_data/presentation/pages/tai_khoan_ngan_hang_page.dart';
 import 'package:hkd_accounting/features/ct/presentation/pages/phieu_chi_page.dart';
@@ -27,6 +28,7 @@ class _MainPageState extends ConsumerState<MainPage> {
     KyKeToanPage(),
     HangHoaPage(),
     NhaCungCapPage(),
+    KhachHangPage(),
     NguoiLaoDongPage(),
     TaiKhoanNganHangPage(),
     PhieuChiPage(),
@@ -54,6 +56,10 @@ class _MainPageState extends ConsumerState<MainPage> {
     BottomNavigationBarItem(
       icon: Icon(Icons.store),
       label: 'Nhà cung cấp',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.person),
+      label: 'Khách hàng',
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.people),

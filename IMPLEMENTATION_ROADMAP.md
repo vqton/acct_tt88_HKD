@@ -3,11 +3,12 @@
 ## Tóm Tắt
 Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_HKD_TT88_2021.md), danh sách use cases (UC_HKD_TT88_2021.md), và tiêu chuẩn chất lượng mã nguồn (CODE_QUALITY.md), cùng với việc đánh giá mã nguồn hiện tại, tài liệu này cung cấp lộ trình triển khai chi tiết và kế hoạch thực thi cho dự án.
 
-## Trạng Thái Hiện Tại (Cập nhật sau khi hoàn thành Sprint 3 - Doanh thu & Sổ Kế toán)
-- **Mã nguồn đã triển khai**: 22/43 use cases hoàn thành (MD-01, MD-02, MD-03, MD-04, MD-06, MD-07, MD-08, CT-01, CT-02, CT-03, CT-04, CT-06, CT-07, CT-08, KH-04, SK-01, SK-02, SK-03, SK-04, SK-07, SK-08, TT-01, TT-02)
-- **Sprint 2 - Kho hàng**: Hoàn thành 4/7 UC (CT-03, CT-04, KH-04, SK-03)
-- **Sprint 3 - Doanh thu & Sổ Kế toán**: Hoàn thành 4/5 UC (CT-06, CT-07, SK-01, SK-02, SK-04)
-- **Cơ sở dữ liệu**: Đã thiết kế và triển khai 16 bảng (hkd_info, nghe_nghiep, ky_ke_toan, hang_hoa, nha_cung_cap, nguoi_lao_dong, tai_khoan_ngan_hang, phieu_chi, phieu_nhap_kho, phieu_nhap_kho_chi_tiet, phieu_xuat_kho, phieu_xuat_kho_chi_tiet, hoa_don, ton_kho, so_doanh_thu, so_chi_phi, quy_tien_mat, tien_gui_ngan_hang)
+## Trạng Thái Hiện Tại (Cập nhật sau khi hoàn thành Sprint 2 - Kho hàng)
+- **Mã nguồn đã triển khai**: 27/43 use cases hoàn thành (MD-01→MD-08, QT-01, CT-01→CT-04, CT-06→CT-08, KH-01→KH-04, SK-01→SK-04, SK-07→SK-08, TT-01→TT-02)
+- **Sprint 0 - Master Data**: Hoàn thành 9/9 UC (MD-01→MD-08, QT-01)
+- **Sprint 1 - Chứng từ & Quỹ**: Hoàn thành 7/7 UC (CT-01, CT-02, CT-08, TT-01, TT-02, SK-07, SK-08)
+- **Sprint 2 - Kho hàng**: Hoàn thành 7/7 UC (CT-03, CT-04, KH-01→KH-04, SK-03) ✅ COMPLETE
+- **Cơ sở dữ liệu**: Đã thiết kế và triển khai 20 bảng (hkd_info, nghe_nghiep, ky_ke_toan, hang_hoa, nha_cung_cap, khach_hang, nguoi_dung, nguoi_lao_dong, tai_khoan_ngan_hang, phieu_chi, phieu_nhap_kho, phieu_nhap_kho_chi_tiet, phieu_xuat_kho, phieu_xuat_kho_chi_tiet, phieu_kiem_ke, chi_tiet_kiem_ke, hoa_don, ton_kho, so_doanh_thu, so_chi_phi, quy_tien_mat, tien_gui_ngan_hang)
 - **Kiến trúc**: Sử dụng Clean Architecture với Riverpod để quản lý trạng thái
 - **Thư viện chính**: Flutter, Riverpod, Sqflite, GetIt/Injectable
 
@@ -22,11 +23,11 @@ Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_
 | 2 | MD-02 | Quản lý danh mục hàng hóa/dịch vụ | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
 | 3 | MD-03 | Quản lý danh mục ngành nghề & thuế suất | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
 | 4 | MD-04 | Quản lý danh mục nhà cung cấp | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
-| 5 | MD-05 | Quản lý danh mục khách hàng | Cần triển khai | ⏸️ Chưa bắt đầu |
+| 5 | MD-05 | Quản lý danh mục khách hàng | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
 | 6 | MD-06 | Quản lý danh mục người lao động | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
 | 7 | MD-07 | Quản lý danh mục tài khoản ngân hàng | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
 | 8 | MD-08 | Cấu hình kỳ kế toán | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
-| 9 | QT-01 | Quản lý danh mục tài khoản người dùng & phân quyền | Cần triển khai | ⏸️ Chưa bắt đầu |
+| 9 | QT-01 | Quản lý danh mục tài khoản người dùng & phân quyền | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
 
 ### Sprint 1 - Chứng từ & Quỹ (Tuần 3-5)
 **Mục tiêu**: Xây dựng các chức năng chứng từ cơ bản và quản lý quỹ
@@ -49,10 +50,10 @@ Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_
 | 17 | CT-03 | Lập phiếu nhập kho | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
 | 18 | CT-04 | Lập phiếu xuất kho | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
 | 19 | KH-04 | Tính giá xuất kho (Bình quân / FIFO) | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
-| 20 | KH-01 | Nhập kho hàng hóa | Cần triển khai | ⏸️ Chưa bắt đầu |
-| 21 | KH-02 | Xuất kho hàng hóa | Cần triển khai | ⏸️ Chưa bắt đầu |
+| 20 | KH-01 | Nhập kho hàng hóa | Đã triển khai (dùng CT-03) | ✅ Hoàn thành |
+| 21 | KH-02 | Xuất kho hàng hóa | Đã triển khai (dùng CT-04) | ✅ Hoàn thành |
 | 22 | SK-03 | Ghi sổ chi tiết vật tư, hàng hóa (S2-HKD) | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
-| 23 | KH-03 | Kiểm kê hàng tồn kho | Cần triển khai | ⏸️ Chưa bắt đầu |
+| 23 | KH-03 | Kiểm kê hàng tồn kho | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
 
 ### Sprint 3 - Doanh thu & Sổ Kế toán (Tuần 9-11)
 **Mục tiêu**: Xây dựng các chức năng liên quan đến doanh thu và ghi sổ kế toán
