@@ -18,13 +18,17 @@ flutter format .         # Format code
 ```
 lib/
 ├── main.dart            # Entry, DI, DB tables
+├── main_page.dart       # Navigation shell
 ├── core/               # Shared (failures, widgets)
 └── features/           # Business modules
     ├── master_data/    # MD-01 to MD-08
     ├── ct/             # CT-01 to CT-08 (Chứng từ)
     ├── tt/             # TT-01, TT-02 (Quỹ/Tiền)
     ├── kh/             # KH-01 to KH-04 (Kho)
-    └── sk/             # SK-01 to SK-08 (Sổ)
+    ├── sk/             # SK-01 to SK-08 (Sổ)
+    ├── tx/             # TX-01 to TX-04 (Thuế)
+    ├── ns/             # NS-01 to NS-03 (Nhân sự)
+    └── qt/             # QT-01 to QT-06 (Quản trị)
 ```
 
 ## Layer Order (Core to Edge)
@@ -179,4 +183,11 @@ Widget build(BuildContext context, WidgetRef ref) {
 | `IMPLEMENTATION_ROADMAP.md` | What to implement next |
 | `PERFORMANCE_GAP_ANALYSIS.md` | Progress tracking |
 | `lib/main.dart` | DI & DB setup |
+| `lib/main_page.dart` | Navigation & routing |
 | `docs/UC_HKD_TT88_2021.md` | Business requirements |
+
+## Completed UCs (27/43 - 63%)
+- **Sprint 0**: MD-01→MD-08, QT-01 ✅
+- **Sprint 1**: CT-01, CT-02, CT-08, TT-01, TT-02, SK-07, SK-08 ✅
+- **Sprint 2**: CT-03, CT-04, KH-01→KH-04, SK-03 ✅
+- **Sprint 3**: CT-06, CT-07, SK-01, SK-02, SK-04 ✅
