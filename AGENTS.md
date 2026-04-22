@@ -14,6 +14,21 @@ flutter test             # Run all tests
 flutter format .         # Format code
 ```
 
+## Testing Policy (TDD)
+**Required:** Run `flutter analyze` AND `flutter build` after every feature implementation.
+If Flutter SDK is unavailable, manually verify by reading comparable existing files for pattern consistency.
+
+1. **Before implementing**: Read 2-3 existing working files in the same layer
+2. **After implementing**: Run the verification commands below
+3. **If build fails**: Fix all errors before committing
+4. **If build passes**: Commit and push
+
+| Command | Purpose | When |
+|--------|---------|------|
+| `flutter analyze` | Static analysis, type checks | After every change |
+| `flutter test` | Unit/integration tests | After every feature |
+| `flutter build apk --debug` | Full compile check | Before every commit |
+
 ## Architecture Overview
 ```
 lib/
@@ -186,8 +201,9 @@ Widget build(BuildContext context, WidgetRef ref) {
 | `lib/main_page.dart` | Navigation & routing |
 | `docs/UC_HKD_TT88_2021.md` | Business requirements |
 
-## Completed UCs (27/43 - 63%)
+## Completed UCs (33/43 - 77%)
 - **Sprint 0**: MD-01→MD-08, QT-01 ✅
 - **Sprint 1**: CT-01, CT-02, CT-08, TT-01, TT-02, SK-07, SK-08 ✅
 - **Sprint 2**: CT-03, CT-04, KH-01→KH-04, SK-03 ✅
-- **Sprint 3**: CT-06, CT-07, SK-01, SK-02, SK-04 ✅
+- **Sprint 3**: CT-06, CT-07, SK-01, SK-02, SK-04, QT-05 ✅
+- **Sprint 4**: TX-01, TX-02, TX-03, TX-04, SK-05 ✅
