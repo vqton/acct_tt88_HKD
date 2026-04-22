@@ -3,8 +3,8 @@
 ## Tóm Tắt
 Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_HKD_TT88_2021.md), danh sách use cases (UC_HKD_TT88_2021.md), và tiêu chuẩn chất lượng mã nguồn (CODE_QUALITY.md), cùng với việc đánh giá mã nguồn hiện tại, tài liệu này cung cấp lộ trình triển khai chi tiết và kế hoạch thực thi cho dự án.
 
-## Trạng Thái Hiện Tại (Cập nhật sau khi hoàn thành QT-05 - Tra cứu chứng từ)
-- **Mã nguồn đã triển khai**: 28/43 use cases hoàn thành (MD-01→MD-08, QT-01, QT-05, CT-01→CT-04, CT-06→CT-08, KH-01→KH-04, SK-01→SK-04, SK-07→SK-08, TT-01→TT-02)
+## Trạng Thái Hiện Tại (Cập nhật sau khi hoàn thành Sprint 4 - Thuế)
+- **Mã nguồn đã triển khai**: 33/43 use cases hoàn thành (MD-01→MD-08, QT-01, QT-05, CT-01→CT-04, CT-06→CT-08, KH-01→KH-04, SK-01→SK-05, SK-07→SK-08, TT-01→TT-02, TX-01→TX-04)
 - **Sprint 0 - Master Data**: Hoàn thành 9/9 UC (MD-01→MD-08, QT-01)
 - **Sprint 1 - Chứng từ & Quỹ**: Hoàn thành 7/7 UC (CT-01, CT-02, CT-08, TT-01, TT-02, SK-07, SK-08)
 - **Sprint 2 - Kho hàng**: Hoàn thành 7/7 UC (CT-03, CT-04, KH-01→KH-04, SK-03) ✅ COMPLETE
@@ -67,16 +67,16 @@ Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_
 | 28 | CT-07 | Lưu trữ chứng từ kế toán | Đã triển khai trang TabBar (PT, PC, HD, NX) | ✅ Hoàn thành |
 | 29 | QT-05 | Lưu trữ và tra cứu lịch sử chứng từ | Đã triển khai tra cứu, lọc, tìm kiếm | ✅ Hoàn thành |
 
-### Sprint 4 - Thuế (Tuần 12-13)
+### Sprint 4 - Thuế (Tuần 12-13) - HOÀN THÀNH
 **Mục tiêu**: Triển khai các chức năng tính thuế và theo dõi nộp thuế
 
-| STT | UC | Tên Use Case | Mô tả ngắn |
-|-----|----|--------------|------------|
-| 30 | TX-01 | Xác định doanh thu chịu thuế | Cần triển khai |
-| 31 | TX-02 | Tính thuế giá trị gia tăng (GTGT) | Cần triển khai |
-| 32 | TX-03 | Tính thuế thu nhập cá nhân (TNCN) | Cần triển khai |
-| 33 | SK-05 | Ghi sổ theo dõi nghĩa vụ thuế với NSNN (S4-HKD) | Cần triển khai |
-| 34 | TX-04 | Theo dõi nộp thuế vào NSNN | Cần triển khai |
+| STT | UC | Tên Use Case | Mô tả ngắn | Trạng thái |
+|-----|----|--------------|------------|------------|
+| 30 | TX-01 | Xác định doanh thu chịu thuế | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
+| 31 | TX-02 | Tính thuế giá trị gia tăng (GTGT) | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
+| 32 | TX-03 | Tính thuế thu nhập cá nhân (TNCN) | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
+| 33 | SK-05 | Ghi sổ theo dõi nghĩa vụ thuế (S4-HKD) | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
+| 34 | TX-04 | Theo dõi nộp thuế vào NSNN | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
 
 ### Sprint 5 - Nhân sự & Lương (Tuần 14-16)
 **Mục tiêu**: Xây dựng các chức năng quản lý nhân sự và tiền lương

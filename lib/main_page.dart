@@ -12,6 +12,8 @@ import 'package:hkd_accounting/features/ct/presentation/pages/phieu_chi_page.dar
 import 'package:hkd_accounting/features/tt/presentation/pages/quy_tien_mat_page.dart';
 import 'package:hkd_accounting/features/tt/presentation/pages/tien_gui_ngan_hang_page.dart';
 import 'package:hkd_accounting/features/qt/presentation/pages/tra_cuu_chung_tu_page.dart';
+import 'package:hkd_accounting/features/tx/presentation/pages/tra_cuu_thue_page.dart';
+import 'package:hkd_accounting/features/tx/presentation/pages/so_thue_page.dart';
 
 class MainPage extends ConsumerStatefulWidget {
   const MainPage({super.key});
@@ -36,6 +38,8 @@ class _MainPageState extends ConsumerState<MainPage> {
     QuyTienMatPage(),
     TienGuiNganHangPage(),
     TraCuuChungTuPage(),
+    TraCuuThuePage(),
+    SoThuePage(),
   ];
 
   static const List<BottomNavigationBarItem> _bottomNavigationBarItems = <BottomNavigationBarItem>[
@@ -86,6 +90,14 @@ class _MainPageState extends ConsumerState<MainPage> {
     BottomNavigationBarItem(
       icon: Icon(Icons.search),
       label: 'Tra cứu CT',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.receipt_long),
+      label: 'Thuế',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.book),
+      label: 'Sổ thuế',
     ),
   ];
 

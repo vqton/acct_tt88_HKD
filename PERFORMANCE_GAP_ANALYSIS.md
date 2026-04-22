@@ -4,14 +4,14 @@
 ### Summary
 | Metric | Target | Current | Gap |
 |--------|--------|---------|-----|
-| Total Use Cases | 43 | 28 | 15 (65%) |
-| Database Tables | 20+ | 20 | 0 (100%) |
-| Entities | 20+ | 21 | 1+ |
-| Implemented Pages | 20+ | 22 | 2+ |
+| Total Use Cases | 43 | 33 | 10 (77%) |
+| Database Tables | 20+ | 25 | 5+ |
+| Entities | 20+ | 26 | 6+ |
+| Implemented Pages | 20+ | 24 | 4+ |
 
 ---
 
-## Implemented Features (28/43 UC - 65%)
+## Implemented Features (33/43 UC - 77%)
 
 ### ✅ Master Data (7/9 - 78%)
 | UC | Feature | Status | Files |
@@ -54,7 +54,16 @@
 |----|---------|--------|-------|
 | KH-04 | COGS Calculation | ✅ Complete | entity, service, provider, page |
 
-### ❌ Not Implemented (15 UC - 35%)
+### ✅ Tax (5/5 - 100%)
+| UC | Feature | Status | Files |
+|----|---------|--------|-------|
+| TX-01 | Taxable Revenue | ✅ Complete | entity, repo, datasource, provider, page |
+| TX-02 | VAT Calculation | ✅ Complete | entity, repo, datasource, provider, page |
+| TX-03 | PIT Calculation | ✅ Complete | entity, repo, datasource, provider, page |
+| TX-04 | Tax Payment Tracking | ✅ Complete | entity, repo, datasource, provider, page |
+| SK-05 | Tax Book (S4-HKD) | ✅ Complete | entity, repo, datasource, provider, page |
+
+### ❌ Not Implemented (10 UC - 23%)
 
 | UC | Feature | Priority | Dependencies |
 |----|---------|----------|--------------|
