@@ -32,6 +32,15 @@ import 'package:hkd_accounting/features/ct/domain/repositories/phieu_nhap_kho_re
 import 'package:hkd_accounting/features/ct/data/datasources/phieu_xuat_kho_local_datasource.dart';
 import 'package:hkd_accounting/features/ct/data/repositories/phieu_xuat_kho_repository_impl.dart';
 import 'package:hkd_accounting/features/ct/domain/repositories/phieu_xuat_kho_repository.dart';
+import 'package:hkd_accounting/features/ct/data/datasources/hoa_don_local_datasource.dart';
+import 'package:hkd_accounting/features/ct/data/repositories/hoa_don_repository_impl.dart';
+import 'package:hkd_accounting/features/ct/domain/repositories/hoa_don_repository.dart';
+import 'package:hkd_accounting/features/sk/data/datasources/so_doanh_thu_local_datasource.dart';
+import 'package:hkd_accounting/features/sk/data/repositories/so_doanh_thu_repository_impl.dart';
+import 'package:hkd_accounting/features/sk/domain/repositories/so_doanh_thu_repository.dart';
+import 'package:hkd_accounting/features/sk/data/datasources/so_chi_phi_local_datasource.dart';
+import 'package:hkd_accounting/features/sk/data/repositories/so_chi_phi_repository_impl.dart';
+import 'package:hkd_accounting/features/sk/domain/repositories/so_chi_phi_repository.dart';
 import 'package:hkd_accounting/features/kh/data/datasources/ton_kho_local_datasource.dart';
 import 'package:hkd_accounting/features/kh/data/repositories/ton_kho_repository_impl.dart';
 import 'package:hkd_accounting/features/kh/domain/repositories/ton_kho_repository.dart';
@@ -167,6 +176,27 @@ Future<Database> _initializeDatabase() async {
         )
       ''');
 
+      // CT-06: Hóa đơn
+      await db.execute('''
+        CREATE TABLE hoa_don (
+          id TEXT PRIMARY KEY,
+          so_hoa_don TEXT NOT NULL,
+          ngay_lap TEXT NOT NULL,
+          loai_hoa_don TEXT DEFAULT 'DAU_RA',
+          ky_ke_toan_id TEXT,
+          nha_cung_cap_id TEXT,
+          khach_hang_id TEXT,
+          phieu_nhap_kho_id TEXT,
+          phieu_xuat_kho_id TEXT,
+          tien_hang INTEGER DEFAULT 0,
+          tien_thue INTEGER DEFAULT 0,
+          tong_tien INTEGER DEFAULT 0,
+          trang_thai TEXT DEFAULT 'MOI',
+          created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+          updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+        )
+      ''');
+
       // KH-04: Tồn kho hàng hóa
       await db.execute('''
         CREATE TABLE ton_kho (
@@ -182,6 +212,36 @@ Future<Database> _initializeDatabase() async {
           ton_cuoi_so_luong REAL DEFAULT 0,
           ton_cuoi_thanh_tien INTEGER DEFAULT 0,
           don_gia_xuat_kho REAL DEFAULT 0,
+          created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+          updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+        )
+      ''');
+
+      // SK-02: Sổ doanh thu (S1-HKD)
+      await db.execute('''
+        CREATE TABLE so_doanh_thu (
+          id TEXT PRIMARY KEY,
+          ky_ke_toan_id TEXT,
+          nhom_nghe_id TEXT,
+          ngay_chung_tu TEXT,
+          so_hieu_chung_tu TEXT,
+          dien_giai TEXT,
+          doanh_thu INTEGER DEFAULT 0,
+          created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+          updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+        )
+      ''');
+
+      // SK-04: Sổ chi phí (S3-HKD)
+      await db.execute('''
+        CREATE TABLE so_chi_phi (
+          id TEXT PRIMARY KEY,
+          ky_ke_toan_id TEXT,
+          nhom_nghe_id TEXT,
+          ngay_chung_tu TEXT,
+          so_hieu_chung_tu TEXT,
+          dien_giai TEXT,
+          chi_phi INTEGER DEFAULT 0,
           created_at TEXT DEFAULT CURRENT_TIMESTAMP,
           updated_at TEXT DEFAULT CURRENT_TIMESTAMP
         )
@@ -202,6 +262,9 @@ void setupDependencies(Database database) {
   getIt.registerLazySingleton<PhieuChiLocalDatasource>(() => PhieuChiLocalDatasourceImpl(database));
   getIt.registerLazySingleton<PhieuNhapKhoLocalDatasource>(() => PhieuNhapKhoLocalDatasourceImpl(database));
   getIt.registerLazySingleton<PhieuXuatKhoLocalDatasource>(() => PhieuXuatKhoLocalDatasourceImpl(database));
+  getIt.registerLazySingleton<HoaDonLocalDatasource>(() => HoaDonLocalDatasourceImpl(database));
+  getIt.registerLazySingleton<SoDoanhThuLocalDatasource>(() => SoDoanhThuLocalDatasourceImpl(database));
+  getIt.registerLazySingleton<SoChiPhiLocalDatasource>(() => SoChiPhiLocalDatasourceImpl(database));
   getIt.registerLazySingleton<TonKhoLocalDatasource>(() => TonKhoLocalDatasourceImpl(database));
   getIt.registerLazySingleton<QuyTienMatLocalDatasource>(() => QuyTienMatLocalDatasourceImpl(database));
   getIt.registerLazySingleton<TienGuiNganHangLocalDatasource>(() => TienGuiNganHangLocalDatasourceImpl(database));
@@ -217,6 +280,9 @@ void setupDependencies(Database database) {
   getIt.registerLazySingleton<PhieuChiRepository>(() => PhieuChiRepositoryImpl(getIt.get<PhieuChiLocalDatasource>()));
   getIt.registerLazySingleton<PhieuNhapKhoRepository>(() => PhieuNhapKhoRepositoryImpl(getIt.get<PhieuNhapKhoLocalDatasource>()));
   getIt.registerLazySingleton<PhieuXuatKhoRepository>(() => PhieuXuatKhoRepositoryImpl(getIt.get<PhieuXuatKhoLocalDatasource>()));
+  getIt.registerLazySingleton<HoaDonRepository>(() => HoaDonRepositoryImpl(getIt.get<HoaDonLocalDatasource>()));
+  getIt.registerLazySingleton<SoDoanhThuRepository>(() => SoDoanhThuRepositoryImpl(getIt.get<SoDoanhThuLocalDatasource>()));
+  getIt.registerLazySingleton<SoChiPhiRepository>(() => SoChiPhiRepositoryImpl(getIt.get<SoChiPhiLocalDatasource>()));
   getIt.registerLazySingleton<TonKhoRepository>(() => TonKhoRepositoryImpl(getIt.get<TonKhoLocalDatasource>()));
   getIt.registerLazySingleton<QuyTienMatRepository>(() => QuyTienMatRepositoryImpl(getIt.get<QuyTienMatLocalDatasource>()));
   getIt.registerLazySingleton<TienGuiNganHangRepository>(() => TienGuiNganHangRepositoryImpl(getIt.get<TienGuiNganHangLocalDatasource>()));

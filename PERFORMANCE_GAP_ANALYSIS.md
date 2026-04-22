@@ -4,14 +4,14 @@
 ### Summary
 | Metric | Target | Current | Gap |
 |--------|--------|---------|-----|
-| Total Use Cases | 43 | 20 | 23 (53%) |
-| Database Tables | 20+ | 16 | 4+ |
+| Total Use Cases | 43 | 22 | 21 (49%) |
+| Database Tables | 20+ | 18 | 2+ |
 | Entities | 20+ | 20 | 0 (100%) |
-| Implemented Pages | 20+ | 18 | 2+ |
+| Implemented Pages | 20+ | 21 | 1+ |
 
 ---
 
-## Implemented Features (20/43 UC - 47%)
+## Implemented Features (22/43 UC - 51%)
 
 ### ✅ Master Data (7/9 - 78%)
 | UC | Feature | Status | Files |
@@ -25,23 +25,27 @@
 | MD-07 | Bank Accounts | ✅ Complete | entity, repo, datasource, page |
 | MD-08 | Accounting Periods | ✅ Complete | entity, repo, datasource, page |
 
-### ✅ Vouchers & Funds (8/8 - 100%)
+### ✅ Vouchers & Funds (9/9 - 100%)
 | UC | Feature | Status | Files |
 |----|---------|--------|-------|
 | CT-01 | Receipt | ✅ Complete | entity, repo, datasource, page |
 | CT-02 | Payment Voucher | ✅ Complete | entity, repo, datasource, page |
 | CT-03 | Goods Receipt | ✅ Complete | entity, repo, datasource, page |
 | CT-04 | Goods Issue | ✅ Complete | entity, repo, datasource, page |
+| CT-06 | Invoice Mgmt | ✅ Complete | entity, repo, datasource, page |
+| CT-07 | Archive Vouchers | ✅ Complete | page |
 | CT-08 | Approve Voucher | ✅ Complete | use case |
 | TT-01 | Cash Fund | ✅ Complete | entity, repo, datasource, page |
 | TT-02 | Bank Deposits | ✅ Complete | entity, repo, datasource, page |
 | SK-07 | Cash Book | ✅ Complete | entity, page |
 
-### ✅ Accounting Books (3/7 - 43%)
+### ✅ Accounting Books (5/7 - 71%)
 | UC | Feature | Status | Files |
 |----|---------|--------|-------|
+| SK-01 | Open Books | ✅ Complete | page |
 | SK-02 | Sales Book (S1-HKD) | ✅ Complete | entity, repo, datasource, provider, page |
 | SK-03 | Inventory Book (S2-HKD) | ✅ Complete | entity, service, provider, page |
+| SK-04 | Expense Book (S3-HKD) | ✅ Complete | entity, model, repo, datasource, provider, page |
 | SK-07 | Cash Book (S6-HKD) | ✅ Complete | entity, page |
 | SK-08 | Bank Book (S7-HKD) | ✅ Complete | entity, page |
 
@@ -50,21 +54,14 @@
 |----|---------|--------|-------|
 | KH-04 | COGS Calculation | ✅ Complete | entity, service, provider, page |
 
-### ❌ Not Implemented (23 UC - 53%)
+### ❌ Not Implemented (21 UC - 49%)
 
 | UC | Feature | Priority | Dependencies |
 |----|---------|----------|--------------|
 | CT-05 | Salary Table | HIGH | MD-06 |
-| CT-06 | Invoice Mgmt | HIGH | CT-01, CT-02, CT-03 |
-| CT-07 | Archive Vouchers | MEDIUM | CT-01-CT-04 |
 | KH-01 | Goods Receipt | HIGH | CT-03, MD-02 |
 | KH-02 | Goods Issue | HIGH | CT-04, MD-02 |
 | KH-03 | Inventory Check | MEDIUM | KH-01, KH-02 |
-| KH-04 | COGS Calculation | HIGH | KH-01, KH-02 |
-| SK-01 | Open Books | MEDIUM | All MD |
-| SK-02 | Sales Book | MEDIUM | CT-06 |
-| SK-03 | Inventory Book | MEDIUM | KH-01, KH-02, KH-03 |
-| SK-04 | Expense Book | MEDIUM | CT-02, CT-04 |
 | SK-05 | Tax Book | MEDIUM | TX-01-TX-04 |
 | SK-06 | Salary Book | MEDIUM | NS-01-NS-03 |
 | TX-01 | Taxable Revenue | MEDIUM | CT-06 |
