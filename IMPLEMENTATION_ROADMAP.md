@@ -3,9 +3,10 @@
 ## Tóm Tắt
 Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_HKD_TT88_2021.md), danh sách use cases (UC_HKD_TT88_2021.md), và tiêu chuẩn chất lượng mã nguồn (CODE_QUALITY.md), cùng với việc đánh giá mã nguồn hiện tại, tài liệu này cung cấp lộ trình triển khai chi tiết và kế hoạch thực thi cho dự án.
 
-## Trạng Thái Hiện Tại (Cập nhật sau khi hoàn thành Sprint 2 - Kho hàng)
+## Trạng Thái Hiện Tại (Cập nhật sau khi hoàn thành Sprint 3 - Doanh thu)
 - **Mã nguồn đã triển khai**: 20/43 use cases hoàn thành (MD-01, MD-02, MD-03, MD-04, MD-06, MD-07, MD-08, CT-01, CT-02, CT-03, CT-04, CT-06, CT-08, KH-04, SK-02, SK-03, SK-07, SK-08, TT-01, TT-02)
 - **Sprint 2 - Kho hàng**: Hoàn thành 4/7 UC (CT-03, CT-04, KH-04, SK-03)
+- **Sprint 3 - Doanh thu**: Hoàn thành 2/5 UC (CT-06, SK-02)
 - **Cơ sở dữ liệu**: Đã thiết kế và triển khai 15 bảng (hkd_info, nghe_nghiep, ky_ke_toan, hang_hoa, nha_cung_cap, nguoi_lao_dong, tai_khoan_ngan_hang, phieu_chi, phieu_nhap_kho, phieu_nhap_kho_chi_tiet, phieu_xuat_kho, phieu_xuat_kho_chi_tiet, ton_kho, quy_tien_mat, tien_gui_ngan_hang)
 - **Kiến trúc**: Sử dụng Clean Architecture với Riverpod để quản lý trạng thái
 - **Thư viện chính**: Flutter, Riverpod, Sqflite, GetIt/Injectable

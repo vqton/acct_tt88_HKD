@@ -4,14 +4,14 @@
 ### Summary
 | Metric | Target | Current | Gap |
 |--------|--------|---------|-----|
-| Total Use Cases | 43 | 18 | 25 (58%) |
-| Database Tables | 20+ | 15 | 5+ |
-| Entities | 20+ | 18 | 2+ |
-| Implemented Pages | 20+ | 16 | 4+ |
+| Total Use Cases | 43 | 20 | 23 (53%) |
+| Database Tables | 20+ | 16 | 4+ |
+| Entities | 20+ | 20 | 0 (100%) |
+| Implemented Pages | 20+ | 18 | 2+ |
 
 ---
 
-## Implemented Features (18/43 UC - 42%)
+## Implemented Features (20/43 UC - 47%)
 
 ### ✅ Master Data (7/9 - 78%)
 | UC | Feature | Status | Files |
@@ -37,9 +37,10 @@
 | TT-02 | Bank Deposits | ✅ Complete | entity, repo, datasource, page |
 | SK-07 | Cash Book | ✅ Complete | entity, page |
 
-### ✅ Accounting Books (2/7 - 29%)
+### ✅ Accounting Books (3/7 - 43%)
 | UC | Feature | Status | Files |
 |----|---------|--------|-------|
+| SK-02 | Sales Book (S1-HKD) | ✅ Complete | entity, repo, datasource, provider, page |
 | SK-03 | Inventory Book (S2-HKD) | ✅ Complete | entity, service, provider, page |
 | SK-07 | Cash Book (S6-HKD) | ✅ Complete | entity, page |
 | SK-08 | Bank Book (S7-HKD) | ✅ Complete | entity, page |
@@ -49,7 +50,7 @@
 |----|---------|--------|-------|
 | KH-04 | COGS Calculation | ✅ Complete | entity, service, provider, page |
 
-### ❌ Not Implemented (25 UC - 58%)
+### ❌ Not Implemented (23 UC - 53%)
 
 | UC | Feature | Priority | Dependencies |
 |----|---------|----------|--------------|
