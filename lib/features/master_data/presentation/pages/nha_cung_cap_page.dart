@@ -8,19 +8,26 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hkd_accounting/core/widgets/custom_scaffold.dart';
 import 'package:hkd_accounting/features/master_data/presentation/widgets/nha_cung_cap_form_dialog.dart';
 import 'package:hkd_accounting/features/master_data/presentation/widgets/nha_cung_cap_list_item.dart';
+import 'package:hkd_accounting/features/master_data/presentation/providers/nha_cung_cap_provider.dart';
 
 class NhaCungCapPage extends ConsumerWidget {
   const NhaCungCapPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final nhaCungCapNotifier = ref.read(nhaCungCapProvider.notifier);
     return CustomScaffold(
       title: 'Quản lý danh mục nhà cung cấp',
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showDialog(
             context: context,
-            builder: (context) => const NhaCungCapFormDialog(),
+            builder: (context) => NhaCungCapFormDialog(
+              initialNhaCungCap: null,
+              onSave: (ncc) {
+                nhaCungCapNotifier.saveNhaCungCap(ncc);
+              },
+            ),
           );
         },
         child: const Icon(Icons.add),

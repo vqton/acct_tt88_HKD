@@ -3,9 +3,7 @@
 // Based on UC_HKD_TT88_2021 - MD-06
 // ============================================================================
 
-import 'dart:io';
 import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
 import 'package:hkd_accounting/features/master_data/domain/entities/nguoi_lao_dong.dart';
 import 'package:hkd_accounting/features/master_data/data/models/nguoi_lao_dong_model.dart';
 
@@ -48,7 +46,6 @@ class NguoiLaoDongLocalDatasourceImpl implements NguoiLaoDongLocalDatasource {
 
   @override
   Future<String> saveNguoiLaoDong(NguoiLaoDongModel nguoiLaoDongModel) async {
-    // Check if record already exists
     final existing = await getNguoiLaoDongById(nguoiLaoDongModel.id);
     if (existing != null) {
       await updateNguoiLaoDong(nguoiLaoDongModel);
@@ -92,62 +89,5 @@ class NguoiLaoDongLocalDatasourceImpl implements NguoiLaoDongLocalDatasource {
     return List.generate(maps.length, (i) {
       return NguoiLaoDongModel.fromMap(maps[i]);
     });
-  }
-}
-
-// Database Helper
-class NguoiLaoDongDatabaseHelper {
-  static final NguoiLaoDongDatabaseHelper _instance =
-      NguoiLaoDongDatabaseHelper._internal();
-
-  factory NguoiLaoDongDatabaseHelper() {
-    return _instance;
-  }
-
-  NguoiLaoDongDatabaseHelper._internal();
-
-  static Database? _database;
-
-  Future<Database> get database async {
-    if (_database != null) return _database!;
-    _database = await _initDatabase();
-    return _database!;
-  }
-
-  Future<Database> _initDatabase() async {
-    Directory documentsDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentsDirectory.path, 'hkd_accounting.db');
-
-    return await openDatabase(
-      path,
-      version: 1,
-      onCreate: _onCreate,
-    );
-  }
-
-  Future<void> _onCreate(Database db, int version) async {
-    await db.execute('''
-      CREATE TABLE nguoi_lao_dong (
-        id TEXT PRIMARY KEY,
-        ma_nguoi_lao_dong TEXT NOT NULL,
-        ho_ten TEXT NOT NULL,
-        ngay_sinh TIMESTAMP,
-        gioi_tinh TEXT,
-        so_cccd TEXT,
-        so_bhxh TEXT,
-        chuc_vu TEXT,
-        bo_phan TEXT,
-        dia_chi TEXT,
-        so_dien_thoai TEXT,
-        email TEXT,
-        ngay_vao_lam TIMESTAMP,
-        ngay_ngung_hop_dong TIMESTAMP,
-        he_so_luong REAL,
-        luong_co_ban REAL,
-        trang_thai TEXT NOT NULL DEFAULT 'DANG_LAM_VIEC',
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-      )
-    ''');
   }
 }

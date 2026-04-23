@@ -1,3 +1,10 @@
+// ============================================================================
+// Domain Layer - Entity
+// Based on UC_HKD_TT88_2021 - SK-08: Ghi sổ tiền gửi ngân hàng (S7-HKD)
+// ============================================================================
+
+import 'package:equatable/equatable.dart';
+
 /// Entity đại diện cho một dòng trong Sổ tiền gửi ngân hàng (S7-HKD).
 /// 
 /// Entity này tương ứng với UC_HKD_TT88_2021 - SK-08: Ghi sổ tiền gửi ngân hàng (S7-HKD).

@@ -22,7 +22,7 @@ class NhaCungCapRepositoryImpl implements NhaCungCapRepository {
       final nhaCungCapList = nhaCungCapModels.map((model) => model.toEntity()).toList();
       return Right(nhaCungCapList);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -36,7 +36,7 @@ class NhaCungCapRepositoryImpl implements NhaCungCapRepository {
         return Right(null);
       }
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -47,7 +47,7 @@ class NhaCungCapRepositoryImpl implements NhaCungCapRepository {
       final id = await localDatasource.saveNhaCungCap(nhaCungCapModel);
       return Right(id);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -58,7 +58,7 @@ class NhaCungCapRepositoryImpl implements NhaCungCapRepository {
       await localDatasource.updateNhaCungCap(nhaCungCapModel);
       return const Right(null);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -68,7 +68,7 @@ class NhaCungCapRepositoryImpl implements NhaCungCapRepository {
       await localDatasource.deleteNhaCungCap(id);
       return const Right(null);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -79,7 +79,7 @@ class NhaCungCapRepositoryImpl implements NhaCungCapRepository {
       final nhaCungCapList = nhaCungCapModels.map((model) => model.toEntity()).toList();
       return Right(nhaCungCapList);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 }

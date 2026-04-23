@@ -26,7 +26,7 @@ class ApprovePhieuChi extends UseCase<PhieuChi, String> {
         }
         
         if (phieuChi.trangThai == 'DA_DUYET') {
-          return const Left(Failure('Phiếu chi đã được duyệt rồi'));
+          return Left(ValidationFailure('Phiếu chi đã được duyệt rồi'));
         }
         
         final approvedPhieuChi = phieuChi.copyWith(trangThai: 'DA_DUYET');

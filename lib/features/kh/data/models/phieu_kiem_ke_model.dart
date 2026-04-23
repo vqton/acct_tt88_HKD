@@ -40,12 +40,8 @@ class PhieuKiemKeModel extends PhieuKiemKe {
       nguoiLapId: entity.nguoiLapId,
       nguoiXacNhanId: entity.nguoiXacNhanId,
       trangThai: entity.trangThai,
-      createdAt: entity.createdAt != null
-          ? DateTime.tryParse(entity.createdAt!)
-          : null,
-      updatedAt: entity.updatedAt != null
-          ? DateTime.tryParse(entity.updatedAt!)
-          : null,
+      createdAt: entity.createdAt,
+      updatedAt: entity.updatedAt,
     );
   }
 
@@ -59,8 +55,8 @@ class PhieuKiemKeModel extends PhieuKiemKe {
       nguoiLapId: nguoiLapId,
       nguoiXacNhanId: nguoiXacNhanId,
       trangThai: trangThai,
-      createdAt: createdAt?.toIso8601String(),
-      updatedAt: updatedAt?.toIso8601String(),
+      createdAt: createdAt,
+      updatedAt: updatedAt,
     );
   }
 
@@ -135,9 +131,7 @@ class ChiTietKiemKeModel extends ChiTietKiemKe {
       loaiChenhLech: entity.loaiChenhLech,
       nguyenNhan: entity.nguyenNhan,
       xuLy: entity.xuLy,
-      createdAt: entity.createdAt != null
-          ? DateTime.tryParse(entity.createdAt!)
-          : null,
+      createdAt: entity.createdAt,
     );
   }
 
@@ -152,7 +146,7 @@ class ChiTietKiemKeModel extends ChiTietKiemKe {
       loaiChenhLech: loaiChenhLech,
       nguyenNhan: nguyenNhan,
       xuLy: xuLy,
-      createdAt: createdAt?.toIso8601String(),
+      createdAt: createdAt,
     );
   }
 

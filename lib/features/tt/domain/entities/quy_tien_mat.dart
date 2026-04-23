@@ -30,15 +30,7 @@ class QuyTienMat extends Equatable {
     required this.trangThai,
     this.createdAt,
     this.updatedAt,
-  }) : assert(soDuDauKy >= 0, 'So du dau ky phai lon hon hoac bang 0'),
-        assert(tongThu >= 0, 'Tong thu phai lon hon hoac bang 0'),
-        assert(tongChi >= 0, 'Tong chi phai lon hon hoac bang 0'),
-        assert(soDuCuoiKy >= 0, 'So du cuoi ky phai lon hon hoac bang 0'),
-        assert(id.isNotEmpty, 'Id khong duoc de trong'),
-        assert(maQuy.isNotEmpty, 'Ma quy khong duoc de trong'),
-        assert(tenQuy.isNotEmpty, 'Ten quy khong duoc de trong'),
-        assert(kyKeToanId.isNotEmpty, 'Ky ke toan id khong duoc de trong'),
-        assert(trangThai.isNotEmpty, 'Trang thai khong duoc de trong');
+  });
 
   QuyTienMat copyWith({
     String? id,

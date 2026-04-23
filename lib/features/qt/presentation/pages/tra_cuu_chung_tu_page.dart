@@ -1,3 +1,8 @@
+// ============================================================================
+// Presentation Layer - Page
+// Based on UC_HKD_TT88_2021 - QT-05: Tra cứu lịch sử chứng từ
+// ============================================================================
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';

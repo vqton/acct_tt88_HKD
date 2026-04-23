@@ -1,3 +1,8 @@
+// ============================================================================
+// Domain Layer - Entity
+// Based on UC_HKD_TT88_2021 - TX-04: Theo dõi nộp thuế vào NSNN
+// ============================================================================
+
 import 'package:equatable/equatable.dart';
 
 enum LoaiThue { gtgt, tncn, both }

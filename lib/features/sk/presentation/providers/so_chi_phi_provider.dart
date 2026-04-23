@@ -18,7 +18,10 @@ class SoChiPhiNotifier extends StateNotifier<AsyncValue<List<SoChiPhi>>> {
   Future<void> loadS3() async {
     state = const AsyncValue.loading();
     final result = await repository.getAll();
-    state = result.when(success: (data) => AsyncValue.data(data), failure: (e, s) => AsyncValue.error(e, s));
+    state = result.fold(
+      (failure) => AsyncValue.error(failure, StackTrace.current),
+      (data) => AsyncValue.data(data),
+    );
   }
 
   Future<void> generateFromPhieuChi(String kyKeToanId) async {

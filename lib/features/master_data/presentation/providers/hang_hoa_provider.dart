@@ -23,9 +23,9 @@ class HangHoaNotifier extends StateNotifier<AsyncValue<List<HangHoa>>> {
   Future<void> loadHangHoaList() async {
     state = const AsyncValue.loading();
     final result = await repository.getHangHoaList();
-    state = result.when(
-      success: (hangHoaList) => AsyncValue.data(hangHoaList),
-      failure: (failure) => AsyncValue.error(failure, StackTrace.current),
+    state = result.fold(
+      (failure) => AsyncValue.error(failure, StackTrace.current),
+      (hangHoaList) => AsyncValue.data(hangHoaList),
     );
   }
 

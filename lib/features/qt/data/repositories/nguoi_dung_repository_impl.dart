@@ -22,7 +22,7 @@ class NguoiDungRepositoryImpl implements NguoiDungRepository {
       final nguoiDungList = nguoiDungModels.map((model) => model.toEntity()).toList();
       return Right(nguoiDungList);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -36,7 +36,7 @@ class NguoiDungRepositoryImpl implements NguoiDungRepository {
         return Right(null);
       }
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -50,7 +50,7 @@ class NguoiDungRepositoryImpl implements NguoiDungRepository {
         return Right(null);
       }
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -61,7 +61,7 @@ class NguoiDungRepositoryImpl implements NguoiDungRepository {
       final id = await localDatasource.saveNguoiDung(nguoiDungModel);
       return Right(id);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -72,7 +72,7 @@ class NguoiDungRepositoryImpl implements NguoiDungRepository {
       await localDatasource.updateNguoiDung(nguoiDungModel);
       return const Right(null);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -82,7 +82,7 @@ class NguoiDungRepositoryImpl implements NguoiDungRepository {
       await localDatasource.deleteNguoiDung(id);
       return const Right(null);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -93,7 +93,7 @@ class NguoiDungRepositoryImpl implements NguoiDungRepository {
       final nguoiDungList = nguoiDungModels.map((model) => model.toEntity()).toList();
       return Right(nguoiDungList);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -107,7 +107,7 @@ class NguoiDungRepositoryImpl implements NguoiDungRepository {
         return Right(null);
       }
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 }

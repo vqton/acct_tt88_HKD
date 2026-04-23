@@ -22,9 +22,9 @@ class QuyTienMatNotifier extends StateNotifier<AsyncValue<List<QuyTienMat>>> {
   Future<void> loadQuyTienMatList() async {
     state = const AsyncValue.loading();
     final result = await repository.getQuyTienMatList();
-    state = result.when(
-      success: (quyTienMatList) => AsyncValue.data(quyTienMatList),
-      failure: (failure) => AsyncValue.error(failure, StackTrace.current),
+    state = result.fold(
+      (failure) => AsyncValue.error(failure, StackTrace.current),
+      (quyTienMatList) => AsyncValue.data(quyTienMatList),
     );
   }
 

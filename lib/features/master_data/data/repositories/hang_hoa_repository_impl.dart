@@ -22,7 +22,7 @@ class HangHoaRepositoryImpl implements HangHoaRepository {
       final hangHoaList = hangHoaModels.map((model) => model.toEntity()).toList();
       return Right(hangHoaList);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -36,7 +36,7 @@ class HangHoaRepositoryImpl implements HangHoaRepository {
         return Right(null);
       }
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -47,7 +47,7 @@ class HangHoaRepositoryImpl implements HangHoaRepository {
       final id = await localDatasource.saveHangHoa(hangHoaModel);
       return Right(id);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -58,7 +58,7 @@ class HangHoaRepositoryImpl implements HangHoaRepository {
       await localDatasource.updateHangHoa(hangHoaModel);
       return const Right(null);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -68,7 +68,7 @@ class HangHoaRepositoryImpl implements HangHoaRepository {
       await localDatasource.deleteHangHoa(id);
       return const Right(null);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -79,7 +79,7 @@ class HangHoaRepositoryImpl implements HangHoaRepository {
       final hangHoaList = hangHoaModels.map((model) => model.toEntity()).toList();
       return Right(hangHoaList);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 }

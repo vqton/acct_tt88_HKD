@@ -1,3 +1,8 @@
+// ============================================================================
+// Data Layer - Model
+// Based on UC_HKD_TT88_2021 - SK-07: Ghi sổ quỹ tiền mặt (S6-HKD)
+// ============================================================================
+
 /// Model đại diện cho dữ liệu Sổ quỹ tiền mặt (S6-HKD) trong database.
 /// 
 /// Model này xử lý việc chuyển đổi giữa entity domain và database map

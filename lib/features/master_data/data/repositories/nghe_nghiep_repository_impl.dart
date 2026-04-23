@@ -84,13 +84,13 @@ class NgheNghiepRepositoryImpl implements NgheNghiepRepository {
 extension NgheNghiepModelExtension on NgheNghiepModel {
   NgheNghiep toEntity() {
     return NgheNghiep(
-      id: id,
-      maNhomNgheNghe: maNhomNgheNghe,
-      tenNhomNgheNghe: tenNhomNgheNghe,
-      tyLeThueGTGT: tyLeThueGTGT,
-      tyLeThueTNCN: tyLeThueTNCN,
-      ngayHieuLuc: ngayHieuLuc,
-      ngayHetHieuLuc: ngayHetHieuLuc,
+      id: this.id,
+      maNhomNgheNghe: this.maNhomNgheNghe,
+      tenNhomNgheNghe: this.tenNhomNgheNghe,
+      tyLeThueGTGT: this.tyLeThueGTGT,
+      tyLeThueTNCN: this.tyLeThueTNCN,
+      ngayHieuLuc: this.ngayHieuLuc,
+      ngayHetHieuLuc: this.ngayHetHieuLuc,
     );
   }
 }
@@ -99,13 +99,13 @@ extension NgheNghiepModelExtension on NgheNghiepModel {
 extension NgheNghiepEntityExtension on NgheNghiep {
   NgheNghiepModel toModel() {
     return NgheNghiepModel(
-      id: id,
-      maNhomNgheNghe: maNhomNgheNghe,
-      tenNhomNgheNghe: tenNhomNgheNghe,
-      tyLeThueGTGT: tyLeThueGTGT,
-      tyLeThueTNCN: tyLeThueTNCN,
-      ngayHieuLuc: ngayHieuLuc,
-      ngayHetHieuLuc: ngayHetHieuLuc,
+      id: this.id,
+      maNhomNgheNghe: this.maNhomNgheNghe,
+      tenNhomNgheNghe: this.tenNhomNgheNghe,
+      tyLeThueGTGT: this.tyLeThueGTGT,
+      tyLeThueTNCN: this.tyLeThueTNCN,
+      ngayHieuLuc: this.ngayHieuLuc,
+      ngayHetHieuLuc: this.ngayHetHieuLuc,
     );
   }
 }

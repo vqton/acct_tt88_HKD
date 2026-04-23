@@ -8,19 +8,26 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hkd_accounting/core/widgets/custom_scaffold.dart';
 import 'package:hkd_accounting/features/master_data/presentation/widgets/tai_khoan_ngan_hang_form_dialog.dart';
 import 'package:hkd_accounting/features/master_data/presentation/widgets/tai_khoan_ngan_hang_list_item.dart';
+import 'package:hkd_accounting/features/master_data/presentation/providers/tai_khoan_ngan_hang_provider.dart';
 
 class TaiKhoanNganHangPage extends ConsumerWidget {
   const TaiKhoanNganHangPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final taiKhoanNganHangNotifier = ref.read(taiKhoanNganHangProvider.notifier);
     return CustomScaffold(
       title: 'Quản lý danh mục tài khoản ngân hàng',
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showDialog(
             context: context,
-            builder: (context) => const TaiKhoanNganHangFormDialog(),
+            builder: (context) => TaiKhoanNganHangFormDialog(
+              initialTaiKhoanNganHang: null,
+              onSave: (tk) {
+                taiKhoanNganHangNotifier.saveTaiKhoanNganHang(tk);
+              },
+            ),
           );
         },
         child: const Icon(Icons.add),

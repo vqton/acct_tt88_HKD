@@ -1,3 +1,8 @@
+// ============================================================================
+// Domain Layer - Repository Interface
+// Based on UC_HKD_TT88_2021 - TX-03 Tiền thuế GTGT
+// ============================================================================
+
 import 'package:dartz/dartz.dart';
 import 'package:hkd_accounting/core/error/failures.dart';
 import 'package:hkd_accounting/features/tx/domain/entities/doanh_thu_chiu_thue.dart';

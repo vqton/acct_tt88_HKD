@@ -1,5 +1,11 @@
+// ============================================================================
+// Presentation Layer - Provider
+// Based on UC_HKD_TT88_2021 - TX-04 Sổ thuế
+// ============================================================================
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
+import 'package:dartz/dartz.dart';
+import 'package:hkd_accounting/core/error/failures.dart';
 import 'package:hkd_accounting/features/tx/domain/entities/so_thue.dart';
 import 'package:hkd_accounting/features/tx/domain/repositories/so_thue_repository.dart';
 
@@ -15,18 +21,18 @@ class SoThueNotifier extends StateNotifier<AsyncValue<List<SoThue>>> {
   Future<void> loadAll() async {
     state = const AsyncValue.loading();
     final result = await _repo.getAll();
-    state = result.when(
-      success: (data) => AsyncValue.data(data),
-      failure: (e) => AsyncValue.error(e, StackTrace.current),
+    state = result.fold(
+      (failure) => AsyncValue.error(failure, StackTrace.current),
+      (data) => AsyncValue.data(data),
     );
   }
 
   Future<void> loadByKyKeToan(String kyKeToanId) async {
     state = const AsyncValue.loading();
     final result = await _repo.getByKyKeToan(kyKeToanId);
-    state = result.when(
-      success: (data) => AsyncValue.data(data),
-      failure: (e) => AsyncValue.error(e, StackTrace.current),
+    state = result.fold(
+      (failure) => AsyncValue.error(failure, StackTrace.current),
+      (data) => AsyncValue.data(data),
     );
   }
 }

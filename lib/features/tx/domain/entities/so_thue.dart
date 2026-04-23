@@ -1,3 +1,8 @@
+// ============================================================================
+// Domain Layer - Entity
+// Based on UC_HKD_TT88_2021 - SK-05: Ghi sổ theo dõi nghĩa vụ thuế với NSNN
+// ============================================================================
+
 import 'package:equatable/equatable.dart';
 
 class SoThue extends Equatable {

@@ -1,3 +1,8 @@
+// ============================================================================
+// Domain Layer - Repository Interface
+// Based on UC_HKD_TT88_2021 - SK-08: Ghi sổ tiền gửi ngân hàng (S7-HKD)
+// ============================================================================
+
 /// Repository interface cho các thao tác dữ liệu Sổ tiền gửi ngân hàng (S7-HKD).
 /// 
 /// Interface này định nghĩa contract để truy xuất và lưu trữ dữ liệu sổ tiền gửi ngân hàng

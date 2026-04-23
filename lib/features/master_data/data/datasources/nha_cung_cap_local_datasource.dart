@@ -3,9 +3,7 @@
 // Based on UC_HKD_TT88_2021 - MD-04
 // ============================================================================
 
-import 'dart:io';
 import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
 import 'package:hkd_accounting/features/master_data/domain/entities/nha_cung_cap.dart';
 import 'package:hkd_accounting/features/master_data/data/models/nha_cung_cap_model.dart';
 
@@ -48,7 +46,6 @@ class NhaCungCapLocalDatasourceImpl implements NhaCungCapLocalDatasource {
 
   @override
   Future<String> saveNhaCungCap(NhaCungCapModel nhaCungCapModel) async {
-    // Check if record already exists
     final existing = await getNhaCungCapById(nhaCungCapModel.id);
     if (existing != null) {
       await updateNhaCungCap(nhaCungCapModel);
@@ -92,59 +89,5 @@ class NhaCungCapLocalDatasourceImpl implements NhaCungCapLocalDatasource {
     return List.generate(maps.length, (i) {
       return NhaCungCapModel.fromMap(maps[i]);
     });
-  }
-}
-
-// Database Helper
-class NhaCungCapDatabaseHelper {
-  static final NhaCungCapDatabaseHelper _instance =
-      NhaCungCapDatabaseHelper._internal();
-
-  factory NhaCungCapDatabaseHelper() {
-    return _instance;
-  }
-
-  NhaCungCapDatabaseHelper._internal();
-
-  static Database? _database;
-
-  Future<Database> get database async {
-    if (_database != null) return _database!;
-    _database = await _initDatabase();
-    return _database!;
-  }
-
-  Future<Database> _initDatabase() async {
-    Directory documentsDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentsDirectory.path, 'hkd_accounting.db');
-
-    return await openDatabase(
-      path,
-      version: 1,
-      onCreate: _onCreate,
-    );
-  }
-
-  Future<void> _onCreate(Database db, int version) async {
-    await db.execute('''
-      CREATE TABLE nha_cung_cap (
-        id TEXT PRIMARY KEY,
-        ma_nha_cung_cap TEXT NOT NULL,
-        ten_nha_cung_cap TEXT NOT NULL,
-        dia_chi TEXT,
-        ma_so_thue TEXT,
-        so_dien_thoai TEXT,
-        email TEXT,
-        nguoi_dai_dien TEXT,
-        ngay_sinh_nguoi_dai_dien TEXT,
-        so_cccd_nguoi_dai_dien TEXT,
-        tai_khoan_ngan_hang TEXT,
-        ten_ngan_hang TEXT,
-        chi_nhanh_ngan_hang TEXT,
-        trang_thai TEXT NOT NULL DEFAULT 'HOAT_DONG',
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-      )
-    ''');
   }
 }

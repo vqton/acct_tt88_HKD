@@ -1,3 +1,7 @@
+// ============================================================================
+// Data Layer - Local Datasource
+// Based on UC_HKD_TT88_2021 - TX-01: Tiền thuế GTGT, TX-02: Tiền thuế TNCN
+// ============================================================================
 import 'package:sqflite/sqflite.dart';
 import 'package:hkd_accounting/features/sk/data/models/so_doanh_thu_model.dart';
 

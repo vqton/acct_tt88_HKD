@@ -20,9 +20,9 @@ class PhieuKiemKeNotifier extends StateNotifier<AsyncValue<List<PhieuKiemKe>>> {
   Future<void> loadPhieuKiemKeList() async {
     state = const AsyncValue.loading();
     final result = await repository.getPhieuKiemKeList();
-    state = result.when(
-      success: (phieuKiemKeList) => AsyncValue.data(phieuKiemKeList),
-      failure: (failure) => AsyncValue.error(failure, StackTrace.current),
+    state = result.fold(
+      (failure) => AsyncValue.error(failure, StackTrace.current),
+      (data) => AsyncValue.data(data),
     );
   }
 

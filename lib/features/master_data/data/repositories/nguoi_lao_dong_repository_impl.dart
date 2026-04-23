@@ -22,7 +22,7 @@ class NguoiLaoDongRepositoryImpl implements NguoiLaoDongRepository {
       final nguoiLaoDongList = nguoiLaoDongModels.map((model) => model.toEntity()).toList();
       return Right(nguoiLaoDongList);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -36,7 +36,7 @@ class NguoiLaoDongRepositoryImpl implements NguoiLaoDongRepository {
         return Right(null);
       }
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -47,7 +47,7 @@ class NguoiLaoDongRepositoryImpl implements NguoiLaoDongRepository {
       final id = await localDatasource.saveNguoiLaoDong(nguoiLaoDongModel);
       return Right(id);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -58,7 +58,7 @@ class NguoiLaoDongRepositoryImpl implements NguoiLaoDongRepository {
       await localDatasource.updateNguoiLaoDong(nguoiLaoDongModel);
       return const Right(null);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -68,7 +68,7 @@ class NguoiLaoDongRepositoryImpl implements NguoiLaoDongRepository {
       await localDatasource.deleteNguoiLaoDong(id);
       return const Right(null);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -79,7 +79,7 @@ class NguoiLaoDongRepositoryImpl implements NguoiLaoDongRepository {
       final nguoiLaoDongList = nguoiLaoDongModels.map((model) => model.toEntity()).toList();
       return Right(nguoiLaoDongList);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 }

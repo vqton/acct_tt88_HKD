@@ -8,19 +8,26 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hkd_accounting/core/widgets/custom_scaffold.dart';
 import 'package:hkd_accounting/features/master_data/presentation/widgets/nguoi_lao_dong_form_dialog.dart';
 import 'package:hkd_accounting/features/master_data/presentation/widgets/nguoi_lao_dong_list_item.dart';
+import 'package:hkd_accounting/features/master_data/presentation/providers/nguoi_lao_dong_provider.dart';
 
 class NguoiLaoDongPage extends ConsumerWidget {
   const NguoiLaoDongPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final nguoiLaoDongNotifier = ref.read(nguoiLaoDongProvider.notifier);
     return CustomScaffold(
       title: 'Quản lý danh mục người lao động',
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showDialog(
             context: context,
-            builder: (context) => const NguoiLaoDongFormDialog(),
+            builder: (context) => NguoiLaoDongFormDialog(
+              initialNguoiLaoDong: null,
+              onSave: (nld) {
+                nguoiLaoDongNotifier.saveNguoiLaoDong(nld);
+              },
+            ),
           );
         },
         child: const Icon(Icons.add),

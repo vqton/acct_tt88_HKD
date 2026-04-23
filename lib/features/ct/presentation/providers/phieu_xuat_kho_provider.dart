@@ -21,9 +21,9 @@ class PhieuXuatKhoNotifier
   Future<void> loadPhieuXuatKhoList() async {
     state = const AsyncValue.loading();
     final result = await repository.getPhieuXuatKhoList();
-    state = result.when(
-      success: (phieuXuatKhoList) => AsyncValue.data(phieuXuatKhoList),
-      failure: (failure) => AsyncValue.error(failure, StackTrace.current),
+    state = result.fold(
+      (failure) => AsyncValue.error(failure, StackTrace.current),
+      (data) => AsyncValue.data(data),
     );
   }
 

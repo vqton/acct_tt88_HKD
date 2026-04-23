@@ -5,6 +5,8 @@
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
+import 'package:dartz/dartz.dart';
+import 'package:hkd_accounting/core/error/failures.dart';
 import 'package:hkd_accounting/features/kh/domain/entities/ton_kho.dart';
 import 'package:hkd_accounting/features/kh/domain/repositories/ton_kho_repository.dart';
 import 'package:hkd_accounting/features/kh/domain/services/tinh_gia_xuat_kho_service.dart';
@@ -20,20 +22,19 @@ class TonKhoNotifier extends StateNotifier<AsyncValue<List<TonKho>>> {
 
   Future<void> loadTonKhoList() async {
     state = const AsyncValue.loading();
-    // Load for current accounting period
     final result = await repository.getTonKhoList('');
-    state = result.when(
-      success: (tonKhoList) => AsyncValue.data(tonKhoList),
-      failure: (failure) => AsyncValue.error(failure, StackTrace.current),
+    state = result.fold(
+      (failure) => AsyncValue.error(failure, StackTrace.current),
+      (tonKhoList) => AsyncValue.data(tonKhoList),
     );
   }
 
   Future<void> loadTonKhoForKyKeToan(String kyKeToanId) async {
     state = const AsyncValue.loading();
     final result = await repository.getTonKhoList(kyKeToanId);
-    state = result.when(
-      success: (tonKhoList) => AsyncValue.data(tonKhoList),
-      failure: (failure) => AsyncValue.error(failure, StackTrace.current),
+    state = result.fold(
+      (failure) => AsyncValue.error(failure, StackTrace.current),
+      (tonKhoList) => AsyncValue.data(tonKhoList),
     );
   }
 

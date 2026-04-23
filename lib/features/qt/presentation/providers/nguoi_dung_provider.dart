@@ -5,6 +5,7 @@
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
+import 'package:dartz/dartz.dart';
 import 'package:hkd_accounting/core/error/failures.dart';
 import 'package:hkd_accounting/features/qt/domain/entities/nguoi_dung.dart';
 import 'package:hkd_accounting/features/qt/domain/repositories/nguoi_dung_repository.dart';
@@ -21,9 +22,9 @@ class NguoiDungNotifier extends StateNotifier<AsyncValue<List<NguoiDung>>> {
   Future<void> loadNguoiDungList() async {
     state = const AsyncValue.loading();
     final result = await repository.getNguoiDungList();
-    state = result.when(
-      success: (nguoiDungList) => AsyncValue.data(nguoiDungList),
-      failure: (failure) => AsyncValue.error(failure, StackTrace.current),
+    state = result.fold(
+      (failure) => AsyncValue.error(failure, StackTrace.current),
+      (nguoiDungList) => AsyncValue.data(nguoiDungList),
     );
   }
 
@@ -67,8 +68,12 @@ class AuthNotifier extends StateNotifier<AsyncValue<NguoiDung?>> {
   Future<bool> login(String email, String password) async {
     state = const AsyncValue.loading();
     final result = await repository.login(email, password);
-    return result.when(
-      success: (user) {
+    return result.fold(
+      (failure) {
+        state = AsyncValue.error(failure, StackTrace.current);
+        return false;
+      },
+      (user) {
         if (user != null) {
           state = AsyncValue.data(user);
           return true;
@@ -77,23 +82,12 @@ class AuthNotifier extends StateNotifier<AsyncValue<NguoiDung?>> {
           return false;
         }
       },
-      failure: (failure) {
-        state = AsyncValue.error(failure, StackTrace.current);
-        return false;
-      },
     );
   }
 
   void logout() {
     state = const AsyncValue.data(null);
   }
-
-  bool get isLoggedIn => state.value != null;
-  bool get isAdmin => state.value?.isAdmin ?? false;
-  bool get isKeToan => state.value?.isKeToan ?? false;
-  bool get isThuQuy => state.value?.isThuQuy ?? false;
-  bool get isThuKho => state.value?.isThuKho ?? false;
-  bool get isNguoiDaiDien => state.value?.isNguoiDaiDien ?? false;
 }
 
 final authProvider = StateNotifierProvider<AuthNotifier, AsyncValue<NguoiDung?>>((ref) {

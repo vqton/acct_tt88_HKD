@@ -22,9 +22,9 @@ class KhachHangNotifier extends StateNotifier<AsyncValue<List<KhachHang>>> {
   Future<void> loadKhachHangList() async {
     state = const AsyncValue.loading();
     final result = await repository.getKhachHangList();
-    state = result.when(
-      success: (khachHangList) => AsyncValue.data(khachHangList),
-      failure: (failure) => AsyncValue.error(failure, StackTrace.current),
+    state = result.fold(
+      (failure) => AsyncValue.error(failure, StackTrace.current),
+      (khachHangList) => AsyncValue.data(khachHangList),
     );
   }
 

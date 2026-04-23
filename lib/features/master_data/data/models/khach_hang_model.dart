@@ -16,8 +16,8 @@ class KhachHangModel extends KhachHang {
     String? soDienThoai,
     required String loaiKhachHang,
     required String trangThai,
-    DateTime? createdAt,
-    DateTime? updatedAt,
+    String? createdAt,
+    String? updatedAt,
   }) : super(
           id: id,
           maKhachHang: maKhachHang,
@@ -41,12 +41,8 @@ class KhachHangModel extends KhachHang {
       soDienThoai: entity.soDienThoai,
       loaiKhachHang: entity.loaiKhachHang,
       trangThai: entity.trangThai,
-      createdAt: entity.createdAt != null
-          ? DateTime.tryParse(entity.createdAt!)
-          : null,
-      updatedAt: entity.updatedAt != null
-          ? DateTime.tryParse(entity.updatedAt!)
-          : null,
+      createdAt: entity.createdAt,
+      updatedAt: entity.updatedAt,
     );
   }
 
@@ -60,8 +56,8 @@ class KhachHangModel extends KhachHang {
       soDienThoai: soDienThoai,
       loaiKhachHang: loaiKhachHang,
       trangThai: trangThai,
-      createdAt: createdAt?.toIso8601String(),
-      updatedAt: updatedAt?.toIso8601String(),
+      createdAt: createdAt,
+      updatedAt: updatedAt,
     );
   }
 
@@ -75,12 +71,8 @@ class KhachHangModel extends KhachHang {
       soDienThoai: map['so_dien_thoai'] as String?,
       loaiKhachHang: map['loai_khach_hang'] as String,
       trangThai: map['trang_thai'] as String,
-      createdAt: map['created_at'] != null
-          ? DateTime.parse(map['created_at'] as String)
-          : null,
-      updatedAt: map['updated_at'] != null
-          ? DateTime.parse(map['updated_at'] as String)
-          : null,
+      createdAt: map['created_at'] as String?,
+      updatedAt: map['updated_at'] as String?,
     );
   }
 
@@ -94,8 +86,8 @@ class KhachHangModel extends KhachHang {
       'so_dien_thoai': soDienThoai,
       'loai_khach_hang': loaiKhachHang,
       'trang_thai': trangThai,
-      'created_at': createdAt?.toIso8601String(),
-      'updated_at': updatedAt?.toIso8601String(),
+      'created_at': createdAt,
+      'updated_at': updatedAt,
     };
   }
 }

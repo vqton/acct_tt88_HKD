@@ -22,6 +22,17 @@ class KyKeToanModel extends KyKeToan {
           ngayKhoaSoThucTe: ngayKhoaSoThucTe,
         );
 
+  factory KyKeToanModel.fromEntity(KyKeToan entity) {
+    return KyKeToanModel(
+      id: entity.id,
+      namTaiChinh: entity.namTaiChinh,
+      ngayBatDauKy: entity.ngayBatDauKy,
+      ngayKetThucKy: entity.ngayKetThucKy,
+      trangThaiKy: entity.trangThaiKy,
+      ngayKhoaSoThucTe: entity.ngayKhoaSoThucTe,
+    );
+  }
+
   factory KyKeToanModel.fromMap(Map<String, dynamic> map) {
     return KyKeToanModel(
       id: map['id'] as String,

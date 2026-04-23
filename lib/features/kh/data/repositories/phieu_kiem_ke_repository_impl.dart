@@ -22,7 +22,7 @@ class PhieuKiemKeRepositoryImpl implements PhieuKiemKeRepository {
       final phieuKiemKeList = phieuKiemKeModels.map((model) => model.toEntity()).toList();
       return Right(phieuKiemKeList);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -36,7 +36,7 @@ class PhieuKiemKeRepositoryImpl implements PhieuKiemKeRepository {
         return Right(null);
       }
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -47,7 +47,7 @@ class PhieuKiemKeRepositoryImpl implements PhieuKiemKeRepository {
       final id = await localDatasource.savePhieuKiemKe(phieuKiemKeModel);
       return Right(id);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -58,7 +58,7 @@ class PhieuKiemKeRepositoryImpl implements PhieuKiemKeRepository {
       await localDatasource.updatePhieuKiemKe(phieuKiemKeModel);
       return const Right(null);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -68,7 +68,7 @@ class PhieuKiemKeRepositoryImpl implements PhieuKiemKeRepository {
       await localDatasource.deletePhieuKiemKe(id);
       return const Right(null);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -79,7 +79,7 @@ class PhieuKiemKeRepositoryImpl implements PhieuKiemKeRepository {
       final chiTietList = chiTietModels.map((model) => model.toEntity()).toList();
       return Right(chiTietList);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -90,7 +90,7 @@ class PhieuKiemKeRepositoryImpl implements PhieuKiemKeRepository {
       await localDatasource.saveChiTietKiemKe(chiTietModel);
       return const Right(null);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -101,7 +101,7 @@ class PhieuKiemKeRepositoryImpl implements PhieuKiemKeRepository {
       await localDatasource.updateChiTietKiemKe(chiTietModel);
       return const Right(null);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 }

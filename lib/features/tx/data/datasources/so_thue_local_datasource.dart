@@ -1,3 +1,7 @@
+// ============================================================================
+// Data Layer - Local Datasource
+// Based on UC_HKD_TT88_2021 - TX-04: Sổ thuế
+// ============================================================================
 import 'package:sqflite/sqflite.dart';
 import 'package:hkd_accounting/features/tx/domain/entities/so_thue.dart';
 

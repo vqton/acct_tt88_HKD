@@ -23,9 +23,9 @@ class NgheNghiepNotifier extends StateNotifier<AsyncValue<List<NgheNghiep>>> {
   Future<void> loadNgheNghiepList() async {
     state = const AsyncValue.loading();
     final result = await repository.getNgheNghiepList();
-    state = result.when(
-      success: (list) => AsyncValue.data(list),
-      failure: (failure) => AsyncValue.error(failure, StackTrace.current),
+    state = result.fold(
+      (failure) => AsyncValue.error(failure, StackTrace.current),
+      (list) => AsyncValue.data(list),
     );
   }
 

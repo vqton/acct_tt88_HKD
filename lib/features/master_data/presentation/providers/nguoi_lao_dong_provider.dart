@@ -23,9 +23,9 @@ class NguoiLaoDongNotifier extends StateNotifier<AsyncValue<List<NguoiLaoDong>>>
   Future<void> loadNguoiLaoDongList() async {
     state = const AsyncValue.loading();
     final result = await repository.getNguoiLaoDongList();
-    state = result.when(
-      success: (nguoiLaoDongList) => AsyncValue.data(nguoiLaoDongList),
-      failure: (failure) => AsyncValue.error(failure, StackTrace.current),
+    state = result.fold(
+      (failure) => AsyncValue.error(failure, StackTrace.current),
+      (nguoiLaoDongList) => AsyncValue.data(nguoiLaoDongList),
     );
   }
 

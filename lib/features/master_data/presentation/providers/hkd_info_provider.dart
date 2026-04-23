@@ -23,9 +23,9 @@ class HkdInfoNotifier extends StateNotifier<AsyncValue<HkdInfo?>> {
   Future<void> loadHkdInfo() async {
     state = const AsyncValue.loading();
     final result = await repository.getHkdInfo();
-    state = result.when(
-      success: (hkdInfo) => AsyncValue.data(hkdInfo),
-      failure: (failure) => AsyncValue.error(failure, StackTrace.current),
+    state = result.fold(
+      (failure) => AsyncValue.error(failure, StackTrace.current),
+      (hkdInfo) => AsyncValue.data(hkdInfo),
     );
   }
 

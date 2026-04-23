@@ -4,7 +4,8 @@
 1. Read `IMPLEMENTATION_ROADMAP.md` to see what's pending
 2. Check `FEATURE_GUIDE.md` for implementation patterns
 3. Implement using: Entity → Repository → Model → Datasource → Provider → UI
-4. Update docs and commit
+4. **Add docstrings to ALL new files** (see Docstring Standard below)
+5. Update docs and commit
 
 ## Essential Commands
 ```bash
@@ -13,6 +14,32 @@ flutter analyze          # Check errors (run after every change)
 flutter test             # Run all tests
 flutter format .         # Format code
 ```
+
+## Docstring Standard (Required)
+All new files MUST have docstrings in this format:
+
+```dart
+// ============================================================================
+// [Layer] - [Type/Component]
+// Based on UC_HKD_TT88_2021 - [UC Name]
+// ============================================================================
+
+import '...';
+```
+
+### Examples by Layer:
+| Layer | Format |
+|-------|--------|
+| Domain Entity | `// Domain Layer - Entity; Based on UC_HKD_TT88_2021 - CT-01: Lập phiếu thu` |
+| Domain Repository | `// Domain Layer - Repository Interface; Based on UC_HKD_TT88_2021 - SK-07` |
+| Data Model | `// Data Layer - Model; Based on UC_HKD_TT88_2021 - MD-02` |
+| Data Datasource | `// Data Layer - Local Datasource; Based on UC_HKD_TT88_2021 - CT-01` |
+| Data Repository Impl | `// Data Layer - Repository Implementation; Based on UC_HKD_TT88_2021 - CT-01` |
+| Presentation Provider | `// Presentation Layer - Provider; Based on UC_HKD_TT88_2021 - CT-01` |
+| Presentation Page | `// Presentation Layer - Page; Based on UC_HKD_TT88_2021 - CT-01` |
+| Presentation Widget | `// Presentation Layer - Widget; Based on UC_HKD_TT88_2021 - CT-01` |
+| Domain UseCase | `// Domain Layer - Use Case; Based on UC_HKD_TT88_2021 - CT-08` |
+| Core/Shared | `// Core Layer - [Component]; [Description]` |
 
 ## Testing Policy (TDD)
 **Required:** Run `flutter analyze` AND `flutter build` after every feature implementation.

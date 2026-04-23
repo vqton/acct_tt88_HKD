@@ -1,3 +1,8 @@
+// ============================================================================
+// Data Layer - Local Datasource
+// Based on UC_HKD_TT88_2021 - SK-07: Ghi sổ quỹ tiền mặt (S6-HKD)
+// ============================================================================
+
 /// Interface data source cho việc lưu trữ local dữ liệu Sổ quỹ tiền mặt (S6-HKD).
 /// 
 /// Interface này định nghĩa contract để truy xuất dữ liệu sổ quỹ tiền mặt

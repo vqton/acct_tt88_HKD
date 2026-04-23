@@ -1,3 +1,8 @@
+// ============================================================================
+// Data Layer - Local Datasource
+// Based on UC_HKD_TT88_2021 - SK-08: Ghi sổ tiền gửi ngân hàng (S7-HKD)
+// ============================================================================
+
 /// Interface data source cho việc lưu trữ local dữ liệu Sổ tiền gửi ngân hàng (S7-HKD).
 /// 
 /// Interface này định nghĩa contract để truy xuất dữ liệu sổ tiền gửi ngân hàng

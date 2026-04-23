@@ -1,3 +1,8 @@
+// ============================================================================
+// Data Layer - Model
+// Based on UC_HKD_TT88_2021 - SK-08: Ghi sổ tiền gửi ngân hàng (S7-HKD)
+// ============================================================================
+
 /// Model đại diện cho dữ liệu Sổ tiền gửi ngân hàng (S7-HKD) trong database.
 /// 
 /// Model này xử lý việc chuyển đổi giữa entity domain và database map

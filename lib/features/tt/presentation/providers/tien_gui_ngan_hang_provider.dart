@@ -22,9 +22,9 @@ class TienGuiNganHangNotifier extends StateNotifier<AsyncValue<List<TienGuiNganH
   Future<void> loadTienGuiNganHangList() async {
     state = const AsyncValue.loading();
     final result = await repository.getTienGuiNganHangList();
-    state = result.when(
-      success: (tienGuiNganHangList) => AsyncValue.data(tienGuiNganHangList),
-      failure: (failure) => AsyncValue.error(failure, StackTrace.current),
+    state = result.fold(
+      (failure) => AsyncValue.error(failure, StackTrace.current),
+      (tienGuiNganHangList) => AsyncValue.data(tienGuiNganHangList),
     );
   }
 

@@ -1,3 +1,8 @@
+// ============================================================================
+// Domain Layer - Repository Interface
+// Based on UC_HKD_TT88_2021 - TX-02 Sổ thuế
+// ============================================================================
+
 import 'package:dartz/dartz.dart';
 import 'package:hkd_accounting/core/error/failures.dart';
 import 'package:hkd_accounting/features/tx/domain/entities/so_thue.dart';

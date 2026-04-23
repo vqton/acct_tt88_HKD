@@ -23,9 +23,9 @@ class NhaCungCapNotifier extends StateNotifier<AsyncValue<List<NhaCungCap>>> {
   Future<void> loadNhaCungCapList() async {
     state = const AsyncValue.loading();
     final result = await repository.getNhaCungCapList();
-    state = result.when(
-      success: (nhaCungCapList) => AsyncValue.data(nhaCungCapList),
-      failure: (failure) => AsyncValue.error(failure, StackTrace.current),
+    state = result.fold(
+      (failure) => AsyncValue.error(failure, StackTrace.current),
+      (nhaCungCapList) => AsyncValue.data(nhaCungCapList),
     );
   }
 

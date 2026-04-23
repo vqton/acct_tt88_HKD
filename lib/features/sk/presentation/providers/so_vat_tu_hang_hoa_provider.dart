@@ -5,6 +5,8 @@
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
+import 'package:dartz/dartz.dart';
+import 'package:hkd_accounting/core/error/failures.dart';
 import 'package:hkd_accounting/features/kh/domain/entities/ton_kho.dart';
 import 'package:hkd_accounting/features/kh/domain/repositories/ton_kho_repository.dart';
 import 'package:hkd_accounting/features/sk/domain/services/so_vat_tu_hang_hoa_service.dart';
@@ -21,18 +23,18 @@ class SoVatTuHangHoaNotifier extends StateNotifier<AsyncValue<List<TonKho>>> {
   Future<void> loadSoS2() async {
     state = const AsyncValue.loading();
     final result = await repository.getTonKhoList('');
-    state = result.when(
-      success: (tonKhoList) => AsyncValue.data(tonKhoList),
-      failure: (err) => AsyncValue.error(err, StackTrace.current),
+    state = result.fold(
+      (failure) => AsyncValue.error(failure, StackTrace.current),
+      (tonKhoList) => AsyncValue.data(tonKhoList),
     );
   }
 
   Future<void> loadForKyKeToan(String kyKeToanId) async {
     state = const AsyncValue.loading();
     final result = await repository.getTonKhoList(kyKeToanId);
-    state = result.when(
-      success: (tonKhoList) => AsyncValue.data(tonKhoList),
-      failure: (err) => AsyncValue.error(err, StackTrace.current),
+    state = result.fold(
+      (failure) => AsyncValue.error(failure, StackTrace.current),
+      (tonKhoList) => AsyncValue.data(tonKhoList),
     );
   }
 
@@ -48,15 +50,15 @@ class SoVatTuHangHoaNotifier extends StateNotifier<AsyncValue<List<TonKho>>> {
       (failure) async {},
       (currentTonKho) async {
         final updated = service.calculateFromNhapKho(
-          currentTonKho: currentTonKho,
-          soLuongNhap: soLuongNhap,
-          thanhTienNhap: thanhTienNhap,
+          currentTonKho ?? TonKho.empty(),
+          soLuongNhap,
+          thanhTienNhap,
         );
         await repository.saveTonKho(updated);
       },
     );
 
-    await loadSoS2();
+    await loadForKyKeToan(kyKeToanId);
   }
 
   Future<void> updateAfterXuatKho({
@@ -70,39 +72,21 @@ class SoVatTuHangHoaNotifier extends StateNotifier<AsyncValue<List<TonKho>>> {
       (failure) async {},
       (currentTonKho) async {
         final updated = service.calculateFromXuatKho(
-          currentTonKho: currentTonKho,
-          soLuongXuat: soLuongXuat,
+          currentTonKho ?? TonKho.empty(),
+          soLuongXuat,
         );
         await repository.saveTonKho(updated);
       },
     );
 
-    await loadSoS2();
-  }
-
-  Future<void> closePeriod(String kyKeToanId) async {
-    final result = await repository.getTonKhoList(kyKeToanId);
-
-    await result.fold(
-      (failure) async {},
-      (tonKhoList) async {
-        for (final tonKho in tonKhoList) {
-          final closed = service.calculateEndOfPeriod(tonKho: tonKho);
-          await repository.saveTonKho(closed);
-        }
-      },
-    );
-
-    await loadSoS2();
+    await loadForKyKeToan(kyKeToanId);
   }
 }
 
-final soVatTuHangHoaProvider = StateNotifierProvider<
-    SoVatTuHangHoaNotifier, AsyncValue<List<TonKho>>>((ref) {
+final soVatTuHangHoaProvider =
+    StateNotifierProvider<SoVatTuHangHoaNotifier, AsyncValue<List<TonKho>>>((ref) {
   return SoVatTuHangHoaNotifier(
     GetIt.instance.get<TonKhoRepository>(),
-    SoVatTuHangHoaService(),
+    GetIt.instance.get<SoVatTuHangHoaService>(),
   );
 });
-
-final selectedKyKeToanForSoS2Provider = StateProvider<String>((ref) => '');

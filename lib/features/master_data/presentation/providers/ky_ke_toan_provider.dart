@@ -23,9 +23,9 @@ class KyKeToanNotifier extends StateNotifier<AsyncValue<KyKeToan?>> {
   Future<void> loadKyKeToan() async {
     state = const AsyncValue.loading();
     final result = await repository.getKyKeToan();
-    state = result.when(
-      success: (kyKeToan) => AsyncValue.data(kyKeToan),
-      failure: (failure) => AsyncValue.error(failure, StackTrace.current),
+    state = result.fold(
+      (failure) => AsyncValue.error(failure, StackTrace.current),
+      (kyKeToan) => AsyncValue.data(kyKeToan),
     );
   }
 

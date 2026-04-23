@@ -1,3 +1,8 @@
+// ============================================================================
+// Main Page / Navigation Shell
+// HKD Accounting Application - Main navigation and routing
+// ============================================================================
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hkd_accounting/features/master_data/presentation/pages/hkd_info_page.dart';

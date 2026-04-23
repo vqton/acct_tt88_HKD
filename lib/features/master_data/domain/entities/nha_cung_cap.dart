@@ -20,8 +20,8 @@ class NhaCungCap extends Equatable {
   final String? tenNganHang;
   final String? chiNhanhNganHang;
   final String trangThai; // HOAT_DONG / NGUNG_KINH_DOANH
-  final DateTime? createdAt;
-  final DateTime? updatedAt;
+  final String? createdAt;
+  final String? updatedAt;
 
   const NhaCungCap({
     required this.id,
@@ -51,14 +51,14 @@ class NhaCungCap extends Equatable {
     String? soDienThoai,
     String? email,
     String? nguoiDaiDien,
-    DateTime? ngaySinhNguoiDaiDien,
+    String? ngaySinhNguoiDaiDien,
     String? soCccdNguoiDaiDien,
     String? taiKhoanNganHang,
     String? tenNganHang,
     String? chiNhanhNganHang,
     String? trangThai,
-    DateTime? createdAt,
-    DateTime? updatedAt,
+    String? createdAt,
+    String? updatedAt,
   }) {
     return NhaCungCap(
       id: id ?? this.id,

@@ -22,7 +22,7 @@ class KhachHangRepositoryImpl implements KhachHangRepository {
       final khachHangList = khachHangModels.map((model) => model.toEntity()).toList();
       return Right(khachHangList);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -36,7 +36,7 @@ class KhachHangRepositoryImpl implements KhachHangRepository {
         return Right(null);
       }
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -47,7 +47,7 @@ class KhachHangRepositoryImpl implements KhachHangRepository {
       final id = await localDatasource.saveKhachHang(khachHangModel);
       return Right(id);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -58,7 +58,7 @@ class KhachHangRepositoryImpl implements KhachHangRepository {
       await localDatasource.updateKhachHang(khachHangModel);
       return const Right(null);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -68,7 +68,7 @@ class KhachHangRepositoryImpl implements KhachHangRepository {
       await localDatasource.deleteKhachHang(id);
       return const Right(null);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -79,7 +79,7 @@ class KhachHangRepositoryImpl implements KhachHangRepository {
       final khachHangList = khachHangModels.map((model) => model.toEntity()).toList();
       return Right(khachHangList);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 }

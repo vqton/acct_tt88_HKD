@@ -1,3 +1,8 @@
+// ============================================================================
+// Presentation Layer - Page
+// Based on UC_HKD_TT88_2021 - SK-08: Ghi sổ tiền gửi ngân hàng (S7-HKD)
+// ============================================================================
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hkd_accounting/features/sk/domain/entities/so_tien_gui_ngan_hang.dart';

@@ -1,4 +1,9 @@
-import 'package:hkd_accounting/core/error/failures.dart';
+// ============================================================================
+// Data Layer - Repository Implementation
+// Based on UC_HKD_TT88_2021 - QT-05: Lưu trữ và tra cứu lịch sử chứng từ
+// ============================================================================
+
+import 'package:dartz/dartz.dart';
 import 'package:hkd_accounting/features/qt/data/datasources/lich_su_chung_tu_local_datasource.dart';
 import 'package:hkd_accounting/features/qt/domain/entities/lich_su_chung_tu.dart';
 import 'package:hkd_accounting/features/qt/domain/repositories/lich_su_chung_tu_repository.dart';

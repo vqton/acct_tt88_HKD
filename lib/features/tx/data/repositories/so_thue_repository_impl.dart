@@ -1,3 +1,7 @@
+// ============================================================================
+// Data Layer - Repository Implementation
+// Based on UC_HKD_TT88_2021 - SK-05: Sổ theo dõi nghĩa vụ thuế với NSNN
+// ============================================================================
 import 'package:dartz/dartz.dart';
 import 'package:hkd_accounting/core/error/failures.dart';
 import 'package:hkd_accounting/features/tx/data/datasources/so_thue_local_datasource.dart';

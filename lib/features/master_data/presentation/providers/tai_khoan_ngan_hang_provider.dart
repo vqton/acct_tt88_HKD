@@ -23,9 +23,9 @@ class TaiKhoanNganHangNotifier extends StateNotifier<AsyncValue<List<TaiKhoanNga
   Future<void> loadTaiKhoanNganHangList() async {
     state = const AsyncValue.loading();
     final result = await repository.getTaiKhoanNganHangList();
-    state = result.when(
-      success: (taiKhoanNganHangList) => AsyncValue.data(taiKhoanNganHangList),
-      failure: (failure) => AsyncValue.error(failure, StackTrace.current),
+    state = result.fold(
+      (failure) => AsyncValue.error(failure, StackTrace.current),
+      (taiKhoanNganHangList) => AsyncValue.data(taiKhoanNganHangList),
     );
   }
 

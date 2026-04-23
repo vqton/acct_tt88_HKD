@@ -1,3 +1,8 @@
+// ============================================================================
+// Domain Layer - Entity
+// Based on UC_HKD_TT88_2021 - TX-02: Tính thuế giá trị gia tăng (GTGT)
+// ============================================================================
+
 import 'package:equatable/equatable.dart';
 
 class TienThueGtgt extends Equatable {

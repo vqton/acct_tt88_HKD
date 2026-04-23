@@ -1,3 +1,8 @@
+// ============================================================================
+// Data Layer - Repository Implementation
+// Based on UC_HKD_TT88_2021 - SK-07: Ghi sổ quỹ tiền mặt (S6-HKD)
+// ============================================================================
+
 /// Implementation của SoQuyTienMatRepository sử dụng local data source.
 /// 
 /// Class này xử lý việc lưu trữ dữ liệu sổ quỹ tiền mặt (S6-HKD)

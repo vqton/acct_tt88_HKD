@@ -8,19 +8,26 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hkd_accounting/core/widgets/custom_scaffold.dart';
 import 'package:hkd_accounting/features/master_data/presentation/widgets/hang_hoa_form_dialog.dart';
 import 'package:hkd_accounting/features/master_data/presentation/widgets/hang_hoa_list_item.dart';
+import 'package:hkd_accounting/features/master_data/presentation/providers/hang_hoa_provider.dart';
 
 class HangHoaPage extends ConsumerWidget {
   const HangHoaPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final hangHoaNotifier = ref.read(hangHoaProvider.notifier);
     return CustomScaffold(
       title: 'Quản lý hàng hóa/dịch vụ',
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showDialog(
             context: context,
-            builder: (context) => const HangHoaFormDialog(),
+            builder: (context) => HangHoaFormDialog(
+              initialHangHoa: null,
+              onSave: (hangHoa) {
+                hangHoaNotifier.saveHangHoa(hangHoa);
+              },
+            ),
           );
         },
         child: const Icon(Icons.add),

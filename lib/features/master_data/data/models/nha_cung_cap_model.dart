@@ -22,8 +22,8 @@ class NhaCungCapModel extends NhaCungCap {
     String? tenNganHang,
     String? chiNhanhNganHang,
     String trangThai = 'HOAT_DONG',
-    DateTime? createdAt,
-    DateTime? updatedAt,
+    String? createdAt,
+    String? updatedAt,
   }) : super(
           id: id,
           maNhaCungCap: maNhaCungCap,
@@ -95,20 +95,14 @@ class NhaCungCapModel extends NhaCungCap {
       soDienThoai: map['so_dien_thoai'] as String?,
       email: map['email'] as String?,
       nguoiDaiDien: map['nguoi_dai_dien'] as String?,
-      ngaySinhNguoiDaiDien: map['ngay_sinh_nguoi_dai_dien'] != null
-          ? DateTime.parse(map['ngay_sinh_nguoi_dai_dien'] as String)
-          : null,
+      ngaySinhNguoiDaiDien: map['ngay_sinh_nguoi_dai_dien'] as String?,
       soCccdNguoiDaiDien: map['so_cccd_nguoi_dai_dien'] as String?,
       taiKhoanNganHang: map['tai_khoan_ngan_hang'] as String?,
       tenNganHang: map['ten_ngan_hang'] as String?,
       chiNhanhNganHang: map['chi_nhanh_ngan_hang'] as String?,
       trangThai: map['trang_thai'] as String,
-      createdAt: map['created_at'] != null
-          ? DateTime.parse(map['created_at'] as String)
-          : null,
-      updatedAt: map['updated_at'] != null
-          ? DateTime.parse(map['updated_at'] as String)
-          : null,
+      createdAt: map['created_at'] as String?,
+      updatedAt: map['updated_at'] as String?,
     );
   }
 
@@ -122,14 +116,14 @@ class NhaCungCapModel extends NhaCungCap {
       'so_dien_thoai': soDienThoai,
       'email': email,
       'nguoi_dai_dien': nguoiDaiDien,
-      'ngay_sinh_nguoi_dai_dien': ngaySinhNguoiDaiDien?.toIso8601String(),
+      'ngay_sinh_nguoi_dai_dien': ngaySinhNguoiDaiDien,
       'so_cccd_nguoi_dai_dien': soCccdNguoiDaiDien,
       'tai_khoan_ngan_hang': taiKhoanNganHang,
       'ten_ngan_hang': tenNganHang,
       'chi_nhanh_ngan_hang': chiNhanhNganHang,
       'trang_thai': trangThai,
-      'created_at': createdAt?.toIso8601String(),
-      'updated_at': updatedAt?.toIso8601String(),
+      'created_at': createdAt,
+      'updated_at': updatedAt,
     };
   }
 }

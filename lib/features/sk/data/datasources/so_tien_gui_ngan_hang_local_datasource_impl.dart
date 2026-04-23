@@ -1,3 +1,8 @@
+// ============================================================================
+// Data Layer - Local Datasource Implementation
+// Based on UC_HKD_TT88_2021 - SK-08: Ghi sổ tiền gửi ngân hàng (S7-HKD)
+// ============================================================================
+
 import 'package:sqflite/sqflite.dart';
 
 /// Implementation của SoTienGuiNganHangLocalDatasource sử dụng SQLite database.

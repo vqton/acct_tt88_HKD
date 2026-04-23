@@ -25,7 +25,7 @@ class HkdInfoRepositoryImpl implements HkdInfoRepository {
         return Right(null);
       }
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -36,7 +36,7 @@ class HkdInfoRepositoryImpl implements HkdInfoRepository {
       final id = await localDatasource.saveHkdInfo(hkdInfoModel);
       return Right(id);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -47,7 +47,7 @@ class HkdInfoRepositoryImpl implements HkdInfoRepository {
       await localDatasource.updateHkdInfo(hkdInfoModel);
       return const Right(null);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -57,7 +57,7 @@ class HkdInfoRepositoryImpl implements HkdInfoRepository {
       await localDatasource.deleteHkdInfo(id);
       return const Right(null);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 }

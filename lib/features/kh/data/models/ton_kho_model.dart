@@ -124,6 +124,19 @@ class PhieuNhapKhoLotModel extends PhieuNhapKhoLot {
     super.soLuongConLai,
   });
 
+  PhieuNhapKhoLot toEntity() {
+    return PhieuNhapKhoLot(
+      id: id,
+      phieuNhapKhoId: phieuNhapKhoId,
+      hangHoaId: hangHoaId,
+      soLuong: soLuong,
+      donGia: donGia,
+      thanhTien: thanhTien,
+      ngayNhap: ngayNhap,
+      soLuongConLai: soLuongConLai,
+    );
+  }
+
   factory PhieuNhapKhoLotModel.fromMap(Map<String, dynamic> map) {
     return PhieuNhapKhoLotModel(
       id: map['id']?.toString() ?? '',

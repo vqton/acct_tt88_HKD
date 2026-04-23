@@ -22,7 +22,7 @@ class TaiKhoanNganHangRepositoryImpl implements TaiKhoanNganHangRepository {
       final taiKhoanNganHangList = taiKhoanNganHangModels.map((model) => model.toEntity()).toList();
       return Right(taiKhoanNganHangList);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -36,7 +36,7 @@ class TaiKhoanNganHangRepositoryImpl implements TaiKhoanNganHangRepository {
         return Right(null);
       }
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -47,7 +47,7 @@ class TaiKhoanNganHangRepositoryImpl implements TaiKhoanNganHangRepository {
       final id = await localDatasource.saveTaiKhoanNganHang(taiKhoanNganHangModel);
       return Right(id);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -58,7 +58,7 @@ class TaiKhoanNganHangRepositoryImpl implements TaiKhoanNganHangRepository {
       await localDatasource.updateTaiKhoanNganHang(taiKhoanNganHangModel);
       return const Right(null);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -68,7 +68,7 @@ class TaiKhoanNganHangRepositoryImpl implements TaiKhoanNganHangRepository {
       await localDatasource.deleteTaiKhoanNganHang(id);
       return const Right(null);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 
@@ -79,7 +79,7 @@ class TaiKhoanNganHangRepositoryImpl implements TaiKhoanNganHangRepository {
       final taiKhoanNganHangList = taiKhoanNganHangModels.map((model) => model.toEntity()).toList();
       return Right(taiKhoanNganHangList);
     } catch (e) {
-      return Left(DatabaseFailure());
+      return Left(DatabaseFailure(e.toString()));
     }
   }
 }

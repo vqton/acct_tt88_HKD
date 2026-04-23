@@ -6,8 +6,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hkd_accounting/features/master_data/domain/entities/nghe_nghiep.dart';
-import 'package:hkd_accounting/features/master_data/presentation/widgets/nghe_nghiep_form_dialog.dart';
-import 'package:hkd_accounting/features/master_data/presentation/providers/nghe_nghiep_provider.dart';
+import 'package:hkd_accounting/features/master_data/presentation/widgets/nghe_nghieu_form_dialog.dart';
+import 'package:hkd_accounting/features/master_data/presentation/providers/nghe_nghieu_provider.dart';
 
 class NgheNghiepPage extends ConsumerWidget {
   const NgheNghiepPage({super.key});

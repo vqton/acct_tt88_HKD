@@ -24,6 +24,18 @@ class NgheNghiepModel extends NgheNghiep {
           ngayHetHieuLuc: ngayHetHieuLuc,
         );
 
+  factory NgheNghiepModel.fromEntity(NgheNghiep entity) {
+    return NgheNghiepModel(
+      id: entity.id,
+      maNhomNgheNghe: entity.maNhomNgheNghe,
+      tenNhomNgheNghe: entity.tenNhomNgheNghe,
+      tyLeThueGTGT: entity.tyLeThueGTGT,
+      tyLeThueTNCN: entity.tyLeThueTNCN,
+      ngayHieuLuc: entity.ngayHieuLuc,
+      ngayHetHieuLuc: entity.ngayHetHieuLuc,
+    );
+  }
+
   factory NgheNghiepModel.fromMap(Map<String, dynamic> map) {
     return NgheNghiepModel(
       id: map['id'] as String,

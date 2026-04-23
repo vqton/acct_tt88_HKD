@@ -1,3 +1,8 @@
+// ============================================================================
+// Presentation Layer - Page
+// Based on UC_HKD_TT88_2021 - SK-07: Ghi sổ quỹ tiền mặt (S6-HKD)
+// ============================================================================
+
 /// Page hiển thị Sổ quỹ tiền mặt (S6-HKD).
 /// 
 /// Page này hiển thị danh sách các nghiệp vụ thu/chi tiền mặt

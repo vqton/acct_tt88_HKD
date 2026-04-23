@@ -1,3 +1,8 @@
+// ============================================================================
+// Domain Layer - Entities
+// Based on UC_HKD_TT88_2021 - QT-05: Lịch sử chứng từ
+// ============================================================================
+
 import 'package:equatable/equatable.dart';
 
 enum LoaiChungTu {

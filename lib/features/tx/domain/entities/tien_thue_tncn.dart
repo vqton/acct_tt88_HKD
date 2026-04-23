@@ -1,3 +1,8 @@
+// ============================================================================
+// Domain Layer - Entity
+// Based on UC_HKD_TT88_2021 - TX-03: Tính thuế thu nhập cá nhân (TNCN)
+// ============================================================================
+
 import 'package:equatable/equatable.dart';
 
 class TienThueTncn extends Equatable {

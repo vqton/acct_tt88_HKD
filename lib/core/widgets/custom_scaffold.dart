@@ -1,3 +1,8 @@
+// ============================================================================
+// Core Layer - Widgets
+// Custom Material Design Scaffold wrapper
+// ============================================================================
+
 import 'package:flutter/material.dart';
 
 class CustomScaffold extends StatelessWidget {

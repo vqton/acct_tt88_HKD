@@ -1,3 +1,8 @@
+// ============================================================================
+// Domain Layer - Entity
+// Based on UC_HKD_TT88_2021 - TX-01: Xác định doanh thu chịu thuế
+// ============================================================================
+
 import 'package:equatable/equatable.dart';
 
 class DoanhThuChiuThue extends Equatable {

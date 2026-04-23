@@ -64,12 +64,12 @@ class KyKeToanRepositoryImpl implements KyKeToanRepository {
 extension KyKeToanModelExtension on KyKeToanModel {
   KyKeToan toEntity() {
     return KyKeToan(
-      id: id,
-      namTaiChinh: namTaiChinh,
-      ngayBatDauKy: ngayBatDauKy,
-      ngayKetThucKy: ngayKetThucKy,
-      trangThaiKy: trangThaiKy,
-      ngayKhoaSoThucTe: ngayKhoaSoThucTe,
+      id: this.id,
+      namTaiChinh: this.namTaiChinh,
+      ngayBatDauKy: this.ngayBatDauKy,
+      ngayKetThucKy: this.ngayKetThucKy,
+      trangThaiKy: this.trangThaiKy,
+      ngayKhoaSoThucTe: this.ngayKhoaSoThucTe,
     );
   }
 }
@@ -78,12 +78,12 @@ extension KyKeToanModelExtension on KyKeToanModel {
 extension KyKeToanEntityExtension on KyKeToan {
   KyKeToanModel toModel() {
     return KyKeToanModel(
-      id: id,
-      namTaiChinh: namTaiChinh,
-      ngayBatDauKy: ngayBatDauKy,
-      ngayKetThucKy: ngayKetThucKy,
-      trangThaiKy: trangThaiKy,
-      ngayKhoaSoThucTe: ngayKhoaSoThucTe,
+      id: this.id,
+      namTaiChinh: this.namTaiChinh,
+      ngayBatDauKy: this.ngayBatDauKy,
+      ngayKetThucKy: this.ngayKetThucKy,
+      trangThaiKy: this.trangThaiKy,
+      ngayKhoaSoThucTe: this.ngayKhoaSoThucTe,
     );
   }
 }

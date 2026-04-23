@@ -1,3 +1,8 @@
+// ============================================================================
+// Data Layer - Repository Implementation
+// Based on UC_HKD_TT88_2021 - SK-08: Ghi sổ tiền gửi ngân hàng (S7-HKD)
+// ============================================================================
+
 import 'package:dartz/dartz.dart';
 import 'package:hkd_accounting/core/error/failures.dart';
 import 'package:hkd_accounting/features/sk/data/datasources/so_tien_gui_ngan_hang_local_datasource.dart';

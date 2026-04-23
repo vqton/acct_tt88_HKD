@@ -1,3 +1,7 @@
+// ============================================================================
+// Data Layer - Repository Implementation
+// Based on UC_HKD_TT88_2021 - TX-01: Xác định doanh thu chịu thuế, TX-02: Tính thuế GTGT
+// ============================================================================
 import 'package:dartz/dartz.dart';
 import 'package:hkd_accounting/core/error/failures.dart';
 import 'package:hkd_accounting/features/sk/data/models/so_doanh_thu_model.dart';

@@ -1,3 +1,8 @@
+// ============================================================================
+// Main Entry Point
+// HKD Accounting Application - Kế toán HKD/CNKD theo Thông tư 88/2021/TT-BTC
+// ============================================================================
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
