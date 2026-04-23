@@ -1,10 +1,14 @@
-/// Use case for creating a new receipt voucher (phiếu thu).
-/// 
-/// This use case encapsulates the business logic for creating a receipt voucher
-/// according to UC_HKD_TT88_2021 - CT-01: Lập phiếu thu.
-/// 
-/// The use case follows the Single Responsibility Principle - it only handles
-/// the creation of receipt vouchers and delegates data persistence to the repository.
+// ============================================================================
+// Domain Layer - Use Cases
+// Based on UC_HKD_TT88_2021 - CT-01: Lập phiếu thu
+// ============================================================================
+
+import 'package:dartz/dartz.dart';
+import 'package:hkd_accounting/core/error/failures.dart';
+import 'package:hkd_accounting/core/usecases/usecase.dart';
+import 'package:hkd_accounting/features/ct/domain/entities/phieu_thu.dart';
+import 'package:hkd_accounting/features/ct/domain/repositories/phieu_thu_repository.dart';
+
 class CreatePhieuThu extends UseCase<PhieuThu, PhieuThu> {
   /// Repository responsible for persisting receipt voucher data
   final PhieuThuRepository repository;

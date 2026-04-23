@@ -27,3 +27,7 @@ class DatabaseFailure extends Failure {
 class ValidationFailure extends Failure {
   const ValidationFailure(String message) : super(message);
 }
+
+class EmptyFailure extends Failure {
+  const EmptyFailure([String message = 'No data found']) : super(message);
+}

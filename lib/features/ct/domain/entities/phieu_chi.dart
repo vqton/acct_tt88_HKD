@@ -9,16 +9,16 @@ class PhieuChi extends Equatable {
   final String id;
   final String soPhieu;
   final DateTime ngayLap;
-  final String nguoiNop; // In payment voucher, this is the receiver (nguoi nhan tien)
+  final String nguoiNop;
   final String diaChiNguoiNop;
   final String lyDoNop;
   final int soTien;
   final String soTienBangChu;
   final String chungTuGocKemTheo;
   final String hkdInfoId;
-  final String? nhaCungCapId; // Optional: reference to supplier if applicable
+  final String? nhaCungCapId;
   final String kyKeToanId;
-  final String trangThai; // CHO_DUYET, DA_DUYET, etc.
+  final String trangThai;
   final DateTime? createdAt;
   final DateTime? updatedAt;
 
@@ -38,11 +38,7 @@ class PhieuChi extends Equatable {
     required this.trangThai,
     this.createdAt,
     this.updatedAt,
-  }) : assert(soTien > 0, 'So tien phai lon hon 0'),
-        assert(id.isNotEmpty, 'Id khong duoc de trong'),
-        assert(soPhieu.isNotEmpty, 'So phieu khong duoc de trong'),
-        assert(nguoiNop.isNotEmpty, 'Nguoi nhan tien khong duoc de trong'),
-        assert(lyDoNop.isNotEmpty, 'Ly do nop khong duoc de trong');
+  });
 
   PhieuChi copyWith({
     String? id,

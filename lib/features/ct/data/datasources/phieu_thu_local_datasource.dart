@@ -1,37 +1,76 @@
-/// Data source interface for local persistence of receipt voucher (phiếu thu) data.
-/// 
-/// This interface defines the contract for accessing receipt voucher data from local storage
-/// (e.g., SQLite database) according to UC_HKD_TT88_2021 - CT-01: Lập phiếu thu.
-/// 
-/// Implementations should handle the technical details of data access while returning
-/// appropriate data types for use by the repository layer.
+// ============================================================================
+// Data Layer - Local Datasource
+// Based on UC_HKD_TT88_2021 - CT-01: Lập phiếu thu
+// ============================================================================
+
+import 'package:sqflite/sqflite.dart';
+import 'package:hkd_accounting/features/ct/data/models/phieu_thu_model.dart';
+
 abstract class PhieuThuLocalDatasource {
-  /// Creates a new receipt voucher in the local data store
-  /// 
-  /// [phieuThuModel] The receipt voucher model to create
-  /// @return A Future containing the ID of the created voucher
   Future<String> createPhieuThu(PhieuThuModel phieuThuModel);
-  
-  /// Retrieves a receipt voucher by its ID from the local data store
-  /// 
-  /// [id] The unique identifier of the receipt voucher to retrieve
-  /// @return A Future containing the PhieuThuModel if found (null if not found)
   Future<PhieuThuModel?> getPhieuThuById(String id);
-  
-  /// Retrieves all receipt vouchers from the local data store
-  /// 
-  /// @return A Future containing a List of all PhieuThuModel objects
   Future<List<PhieuThuModel>> getPhieuThuList();
-  
-  /// Updates an existing receipt voucher in the local data store
-  /// 
-  /// [phieuThuModel] The receipt voucher model with updated information
-  /// @return A Future void on success
   Future<void> updatePhieuThu(PhieuThuModel phieuThuModel);
-  
-  /// Deletes a receipt voucher from the local data store by its ID
-  /// 
-  /// [id] The unique identifier of the receipt voucher to delete
-  /// @return A Future void on success
   Future<void> deletePhieuThu(String id);
+}
+
+class PhieuThuLocalDatasourceImpl implements PhieuThuLocalDatasource {
+  final Database _database;
+
+  PhieuThuLocalDatasourceImpl(this._database);
+
+  @override
+  Future<String> createPhieuThu(PhieuThuModel phieuThuModel) async {
+    final existing = await getPhieuThuById(phieuThuModel.id);
+    if (existing != null) {
+      await updatePhieuThu(phieuThuModel);
+      return existing.id;
+    } else {
+      final id = await _database.insert(
+        'phieu_thu',
+        phieuThuModel.toMap(),
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
+      return id.toString();
+    }
+  }
+
+  @override
+  Future<PhieuThuModel?> getPhieuThuById(String id) async {
+    final List<Map<String, dynamic>> maps = await _database.query(
+      'phieu_thu',
+      where: 'id = ?',
+      whereArgs: [id],
+      limit: 1,
+    );
+    if (maps.isNotEmpty) {
+      return PhieuThuModel.fromMap(maps.first);
+    }
+    return null;
+  }
+
+  @override
+  Future<List<PhieuThuModel>> getPhieuThuList() async {
+    final List<Map<String, dynamic>> maps = await _database.query('phieu_thu');
+    return List.generate(maps.length, (i) => PhieuThuModel.fromMap(maps[i]));
+  }
+
+  @override
+  Future<void> updatePhieuThu(PhieuThuModel phieuThuModel) async {
+    await _database.update(
+      'phieu_thu',
+      phieuThuModel.toMap(),
+      where: 'id = ?',
+      whereArgs: [phieuThuModel.id],
+    );
+  }
+
+  @override
+  Future<void> deletePhieuThu(String id) async {
+    await _database.delete(
+      'phieu_thu',
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+  }
 }

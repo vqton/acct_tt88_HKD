@@ -5,6 +5,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hkd_accounting/features/ct/domain/entities/phieu_thu.dart';
 import 'package:hkd_accounting/features/ct/presentation/providers/phieu_thu_provider.dart';
 import 'package:hkd_accounting/features/kh/domain/entities/ky_ke_toan.dart';
 import 'package:hkd_accounting/features/master_data/domain/entities/khach_hang.dart';
@@ -154,36 +155,27 @@ class _PhieuThuPageState extends ConsumerState<PhieuThuPage> {
                       controller: _trangThaiController,
                       decoration: const InputDecoration(labelText: 'Trạng thái'),
                     ),
-                    const SizedBox(height: 20),
-ElevatedButton(
-                       onPressed: phieuThuState.isLoading ? null : _submitForm,
-                       child: phieuThuState.isLoading
-                           ? const SizedBox(
-                               width: 20,
-                               height: 20,
-                               child: CircularProgressIndicator(strokeWidth: 2),
-                             )
-                           : const Text('Tạo phiếu thu'),
-                     ),
-                     const SizedBox(height: 10),
-                     ElevatedButton(
-                       onPressed: phieuThuState.isLoading ? null : _approvePhieuThu,
-                       child: phieuThuState.isLoading
-                           ? const SizedBox(
-                               width: 20,
-                               height: 20,
-                               child: CircularProgressIndicator(strokeWidth: 2),
-                             )
-                           : const Text('Tạo và duyệt phiếu thu'),
-                       style: ElevatedButton.styleFrom(
-                         backgroundColor: Colors.green,
-                       ),
-                     ),
+const SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: phieuThuState.isLoading ? null : _submitForm,
+                      child: phieuThuState.isLoading
+                          ? const SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: CircularProgressIndicator(strokeWidth: 2),
+                            )
+                          : const Text('Tạo phiếu thu'),
+                    ),
+                    const SizedBox(height: 10),
+                    ElevatedButton(
+                      onPressed: phieuThuState.isLoading ? null : _approvePhieuThu,
+                      child: const Text('Tạo và duyệt phiếu thu'),
+                    ),
                     if (phieuThuState.isError)
                       Padding(
                         padding: const EdgeInsets.only(top: 16.0),
                         child: Text(
-                          phieuThuState.errorMessage ?? 'Đã xảy ra lỗi',
+                          phieuThuState.errorMessage ?? 'Có lỗi xảy ra',
                           style: const TextStyle(color: Colors.red),
                         ),
                       ),
@@ -202,10 +194,10 @@ ElevatedButton(
     );
   }
 
-void _submitForm() {
+  void _submitForm() {
     if (_formKey.currentState?.validate() ?? false) {
       final phieuThu = PhieuThu(
-        id: DateTime.now().millisecondsSinceEpoch.toString(), // Simple ID generation
+        id: DateTime.now().millisecondsSinceEpoch.toString(),
         soPhieu: _soPhieuController.text,
         ngayLap: DateTime.parse(_ngayLapController.text),
         nguoiNop: _nguoiNopController.text,
@@ -220,18 +212,15 @@ void _submitForm() {
         trangThai: _trangThaiController.text,
         createdAt: DateTime.now(),
       );
- 
-      phieuThuNotifier.createPhieuThu(phieuThu);
+      ref.read(phieuThuProvider.notifier).createPhieuThu(phieuThu);
     }
   }
 
   void _approvePhieuThu() {
     if (_formKey.currentState?.validate() ?? false) {
-      // For approval, we need the ID of the voucher to approve
-      // In a real app, this would come from the voucher we're viewing/editing
-      // For simplicity, we'll use the same form data to create then approve
+      final phieuThuId = DateTime.now().millisecondsSinceEpoch.toString();
       final phieuThu = PhieuThu(
-        id: DateTime.now().millisecondsSinceEpoch.toString(), // Simple ID generation
+        id: phieuThuId,
         soPhieu: _soPhieuController.text,
         ngayLap: DateTime.parse(_ngayLapController.text),
         nguoiNop: _nguoiNopController.text,
@@ -243,16 +232,11 @@ void _submitForm() {
         hkdInfoId: _hkdInfoIdController.text,
         khachHangId: _khachHangIdController.text,
         kyKeToanId: _kyKeToanIdController.text,
-        trangThai: 'CHO_DUYET', // Set to pending approval initially
+        trangThai: 'CHO_DUYET',
         createdAt: DateTime.now(),
       );
-
-      // First create the voucher
-      phieuThuNotifier.createPhieuThu(phieuThu).then((_) {
-        // Then approve it (using a placeholder ID - in reality we'd use the actual ID)
-        // For demo purposes, we'll just show a success message
-        phieuThuNotifier.approvePhieuThu(phieuThu.id);
-      });
+      ref.read(phieuThuProvider.notifier).createPhieuThu(phieuThu);
+      ref.read(phieuThuProvider.notifier).approvePhieuThu(phieuThuId);
     }
   }
 }
