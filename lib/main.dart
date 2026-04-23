@@ -75,6 +75,8 @@ import 'package:hkd_accounting/features/kh/data/repositories/phieu_kiem_ke_repos
 import 'package:hkd_accounting/features/kh/domain/repositories/phieu_kiem_ke_repository.dart';
 import 'package:hkd_accounting/features/ct/domain/usecases/approve_phieu_thu.dart';
 import 'package:hkd_accounting/features/ct/domain/usecases/create_phieu_thu.dart';
+import 'package:hkd_accounting/features/ct/domain/usecases/approve_phieu_chi.dart';
+import 'package:hkd_accounting/features/ct/domain/usecases/create_phieu_chi.dart';
 import 'package:hkd_accounting/features/ct/domain/repositories/phieu_thu_repository.dart';
 import 'package:hkd_accounting/features/ct/data/repositories/phieu_thu_repository_impl.dart';
 import 'package:hkd_accounting/features/ct/data/datasources/phieu_thu_local_datasource.dart';
@@ -514,6 +516,8 @@ getIt.registerLazySingleton<LichSuChungTuRepository>(() => LichSuChungTuReposito
   // Register use cases
   getIt.registerLazySingleton<CreatePhieuThu>(() => CreatePhieuThu(getIt.get<PhieuThuRepository>()));
   getIt.registerLazySingleton<ApprovePhieuThu>(() => ApprovePhieuThu(getIt.get<PhieuThuRepository>()));
+  getIt.registerLazySingleton<CreatePhieuChi>(() => CreatePhieuChi(getIt.get<PhieuChiRepository>()));
+  getIt.registerLazySingleton<ApprovePhieuChi>(() => ApprovePhieuChi(getIt.get<PhieuChiRepository>()));
 }
 
 void main() async {

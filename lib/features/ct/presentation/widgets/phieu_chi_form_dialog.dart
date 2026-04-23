@@ -118,7 +118,6 @@ class _PhieuChiFormDialogState extends State<PhieuChiFormDialog> {
               if (_ngayLap != null)
                 Text(
                   'Ngày lập: ${_ngayLap.day}/${_ngayLap.month}/${_ngayLap.year}',
-                  style: const FontStyle(),
                 ),
               const SizedBox(height: 16),
               TextFormField(
