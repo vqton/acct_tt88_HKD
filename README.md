@@ -12,9 +12,9 @@ A Flutter-based accounting application for Household Businesses (HKD) and Indivi
 
 | Metric | Status |
 |--------|--------|
-| Use Cases Implemented | 34/43 (79%) |
+| Use Cases Implemented | 36/43 (84%) |
 | Database Tables | 27 |
-| Flutter Build | ⚠️ ~583 analysis errors (need fixing) |
+| Flutter Build | ⚠️ ~580 analysis errors (need fixing) |
 
 ## Quick Start
 
@@ -76,17 +76,16 @@ lib/
 
 ## Implemented Features
 
-### ✅ Complete (34 UCs)
+### ✅ Complete (36 UCs)
 - **Master Data**: MD-01→MD-08, QT-01
-- **Vouchers**: CT-01 (Phiếu thu), CT-03, CT-04, CT-06, CT-07, CT-08
+- **Vouchers**: CT-01 (Phiếu thu), CT-02 (Phiếu chi), CT-03, CT-04, CT-06, CT-07, CT-08
 - **Warehouse**: KH-01→KH-04
 - **Accounting Books**: SK-01, SK-02, SK-03, SK-04, SK-05, SK-07, SK-08
 - **Funds**: TT-01, TT-02
 - **Tax**: TX-01→TX-04
 - **Admin**: QT-05
 
-### ❌ Not Implemented (9 UCs)
-- CT-02 (Phiếu chi) - Partial
+### ❌ Not Implemented (7 UCs)
 - CT-05 (Bảng lương)
 - NS-01, NS-02, NS-03 (Nhân sự/Lương)
 - SK-06 (Sổ lương)

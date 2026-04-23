@@ -4,15 +4,15 @@
 Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_HKD_TT88_2021.md), danh sách use cases (UC_HKD_TT88_2021.md), và tiêu chuẩn chất lượng mã nguồn (CODE_QUALITY.md), cùng với việc đánh giá mã nguồn hiện tại, tài liệu này cung cấp lộ trình triển khai chi tiết và kế hoạch thực thi cho dự án.
 
 ## Trạng Thái Hiện Tại (Cập nhật 2026-04-23)
-- **Mã nguồn đã triển khai**: 34/43 use cases hoàn thành
+- **Mã nguồn đã triển khai**: 36/43 use cases hoàn thành (84%)
 - **Sprint 0 - Master Data**: Hoàn thành 9/9 UC (MD-01→MD-08, QT-01) ✅
-- **Sprint 1 - Chứng từ & Quỹ**: Hoàn thành 7/7 UC ✅
+- **Sprint 1 - Chứng từ & Quỹ**: Hoàn thành 10/10 UC ✅
 - **Sprint 2 - Kho hàng**: Hoàn thành 7/7 UC ✅
 - **Sprint 3 - Doanh thu & Sổ Kế toán**: Hoàn thành 6/6 UC ✅
 - **Sprint 4 - Thuế**: Hoàn thành 5/5 UC ✅
 - **Cơ sở dữ liệu**: 27 bảng đã tạo
 - **Flutter**: 3.27.1 tại /tmp/flutter (Linux)
-- **Các lỗi hiện tại**: ~583 lỗi (xem chi tiết bên dưới)
+- **Các lỗi hiện tại**: ~580 lỗi (xem chi tiết bên dưới)
 
 ## Lộ Trình Triển Khai Đề Xuất (18 Tuần)
 

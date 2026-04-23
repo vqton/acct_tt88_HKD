@@ -4,15 +4,15 @@
 ### Summary
 | Metric | Target | Current | Gap |
 |--------|--------|---------|-----|
-| Total Use Cases | 43 | 34 | 9 (79%) |
+| Total Use Cases | 43 | 36 | 7 (84%) |
 | Database Tables | 20+ | 27 | 7+ |
 | Entities | 20+ | 27 | 7+ |
 | Implemented Pages | 20+ | 25 | 5+ |
-| Flutter Errors | 0 | ~583 | Must fix |
+| Flutter Errors | 0 | ~580 | Must fix |
 
 ---
 
-## Implemented Features (34/43 UC - 79%)
+## Implemented Features (36/43 UC - 84%)
 
 ### ✅ Master Data (7/9 - 78%)
 | UC | Feature | Status | Files |
@@ -30,11 +30,11 @@
 | UC | Feature | Status | Files |
 |----|---------|--------|-------|
 | CT-01 | Receipt (Phiếu thu) | ✅ Complete | entity, repo, datasource, model, usecase, provider, page |
-| CT-02 | Payment Voucher (Phiếu chi) | ⚠️ Partial | entity exists, needs impl |
+| CT-02 | Payment Voucher (Phiếu chi) | ✅ Complete | entity, repo, datasource, model, usecase, provider, page |
 | CT-03 | Goods Receipt | ✅ Complete | entity, repo, datasource, page |
 | CT-04 | Goods Issue | ✅ Complete | entity, repo, datasource, page |
 | CT-05 | Salary Table | ❌ Not implemented | |
-| CT-06 | Invoice Mgmt | ✅ Complete | entity, repo, datasource, page |
+| CT-06 | Invoice Mgmt | ✅ Complete | entity, repo, datasource, model, provider, page |
 | CT-07 | Archive Vouchers | ✅ Complete | page |
 | CT-08 | Approve Voucher | ✅ Complete | use case |
 | TT-01 | Cash Fund | ✅ Complete | entity, repo, datasource, page |
@@ -103,6 +103,9 @@
 | 2026-04-23 | PhieuThu | Implemented end-to-end (entity, model, repo, usecase, provider, page) |
 | 2026-04-23 | EmptyFailure | Added to failures.dart for use cases |
 | 2026-04-23 | Database | Added phieu_thu and phieu_chi tables to main.dart |
+| 2026-04-23 | CT-02 PhieuChi | Implemented end-to-end with TDD tests |
+| 2026-04-23 | CT-06 HoaDon | Fixed provider dartz import, added entity tests |
+| 2026-04-23 | pubspec.yaml | Removed missing assets folders |
 
 ---
 
