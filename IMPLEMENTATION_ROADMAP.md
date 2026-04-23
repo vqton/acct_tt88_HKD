@@ -3,18 +3,16 @@
 ## Tóm Tắt
 Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_HKD_TT88_2021.md), danh sách use cases (UC_HKD_TT88_2021.md), và tiêu chuẩn chất lượng mã nguồn (CODE_QUALITY.md), cùng với việc đánh giá mã nguồn hiện tại, tài liệu này cung cấp lộ trình triển khai chi tiết và kế hoạch thực thi cho dự án.
 
-## Trạng Thái Hiện Tại (Cập nhật sau khi hoàn thành Sprint 4 - Thuế)
-- **Mã nguồn đã triển khai**: 33/43 use cases hoàn thành (MD-01→MD-08, QT-01, QT-05, CT-01→CT-04, CT-06→CT-08, KH-01→KH-04, SK-01→SK-05, SK-07→SK-08, TT-01→TT-02, TX-01→TX-04)
-- **Sprint 0 - Master Data**: Hoàn thành 9/9 UC (MD-01→MD-08, QT-01)
-- **Sprint 1 - Chứng từ & Quỹ**: Hoàn thành 7/7 UC (CT-01, CT-02, CT-08, TT-01, TT-02, SK-07, SK-08)
-- **Sprint 2 - Kho hàng**: Hoàn thành 7/7 UC (CT-03, CT-04, KH-01→KH-04, SK-03) ✅ COMPLETE
-- **Sprint 3 - Doanh thu & Sổ Kế toán**: Hoàn thành 6/6 UC (CT-06, CT-07, SK-01, SK-02, SK-04, QT-05) ✅ COMPLETE
-- **Sprint 4 - Thuế**: Hoàn thành 5/5 UC (TX-01→TX-04, SK-05) ✅ COMPLETE
-- **Công việc bảo trì**: Đã cài đặt Flutter Linux 3.27.1, tạo CustomScaffold widget, sửa lỗi dartz imports, sửa FontStyle→TextStyle
-- **Cơ sở dữ liệu**: Đã thiết kế và triển khai 25 bảng
-- **Kiến trúc**: Sử dụng Clean Architecture với Riverpod để quản lý trạng thái
-- **Thư viện chính**: Flutter, Riverpod, Sqflite, GetIt/Injectable, dartz (Either for error handling)
-- **Flutter**: Đã cài đặt Flutter Linux 3.27.1 tại /tmp/flutter
+## Trạng Thái Hiện Tại (Cập nhật 2026-04-23)
+- **Mã nguồn đã triển khai**: 34/43 use cases hoàn thành
+- **Sprint 0 - Master Data**: Hoàn thành 9/9 UC (MD-01→MD-08, QT-01) ✅
+- **Sprint 1 - Chứng từ & Quỹ**: Hoàn thành 7/7 UC ✅
+- **Sprint 2 - Kho hàng**: Hoàn thành 7/7 UC ✅
+- **Sprint 3 - Doanh thu & Sổ Kế toán**: Hoàn thành 6/6 UC ✅
+- **Sprint 4 - Thuế**: Hoàn thành 5/5 UC ✅
+- **Cơ sở dữ liệu**: 27 bảng đã tạo
+- **Flutter**: 3.27.1 tại /tmp/flutter (Linux)
+- **Các lỗi hiện tại**: ~583 lỗi (xem chi tiết bên dưới)
 
 ## Lộ Trình Triển Khai Đề Xuất (18 Tuần)
 
@@ -192,6 +190,87 @@ Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_
 
 ## Ket Luan
 Du an da co nen tang tot voi kien truc sach va cong nghe phu hop. Sau khi hoan thanh Sprint 0, du an da dat duoc 33% tien do va san sang chuyen sang Sprint 1. Viec tap trung vao cac nguyen tac phat trien tot, tuan thu TDD va thuc hien theo cac sap duoc phan tich ky lan, du an co the hoan thanh trong vong 18 tuan nhu duoc len ke hoach.
+---
+
+## Flutter Analysis Errors - Troubleshooting Guide
+
+### Current Status
+As of 2026-04-23, there are **~583 Flutter analysis errors** that need to be fixed. These are primarily in features that were not fully implemented or have missing imports.
+
+### Error Categories
+
+| Count | Error Type |
+|-------|------------|
+| 124 | The name 'X' isn't defined |
+| 122 | The method 'X' isn't defined |
+| 120 | Undefined name 'X' |
+| 50 | 1 positional argument(s) expected |
+| 28 | Undefined class 'X' |
+| 28 | The argument type can't be assigned |
+| 26 | The named parameter 'X' isn't defined |
+| 20 | Invalid constant value |
+| 10 | The constructor 'X' isn't defined |
+| 10 | Target of receiver must be a class |
+
+### Common Fixes
+
+#### 1. Missing dartz imports (Either, Right, Left)
+Many provider and repository files are missing the dartz import. Add to the top of files:
+```dart
+import 'package:dartz/dartz.dart';
+```
+
+#### 2. Missing Failure class
+If using `Failure` or `EmptyFailure`, ensure you import:
+```dart
+import 'package:hkd_accounting/core/error/failures.dart';
+```
+
+#### 3. Entity issues - Don't use assert in const constructor
+```dart
+// Wrong - causes "Invalid constant value" error
+const PhieuChi({
+  ...
+}) : assert(soTien > 0, 'So tien phai lon hon 0'), ...;
+
+// Correct - remove assert from const constructor
+const PhieuChi({
+  required this.id,
+  ...
+});
+```
+
+#### 4. FontStyle vs TextStyle
+```dart
+// Wrong
+style: TextStyle(fontStyle: FontStyle.italic);
+
+// Correct
+style: TextStyle(fontStyle: FontStyle.italic);  // Actually FontStyle is correct
+// But if using .italic directly, check if you imported flutter material
+```
+
+#### 5. Missing providers
+If a provider is referenced but doesn't exist, create it in:
+```
+lib/features/<feature>/presentation/providers/<name>_provider.dart
+```
+
+#### 6. Run Flutter Analyze
+```bash
+# Using installed Flutter
+/tmp/flutter/bin/flutter analyze
+
+# Or if Flutter is in PATH
+flutter analyze
+```
+
+### Priority Order for Fixing
+1. **CT feature** - PhieuChi, HoaDon (most critical)
+2. **TT feature** - QuyTienMat, TienGuiNganHang
+3. **SK feature** - SoQuyTienMat, SoTienGuiNganHang
+4. **Other features** - NS (Nhân sự), QT-02, QT-03, QT-04, QT-06
 
 ---
-*Duong dien nay duoc tao ra tren phan tich toan dien tai lieu thiet ke he thong va danh gia ma nguon hien tai. Co the can dieu chinh dua tren phan hoi tu cac ben lien quan va phat hien trong qua trien khai.*
+
+*Hướng dẫn này được cập nhật ngày 2026-04-23 sau khi phân tích 583 lỗi Flutter.*

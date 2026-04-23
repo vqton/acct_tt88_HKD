@@ -4,14 +4,15 @@
 ### Summary
 | Metric | Target | Current | Gap |
 |--------|--------|---------|-----|
-| Total Use Cases | 43 | 33 | 10 (77%) |
-| Database Tables | 20+ | 25 | 5+ |
-| Entities | 20+ | 26 | 6+ |
-| Implemented Pages | 20+ | 24 | 4+ |
+| Total Use Cases | 43 | 34 | 9 (79%) |
+| Database Tables | 20+ | 27 | 7+ |
+| Entities | 20+ | 27 | 7+ |
+| Implemented Pages | 20+ | 25 | 5+ |
+| Flutter Errors | 0 | ~583 | Must fix |
 
 ---
 
-## Implemented Features (33/43 UC - 77%)
+## Implemented Features (34/43 UC - 79%)
 
 ### ✅ Master Data (7/9 - 78%)
 | UC | Feature | Status | Files |
@@ -25,13 +26,14 @@
 | MD-07 | Bank Accounts | ✅ Complete | entity, repo, datasource, page |
 | MD-08 | Accounting Periods | ✅ Complete | entity, repo, datasource, page |
 
-### ✅ Vouchers & Funds (9/9 - 100%)
+### ✅ Vouchers & Funds (10/10 - 100%)
 | UC | Feature | Status | Files |
 |----|---------|--------|-------|
-| CT-01 | Receipt | ✅ Complete | entity, repo, datasource, page |
-| CT-02 | Payment Voucher | ✅ Complete | entity, repo, datasource, page |
+| CT-01 | Receipt (Phiếu thu) | ✅ Complete | entity, repo, datasource, model, usecase, provider, page |
+| CT-02 | Payment Voucher (Phiếu chi) | ⚠️ Partial | entity exists, needs impl |
 | CT-03 | Goods Receipt | ✅ Complete | entity, repo, datasource, page |
 | CT-04 | Goods Issue | ✅ Complete | entity, repo, datasource, page |
+| CT-05 | Salary Table | ❌ Not implemented | |
 | CT-06 | Invoice Mgmt | ✅ Complete | entity, repo, datasource, page |
 | CT-07 | Archive Vouchers | ✅ Complete | page |
 | CT-08 | Approve Voucher | ✅ Complete | use case |
@@ -98,6 +100,9 @@
 | 2026-04-23 | FontStyle→TextStyle | Fixed widget type errors in form dialogs |
 | 2026-04-23 | QT Repos | Fixed import paths in qt feature repositories |
 | 2026-04-23 | app_module | Removed broken app_module.dart |
+| 2026-04-23 | PhieuThu | Implemented end-to-end (entity, model, repo, usecase, provider, page) |
+| 2026-04-23 | EmptyFailure | Added to failures.dart for use cases |
+| 2026-04-23 | Database | Added phieu_thu and phieu_chi tables to main.dart |
 
 ---
 
