@@ -20,18 +20,18 @@ class HoaDonNotifier extends StateNotifier<AsyncValue<List<HoaDon>>> {
   Future<void> loadHoaDonList() async {
     state = const AsyncValue.loading();
     final result = await repository.getHoaDonList();
-    state = result.when(
-      success: (data) => AsyncValue.data(data),
-      failure: (err) => AsyncValue.error(err, StackTrace.current),
+    result.fold(
+      (failure) => state = AsyncValue.error(failure, StackTrace.current),
+      (data) => state = AsyncValue.data(data),
     );
   }
 
   Future<void> loadByLoai(String loaiHoaDon) async {
     state = const AsyncValue.loading();
     final result = await repository.getHoaDonByLoai(loaiHoaDon);
-    state = result.when(
-      success: (data) => AsyncValue.data(data),
-      failure: (err) => AsyncValue.error(err, StackTrace.current),
+    result.fold(
+      (failure) => state = AsyncValue.error(failure, StackTrace.current),
+      (data) => state = AsyncValue.data(data),
     );
   }
 

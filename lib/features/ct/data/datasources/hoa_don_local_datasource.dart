@@ -4,7 +4,6 @@
 // ============================================================================
 
 import 'package:sqflite/sqflite.dart';
-import 'package:hkd_accounting/features/ct/domain/entities/hoa_don.dart';
 import 'package:hkd_accounting/features/ct/data/models/hoa_don_model.dart';
 
 abstract class HoaDonLocalDatasource {
