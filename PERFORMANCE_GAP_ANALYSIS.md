@@ -8,8 +8,8 @@
 | Database Tables | 20+ | 27 | 7+ |
 | Entities | 20+ | 27 | 7+ |
 | Implemented Pages | 20+ | 25 | 5+ |
-| Docstrings | 0 | 227 | 227 (100%) ✅ |
-| Flutter Errors | 0 | ~507 | Must fix |
+| Docstrings | 0 | 229 | 229 (100%) ✅ |
+| Flutter Errors | 0 | ~465 | Must fix |
 
 ---
 

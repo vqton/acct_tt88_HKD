@@ -13,11 +13,11 @@ Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_
 - **Sprint 4 - Thuế**: Hoàn thành 5/5 UC ✅
 - **Cơ sở dữ liệu**: 27 bảng đã tạo
 - **Flutter**: 3.27.1 tại /tmp/flutter (Linux)
-- **Các lỗi hiện tại**: ~483 lỗi (đã giảm ~97 lỗi từ 580)
+- **Các lỗi hiện tại**: ~465 lỗi (đã giảm ~115 lỗi từ 580)
   - Đã fix Phase 1A: DateTime/String types, fromEntity/toEntity, datasource methods, imports
   - Đã fix Phase 1B: Entity assertions, Provider Either.fold() patterns, Extension this.
-  - Đã fix Phase 1C: Page provider imports, form dialog init parameters
-  - Còn lại: SK/TT entities, main.dart DI, tests
+  - Đã fix Phase 1C: Page provider imports, form dialog init parameters, form dialogs created
+  - Còn lại: SK/TT domain entities, main.dart DI, tests
 
 ## Lộ Trình Triển Khai Đề Xuất (18 Tuần)
 
