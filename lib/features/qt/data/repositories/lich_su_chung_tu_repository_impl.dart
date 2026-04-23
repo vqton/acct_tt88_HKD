@@ -1,4 +1,4 @@
-import 'package:hkd_accounting/core/failures/failures.dart';
+import 'package:hkd_accounting/core/error/failures.dart';
 import 'package:hkd_accounting/features/qt/data/datasources/lich_su_chung_tu_local_datasource.dart';
 import 'package:hkd_accounting/features/qt/domain/entities/lich_su_chung_tu.dart';
 import 'package:hkd_accounting/features/qt/domain/repositories/lich_su_chung_tu_repository.dart';
