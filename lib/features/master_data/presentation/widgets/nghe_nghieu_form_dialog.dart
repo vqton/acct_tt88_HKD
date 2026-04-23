@@ -150,10 +150,10 @@ class _NgheNghiepFormDialogState extends State<NgheNghiepFormDialog> {
                 ),
               ),
               const SizedBox(height: 8),
-              Text(
-                'Ngày hiệu lực: ${_ngayHieuLuc.day}/${_ngayHieuLuc.month}/${_ngayHieuLuc.year}',
-                style: const FontStyle(),
-              ),
+                Text(
+                  'Ngày hiệu lực: ${_ngayHieuLuc.day}/${_ngayHieuLuc.month}/${_ngayHieuLuc.year}',
+                  style: TextStyle(),
+                ),
               const SizedBox(height: 16),
               ListTile(
                 title: const Text('Ngày hết hiệu lực (tùy chọn)'),

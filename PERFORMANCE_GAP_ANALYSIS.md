@@ -89,6 +89,18 @@
 
 ---
 
+## Recent Updates (Maintenance & Bug Fixes)
+| Date | Change | Description |
+|------|--------|-------------|
+| 2026-04-23 | Flutter Linux Setup | Installed Flutter 3.27.1 to /tmp/flutter |
+| 2026-04-23 | CustomScaffold | Created core/widgets/custom_scaffold.dart |
+| 2026-04-23 | dartz imports | Fixed missing Either imports in master_data providers |
+| 2026-04-23 | FontStyle→TextStyle | Fixed widget type errors in form dialogs |
+| 2026-04-23 | QT Repos | Fixed import paths in qt feature repositories |
+| 2026-04-23 | app_module | Removed broken app_module.dart |
+
+---
+
 ## Architecture Compliance
 
 | Component | Expected | Implemented | Status |

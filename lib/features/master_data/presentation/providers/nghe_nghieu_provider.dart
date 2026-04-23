@@ -5,6 +5,7 @@
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
+import 'package:dartz/dartz.dart';
 import 'package:hkd_accounting/core/error/failures.dart';
 import 'package:hkd_accounting/features/master_data/domain/entities/nghe_nghiep.dart';
 import 'package:hkd_accounting/features/master_data/domain/repositories/nghe_nghiep_repository.dart';

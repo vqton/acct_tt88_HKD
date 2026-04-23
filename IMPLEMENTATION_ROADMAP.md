@@ -8,9 +8,13 @@ Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_
 - **Sprint 0 - Master Data**: Hoàn thành 9/9 UC (MD-01→MD-08, QT-01)
 - **Sprint 1 - Chứng từ & Quỹ**: Hoàn thành 7/7 UC (CT-01, CT-02, CT-08, TT-01, TT-02, SK-07, SK-08)
 - **Sprint 2 - Kho hàng**: Hoàn thành 7/7 UC (CT-03, CT-04, KH-01→KH-04, SK-03) ✅ COMPLETE
-- **Cơ sở dữ liệu**: Đã thiết kế và triển khai 20 bảng (hkd_info, nghe_nghiep, ky_ke_toan, hang_hoa, nha_cung_cap, khach_hang, nguoi_dung, nguoi_lao_dong, tai_khoan_ngan_hang, phieu_chi, phieu_nhap_kho, phieu_nhap_kho_chi_tiet, phieu_xuat_kho, phieu_xuat_kho_chi_tiet, phieu_kiem_ke, chi_tiet_kiem_ke, hoa_don, ton_kho, so_doanh_thu, so_chi_phi, quy_tien_mat, tien_gui_ngan_hang)
+- **Sprint 3 - Doanh thu & Sổ Kế toán**: Hoàn thành 6/6 UC (CT-06, CT-07, SK-01, SK-02, SK-04, QT-05) ✅ COMPLETE
+- **Sprint 4 - Thuế**: Hoàn thành 5/5 UC (TX-01→TX-04, SK-05) ✅ COMPLETE
+- **Công việc bảo trì**: Đã cài đặt Flutter Linux 3.27.1, tạo CustomScaffold widget, sửa lỗi dartz imports, sửa FontStyle→TextStyle
+- **Cơ sở dữ liệu**: Đã thiết kế và triển khai 25 bảng
 - **Kiến trúc**: Sử dụng Clean Architecture với Riverpod để quản lý trạng thái
-- **Thư viện chính**: Flutter, Riverpod, Sqflite, GetIt/Injectable
+- **Thư viện chính**: Flutter, Riverpod, Sqflite, GetIt/Injectable, dartz (Either for error handling)
+- **Flutter**: Đã cài đặt Flutter Linux 3.27.1 tại /tmp/flutter
 
 ## Lộ Trình Triển Khai Đề Xuất (18 Tuần)
 
@@ -55,7 +59,7 @@ Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_
 | 22 | SK-03 | Ghi sổ chi tiết vật tư, hàng hóa (S2-HKD) | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
 | 23 | KH-03 | Kiểm kê hàng tồn kho | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
 
-### Sprint 3 - Doanh thu & Sổ Kế toán (Tuần 9-11)
+### Sprint 3 - Doanh thu & Sổ Kế toán (Tuần 9-11) - HOÀN THÀNH
 **Mục tiêu**: Xây dựng các chức năng liên quan đến doanh thu và ghi sổ kế toán
 
 | STT | UC | Tên Use Case | Mô tả ngắn | Trạng thái |
