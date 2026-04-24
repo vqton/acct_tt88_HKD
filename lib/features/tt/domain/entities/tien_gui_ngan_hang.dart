@@ -30,15 +30,19 @@ class TienGuiNganHang extends Equatable {
     required this.trangThai,
     this.createdAt,
     this.updatedAt,
-  }) : assert(soDuDauKy >= 0, 'So du dau ky phai lon hon hoac bang 0'),
-        assert(tongThu >= 0, 'Tong thu phai lon hon hoac bang 0'),
-        assert(tongChi >= 0, 'Tong chi phai lon hon hoac bang 0'),
-        assert(soDuCuoiKy >= 0, 'So du cuoi ky phai lon hon hoac bang 0'),
-        assert(id.isNotEmpty, 'Id khong duoc de trong'),
-        assert(maTaiKhoan.isNotEmpty, 'Ma tai khoan khong duoc de trong'),
-        assert(tenTaiKhoan.isNotEmpty, 'Ten tai khoan khong duoc de trong'),
-        assert(kyKeToanId.isNotEmpty, 'Ky ke toan id khong duoc de trong'),
-        assert(trangThai.isNotEmpty, 'Trang thai khong duoc de trong');
+  });
+
+  static bool isValidTienGuiNganHang(TienGuiNganHang q) {
+    return q.id.isNotEmpty &&
+        q.maTaiKhoan.isNotEmpty &&
+        q.tenTaiKhoan.isNotEmpty &&
+        q.kyKeToanId.isNotEmpty &&
+        q.trangThai.isNotEmpty &&
+        q.soDuDauKy >= 0 &&
+        q.tongThu >= 0 &&
+        q.tongChi >= 0 &&
+        q.soDuCuoiKy >= 0;
+  }
 
   TienGuiNganHang copyWith({
     String? id,

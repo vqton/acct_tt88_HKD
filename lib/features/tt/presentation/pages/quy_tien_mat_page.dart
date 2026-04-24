@@ -6,6 +6,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hkd_accounting/core/widgets/custom_scaffold.dart';
+import 'package:hkd_accounting/features/tt/presentation/providers/quy_tien_mat_provider.dart';
 import 'package:hkd_accounting/features/tt/presentation/widgets/quy_tien_mat_form_dialog.dart';
 import 'package:hkd_accounting/features/tt/presentation/widgets/quy_tien_mat_list_item.dart';
 
@@ -20,7 +21,12 @@ class QuyTienMatPage extends ConsumerWidget {
         onPressed: () {
           showDialog(
             context: context,
-            builder: (context) => const QuyTienMatFormDialog(),
+            builder: (context) => QuyTienMatFormDialog(
+              initialQuyTienMat: null,
+              onSave: (quyTienMat) {
+                ref.read(quyTienMatProvider.notifier).saveQuyTienMat(quyTienMat);
+              },
+            ),
           );
         },
         child: const Icon(Icons.add),

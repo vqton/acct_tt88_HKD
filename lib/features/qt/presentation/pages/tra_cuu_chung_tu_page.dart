@@ -262,7 +262,7 @@ class _TraCuuChungTuPageState extends ConsumerState<TraCuuChungTuPage> {
                   color: _getTrangThaiColor(item.trangThai),
                 ),
               ),
-              backgroundColor: _getTrangThaiColor(item.trangThai).withOpacity(0.1),
+              backgroundColor: _getTrangThaiColor(item.trangThai).withValues(alpha: 0.1),
               padding: EdgeInsets.zero,
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),

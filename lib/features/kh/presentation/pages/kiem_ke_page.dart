@@ -124,7 +124,7 @@ class KiemKePage extends ConsumerWidget {
                         ),
                         trailing: Chip(
                           label: Text(phieu.trangThaiLabel),
-                          backgroundColor: _getStatusColor(phieu.trangThai).withOpacity(0.2),
+                          backgroundColor: _getStatusColor(phieu.trangThai).withValues(alpha: 0.2),
                         ),
                         onTap: () {
                           ref.read(selectedPhieuKiemKeProvider.notifier).state = phieu;

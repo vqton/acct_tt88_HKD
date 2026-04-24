@@ -16,9 +16,10 @@
 ## Recent Updates (2026-04-24)
 | Date | Change | Impact |
 |------|-------|--------|
+| 2026-04-24 | Fix TT (Quỹ/Tiền) - entity constants, datasources, withOpacity deprecated | -15 errors |
 | 2026-04-24 | Fix Phase 1D: HkdInfoFormDialog, PhieuThu providers, luu_tru_chung_tu_page | -341 errors (465→124) |
 | 2026-04-23 | Fix Phase 1A-C: Entity imports, Provider patterns, form dialogs | -115 errors (580→465) |
-| 2026-04-22 | Fix Phase 1: DateTime/String, fromEntity/toEntity, Double class | -30 errors (610→580) |
+| 2026-04-23 | Flutter Linux Setup | Installed Flutter 3.27.1 to /tmp/flutter |
 
 ---
 

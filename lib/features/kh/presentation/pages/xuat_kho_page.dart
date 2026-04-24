@@ -136,7 +136,7 @@ class XuatKhoPage extends ConsumerWidget {
                         ),
                         trailing: Chip(
                           label: Text(_getStatusLabel(phieu.trangThai)),
-                          backgroundColor: _getStatusColor(phieu.trangThai).withOpacity(0.2),
+                          backgroundColor: _getStatusColor(phieu.trangThai).withValues(alpha: 0.2),
                         ),
                         onTap: () {
                           Navigator.of(context).push(

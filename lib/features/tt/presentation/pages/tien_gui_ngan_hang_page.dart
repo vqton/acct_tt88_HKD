@@ -6,6 +6,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hkd_accounting/core/widgets/custom_scaffold.dart';
+import 'package:hkd_accounting/features/tt/presentation/providers/tien_gui_ngan_hang_provider.dart';
 import 'package:hkd_accounting/features/tt/presentation/widgets/tien_gui_ngan_hang_form_dialog.dart';
 import 'package:hkd_accounting/features/tt/presentation/widgets/tien_gui_ngan_hang_list_item.dart';
 
@@ -20,7 +21,12 @@ class TienGuiNganHangPage extends ConsumerWidget {
         onPressed: () {
           showDialog(
             context: context,
-            builder: (context) => const TienGuiNganHangFormDialog(),
+            builder: (context) => TienGuiNganHangFormDialog(
+              initialTienGuiNganHang: null,
+              onSave: (tienGuiNganHang) {
+                ref.read(tienGuiNganHangProvider.notifier).saveTienGuiNganHang(tienGuiNganHang);
+              },
+            ),
           );
         },
         child: const Icon(Icons.add),
