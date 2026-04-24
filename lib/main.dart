@@ -51,6 +51,14 @@ import 'package:hkd_accounting/features/ns/data/datasources/thanh_toan_luong_loc
 import 'package:hkd_accounting/features/ns/data/datasources/thanh_toan_luong_local_datasource_impl.dart';
 import 'package:hkd_accounting/features/ns/data/repositories/thanh_toan_luong_repository_impl.dart';
 import 'package:hkd_accounting/features/ns/domain/repositories/thanh_toan_luong_repository.dart';
+import 'package:hkd_accounting/features/qt/data/datasources/nhat_ky_he_thong_local_datasource.dart';
+import 'package:hkd_accounting/features/qt/data/datasources/nhat_ky_he_thong_local_datasource_impl.dart';
+import 'package:hkd_accounting/features/qt/data/repositories/nhat_ky_he_thong_repository_impl.dart';
+import 'package:hkd_accounting/features/qt/domain/repositories/nhat_ky_he_thong_repository.dart';
+import 'package:hkd_accounting/features/qt/data/datasources/dong_ky_ke_toan_local_datasource.dart';
+import 'package:hkd_accounting/features/qt/data/datasources/dong_ky_ke_toan_local_datasource_impl.dart';
+import 'package:hkd_accounting/features/qt/data/repositories/dong_ky_ke_toan_repository_impl.dart';
+import 'package:hkd_accounting/features/qt/domain/repositories/dong_ky_ke_toan_repository.dart';
 // import 'package:hkd_accounting/features/sk/data/datasources/so_chi_phi_local_datasource.dart';
 // import 'package:hkd_accounting/features/sk/data/repositories/so_chi_phi_repository_impl.dart';
 // import 'package:hkd_accounting/features/sk/domain/repositories/so_chi_phi_repository.dart';
@@ -345,6 +353,44 @@ Future<Database> _initializeDatabase() async {
         )
       ''');
 
+      // QT-06: Nhật ký hệ thống và Audit Trail
+      await db.execute('''
+        CREATE TABLE nhat_ky_he_thong (
+          id TEXT PRIMARY KEY,
+          user_id TEXT,
+          user_name TEXT,
+          user_role TEXT,
+          hanh_dong TEXT NOT NULL,
+          doi_tuong_loai TEXT,
+          doi_tuong_id TEXT,
+          doi_tuong_mo_ta TEXT,
+          timestamp TEXT NOT NULL,
+          gia_tri_cu TEXT,
+          gia_tri_moi TEXT,
+          ip_address TEXT,
+          device_info TEXT,
+          ghi_chu TEXT
+        )
+      ''');
+
+      // QT-03: Đóng kỳ kế toán
+      await db.execute('''
+        CREATE TABLE dong_ky_ke_toan (
+          id TEXT PRIMARY KEY,
+          ky_ke_toan_id TEXT,
+          thang_nam TEXT,
+          ngay_dong TEXT,
+          nguoi_dong TEXT,
+          trang_thai TEXT DEFAULT 'DANG_KIEM_TRA',
+          da_doi_chieu_quy_tien_mat INTEGER DEFAULT 0,
+          da_doi_chieu_tien_gui INTEGER DEFAULT 0,
+          da_kiem_ke_ton_kho INTEGER DEFAULT 0,
+          da_xac_nhan_thue INTEGER DEFAULT 0,
+          ghi_chu TEXT,
+          created_at TEXT DEFAULT CURRENT_TIMESTAMP
+        )
+      ''');
+
       // KH-04: Tồn kho hàng hóa
       await db.execute('''
         CREATE TABLE ton_kho (
@@ -607,6 +653,8 @@ getIt.registerLazySingleton<LichSuChungTuLocalDatasource>(() => LichSuChungTuLoc
   getIt.registerLazySingleton<SoThueLocalDatasource>(() => SoThueLocalDatasourceImpl(database));
   getIt.registerLazySingleton<SoTheoDoiTienLuongLocalDatasource>(() => SoTheoDoiTienLuongLocalDatasourceImpl(database));
   getIt.registerLazySingleton<ThanhToanLuongLocalDatasource>(() => ThanhToanLuongLocalDatasourceImpl(database));
+  getIt.registerLazySingleton<NhatKyHeThongLocalDatasource>(() => NhatKyHeThongLocalDatasourceImpl(database));
+  getIt.registerLazySingleton<DongKyKeToanLocalDatasource>(() => DongKyKeToanLocalDatasourceImpl(database));
     
   // Register repositories
   getIt.registerLazySingleton<HkdInfoRepository>(() => HkdInfoRepositoryImpl(getIt.get<HkdInfoLocalDatasource>()));
@@ -635,6 +683,8 @@ getIt.registerLazySingleton<LichSuChungTuRepository>(() => LichSuChungTuReposito
   getIt.registerLazySingleton<TienThueTncnRepository>(() => TienThueTncnRepositoryImpl(getIt.get<TienThueLocalDatasource>()));
   getIt.registerLazySingleton<PhieuNopThueRepository>(() => PhieuNopThueRepositoryImpl(getIt.get<PhieuNopThueLocalDatasource>()));
   getIt.registerLazySingleton<SoThueRepository>(() => SoThueRepositoryImpl(getIt.get<SoThueLocalDatasource>()));
+  getIt.registerLazySingleton<NhatKyHeThongRepository>(() => NhatKyHeThongRepositoryImpl(getIt.get<NhatKyHeThongLocalDatasource>()));
+  getIt.registerLazySingleton<DongKyKeToanRepository>(() => DongKyKeToanRepositoryImpl(getIt.get<DongKyKeToanLocalDatasource>()));
   getIt.registerLazySingleton<SoTheoDoiTienLuongRepository>(() => SoTheoDoiTienLuongRepositoryImpl(getIt.get<SoTheoDoiTienLuongLocalDatasource>()));
   getIt.registerLazySingleton<ThanhToanLuongRepository>(() => ThanhToanLuongRepositoryImpl(getIt.get<ThanhToanLuongLocalDatasource>()));
     

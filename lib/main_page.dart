@@ -29,6 +29,10 @@ import 'package:hkd_accounting/features/sk/presentation/pages/so_quy_tien_mat_pa
 import 'package:hkd_accounting/features/sk/presentation/pages/so_ke_toan_page.dart';
 import 'package:hkd_accounting/features/ns/presentation/pages/tinh_luong_page.dart';
 import 'package:hkd_accounting/features/ns/presentation/pages/thanh_toan_luong_page.dart';
+import 'package:hkd_accounting/features/qt/presentation/pages/nhat_ky_he_thong_page.dart';
+import 'package:hkd_accounting/features/qt/presentation/pages/dong_ky_ke_toan_page.dart';
+import 'package:hkd_accounting/features/qt/presentation/pages/bao_cao_tong_hop_page.dart';
+import 'package:hkd_accounting/features/qt/presentation/pages/dieu_chinh_so_page.dart';
 
 class MainPage extends ConsumerStatefulWidget {
   const MainPage({super.key});
@@ -64,6 +68,10 @@ class _MainPageState extends ConsumerState<MainPage> {
     SoTheoDoiTienLuongPage(),
     TinhLuongPage(),
     ThanhToanLuongPage(),
+    NhatKyHeThongPage(),
+    DongKyKeToanPage(),
+    BaoCaoTongHopPage(),
+    DieuChinhSoPage(),
   ];
 
   // Separate pages for navigation (not in bottom nav)
@@ -174,6 +182,22 @@ class _MainPageState extends ConsumerState<MainPage> {
     BottomNavigationBarItem(
       icon: Icon(Icons.payments),
       label: 'Thanh toán',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.history),
+      label: 'Audit log',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.lock),
+      label: 'Đóng kỳ',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.assessment),
+      label: 'Báo cáo',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.edit),
+      label: 'Điều chỉnh',
     ),
   ];
 
