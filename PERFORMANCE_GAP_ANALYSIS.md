@@ -4,11 +4,11 @@
 ### Summary
 | Metric | Target | Current | Gap |
 |--------|--------|---------|-----|
-| Total Use Cases | 43 | 39 | 4 (91%) |
+| Total Use Cases | 43 | 43 | 0 (100%) |
 | Database Tables | 20+ | 29 | 9+ |
-| Entities | 20+ | 29 | 9+ |
-| Implemented Pages | 20+ | 29 | 3+ |
-| Docstrings | 0 | 237 | 237 (100%) ✅ |
+| Entities | 20+ | 32 | 12+ |
+| Implemented Pages | 20+ | 33 | 13+ |
+| Docstrings | 0 | 243 | 243 (100%) ✅ |
 | Flutter Errors | 0 | 0 | ✅ All fixed |
 
 ---
@@ -16,6 +16,7 @@
 ## Recent Updates (2026-04-24)
 | Date | Change | Impact |
 |------|-------|--------|
+| 2026-04-24 | Sprint 5: NS-01/02/03, SK-06 implementation | +4 UC (39→43) |
 | 2026-04-24 | Fix TT (Quỹ/Tiền) - entity constants, datasources, withOpacity deprecated | -15 errors |
 | 2026-04-24 | Fix Phase 1D: HkdInfoFormDialog, PhieuThu providers, luu_tru_chung_tu_page | -341 errors (465→124) |
 | 2026-04-23 | Fix Phase 1A-C: Entity imports, Provider patterns, form dialogs | -115 errors (580→465) |
@@ -70,23 +71,18 @@
 | KH-03 | Inventory Check (Kiểm kê) | ✅ Complete | page, nav integrated |
 | KH-04 | COGS Calculation | ✅ Complete | entity, service, provider, page |
 
-### ✅ Tax (5/5 - 100%)
+### ✅ Payroll & Personnel (4/4 - 100%)
 | UC | Feature | Status | Files |
 |----|---------|--------|-------|
-| TX-01 | Taxable Revenue | ✅ Complete | entity, repo, datasource, provider, page |
-| TX-02 | VAT Calculation | ✅ Complete | entity, repo, datasource, provider, page |
-| TX-03 | PIT Calculation | ✅ Complete | entity, repo, datasource, provider, page |
-| TX-04 | Tax Payment Tracking | ✅ Complete | entity, repo, datasource, provider, page |
-| SK-05 | Tax Book (S4-HKD) | ✅ Complete | entity, repo, datasource, provider, page |
+| NS-01 | Salary Calc | ✅ Complete | entity, service, provider, page |
+| NS-02 | Social Insurance | ✅ Complete | entity, service |
+| NS-03 | Salary Payment | ✅ Complete | entity, repo, datasource, model, provider, page |
+| SK-06 | Salary Book (S5-HKD) | ✅ Complete | entity, repo, datasource, model, provider, page |
 
-### ✅ Not Implemented (4 UC - 9%)
+### ❌ Pending (4 UC - 9%)
 
 | UC | Feature | Priority | Dependencies |
 |----|---------|----------|--------------|
-| SK-06 | Salary Book | MEDIUM | CT-05 |
-| NS-01 | Salary Calc | MEDIUM | MD-06 |
-| NS-02 | Social Insurance | MEDIUM | NS-01, MD-06 |
-| NS-03 | Salary Payment | MEDIUM | NS-01, NS-02 |
 | QT-02 | Edit Books | LOW | SK-01-SK-06 |
 | QT-03 | Close Period | LOW | All |
 | QT-04 | Summary Report | LOW | All |

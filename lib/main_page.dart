@@ -24,6 +24,11 @@ import 'package:hkd_accounting/features/qt/presentation/pages/tra_cuu_chung_tu_p
 import 'package:hkd_accounting/features/tx/presentation/pages/tra_cuu_thue_page.dart';
 import 'package:hkd_accounting/features/tx/presentation/pages/so_thue_page.dart';
 import 'package:hkd_accounting/features/ct/presentation/pages/bang_luong_page.dart';
+import 'package:hkd_accounting/features/sk/presentation/pages/so_theo_doi_tien_luong_page.dart';
+import 'package:hkd_accounting/features/sk/presentation/pages/so_quy_tien_mat_page.dart';
+import 'package:hkd_accounting/features/sk/presentation/pages/so_ke_toan_page.dart';
+import 'package:hkd_accounting/features/ns/presentation/pages/tinh_luong_page.dart';
+import 'package:hkd_accounting/features/ns/presentation/pages/thanh_toan_luong_page.dart';
 
 class MainPage extends ConsumerStatefulWidget {
   const MainPage({super.key});
@@ -55,6 +60,10 @@ class _MainPageState extends ConsumerState<MainPage> {
     TraCuuChungTuPage(),
     TraCuuThuePage(),
     SoThuePage(),
+    SoKeToanPage(),
+    SoTheoDoiTienLuongPage(),
+    TinhLuongPage(),
+    ThanhToanLuongPage(),
   ];
 
   // Separate pages for navigation (not in bottom nav)
@@ -149,6 +158,22 @@ class _MainPageState extends ConsumerState<MainPage> {
     BottomNavigationBarItem(
       icon: Icon(Icons.book),
       label: 'Sổ thuế',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.account_balance),
+      label: 'Sổ kế toán',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.people),
+      label: 'S5-Lương',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.calculate),
+      label: 'Tính lương',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.payments),
+      label: 'Thanh toán',
     ),
   ];
 

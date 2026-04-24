@@ -5,13 +5,14 @@ Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_
 
 ## Trạng Thái Hiện Tại (Cập nhật 2026-04-24)
 - **Mã nguồn đã triển khai**: 39/43 use cases hoàn thành (91%)
-- **Docstrings**: 229/229 files (100%) - Tất cả files đã có docstring theo chuẩn
+- **Docstrings**: 237/237 files (100%) - Tất cả files đã có docstring theo chuẩn
 - **Sprint 0 - Master Data**: Hoàn thành 9/9 UC (MD-01→MD-08, QT-01) ✅
 - **Sprint 1 - Chứng từ & Quỹ**: Hoàn thành 10/10 UC ✅
 - **Sprint 2 - Kho hàng**: Hoàn thành 7/7 UC ✅
 - **Sprint 3 - Doanh thu & Sổ Kế toán**: Hoàn thành 6/6 UC ✅
 - **Sprint 4 - Thuế**: Hoàn thành 5/5 UC ✅
-- **Cơ sở dữ liệu**: 27 bảng đã tạo
+- **Sprint 5 - Nhân sự & Lương**: Hoàn thành 5/5 UC ✅
+- **Cơ sở dữ liệu**: 29 bảng đã tạo
 - **Flutter**: 3.27.1 tại /tmp/flutter (Linux)
 - **Các lỗi hiện tại**: 0 lỗi app (67 lỗi test - chưa fix)
   - Đã fix Phase 1A: DateTime/String types, fromEntity/toEntity, datasource methods, imports
@@ -23,6 +24,7 @@ Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_
 ## Cập Nhật Gần Đây (2026-04-24)
 | Ngày | Thay đổi | Số lỗi |
 |------|----------|---------|
+| 2026-04-24 | Sprint 5: NS-01, NS-02, NS-03, SK-06 implementation complete | 0 app errors |
 | 2026-04-24 | Fix TT (Quỹ/Tiền): entity constants, datasources, pages, deprecated withOpacity | -15 (124→105) |
 | 2026-04-24 | Fix Master Data, CT, SK, QT, TX, main_page: all remaining errors | -105→0 app errors |
 | 2026-04-23 | Fix Phase 1A-C: Entity imports, Provider patterns, form dialogs | -115 (580→465) |
@@ -95,16 +97,16 @@ Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_
 | 33 | SK-05 | Ghi sổ theo dõi nghĩa vụ thuế (S4-HKD) | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
 | 34 | TX-04 | Theo dõi nộp thuế vào NSNN | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
 
-### Sprint 5 - Nhân sự & Lương (Tuần 14-16)
+### Sprint 5 - Nhân sự & Lương (Tuần 14-16) - HOÀN THÀNH
 **Mục tiêu**: Xây dựng các chức năng quản lý nhân sự và tiền lương
 
-| STT | UC | Tên Use Case | Mô tả ngắn |
-|-----|----|--------------|------------|
-| 35 | NS-01 | Tính lương người lao động | Cần triển khai |
-| 36 | NS-02 | Khấu trừ và theo dõi BHXH/BHYT/BHTN | Cần triển khai |
-| 37 | CT-05 | Lập bảng thanh toán tiền lương & thu nhập NLĐ | Cần triển khai |
-| 38 | NS-03 | Theo dõi và thanh toán lương | Cần triển khai |
-| 39 | SK-06 | Ghi sổ theo dõi thanh toán tiền lương (S5-HKD) | Cần triển khai |
+| STT | UC | Tên Use Case | Mô tả ngắn | Trạng thái |
+|-----|----|--------------|------------|------------|
+| 35 | NS-01 | Tính lương người lao động | Đã triển khai UI tính lương SP/TG | ✅ Hoàn thành |
+| 36 | NS-02 | Khấu trừ và theo dõi BHXH/BHYT/BHTN | Đã triển khai entities & service | ✅ Hoàn thành |
+| 37 | CT-05 | Lập bảng thanh toán tiền lương & thu nhập NLĐ | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
+| 38 | NS-03 | Theo dõi và thanh toán lương | Đã triển khai trang & provider | ✅ Hoàn thành |
+| 39 | SK-06 | Ghi sổ theo dõi thanh toán tiền lương (S5-HKD) | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
 
 ### Sprint 6 - Hoàn thiện (Tuần 17-18)
 **Mục tiêu**: Triển khai các chức năng quản trị hệ thống và hoàn thiện sản phẩm

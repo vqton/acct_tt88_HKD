@@ -43,6 +43,14 @@ import 'package:hkd_accounting/features/ct/domain/repositories/hoa_don_repositor
 import 'package:hkd_accounting/features/sk/data/datasources/so_doanh_thu_local_datasource.dart';
 import 'package:hkd_accounting/features/sk/data/repositories/so_doanh_thu_repository_impl.dart';
 import 'package:hkd_accounting/features/sk/domain/repositories/so_doanh_thu_repository.dart';
+import 'package:hkd_accounting/features/sk/data/datasources/so_theo_doi_tien_luong_local_datasource.dart';
+import 'package:hkd_accounting/features/sk/data/datasources/so_theo_doi_tien_luong_local_datasource_impl.dart';
+import 'package:hkd_accounting/features/sk/data/repositories/so_theo_doi_tien_luong_repository_impl.dart';
+import 'package:hkd_accounting/features/sk/domain/repositories/so_theo_doi_tien_luong_repository.dart';
+import 'package:hkd_accounting/features/ns/data/datasources/thanh_toan_luong_local_datasource.dart';
+import 'package:hkd_accounting/features/ns/data/datasources/thanh_toan_luong_local_datasource_impl.dart';
+import 'package:hkd_accounting/features/ns/data/repositories/thanh_toan_luong_repository_impl.dart';
+import 'package:hkd_accounting/features/ns/domain/repositories/thanh_toan_luong_repository.dart';
 // import 'package:hkd_accounting/features/sk/data/datasources/so_chi_phi_local_datasource.dart';
 // import 'package:hkd_accounting/features/sk/data/repositories/so_chi_phi_repository_impl.dart';
 // import 'package:hkd_accounting/features/sk/domain/repositories/so_chi_phi_repository.dart';
@@ -290,6 +298,50 @@ Future<Database> _initializeDatabase() async {
           so_phai_tra REAL DEFAULT 0,
           ky_nhan TEXT,
           ngay_nhan TEXT
+        )
+      ''');
+
+      // SK-06: Sổ theo dõi thanh toán tiền lương (S5-HKD)
+      await db.execute('''
+        CREATE TABLE so_theo_doi_tien_luong (
+          id TEXT PRIMARY KEY,
+          ky_ke_toan_id TEXT,
+          bang_luong_id TEXT,
+          thang_nam TEXT,
+          ngay_lap TEXT NOT NULL,
+          phai_tra_luong REAL DEFAULT 0,
+          da_tra_luong REAL DEFAULT 0,
+          con_phai_tra_luong REAL DEFAULT 0,
+          bhxh_phai_nop REAL DEFAULT 0,
+          bhxh_da_nop REAL DEFAULT 0,
+          bhxh_con_phai_nop REAL DEFAULT 0,
+          bhyt_phai_nop REAL DEFAULT 0,
+          bhyt_da_nop REAL DEFAULT 0,
+          bhyt_con_phai_nop REAL DEFAULT 0,
+          bhtn_phai_nop REAL DEFAULT 0,
+          bhtn_da_nop REAL DEFAULT 0,
+          bhtn_con_phai_nop REAL DEFAULT 0,
+          trang_thai TEXT DEFAULT 'CHUA_CHUYEN_KHOAN',
+          ghi_chu TEXT,
+          created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+          updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+        )
+      ''');
+
+      // NS-03: Thanh toán lương
+      await db.execute('''
+        CREATE TABLE thanh_toan_luong (
+          id TEXT PRIMARY KEY,
+          bang_luong_id TEXT,
+          thang_nam TEXT,
+          tong_luong_phai_tra REAL DEFAULT 0,
+          da_tra_chuyen_khoan REAL DEFAULT 0,
+          da_tra_tien_mat REAL DEFAULT 0,
+          con_phai_tra REAL DEFAULT 0,
+          ngay_thanh_toan TEXT,
+          trang_thai TEXT DEFAULT 'CHUA_THANH_TOAN',
+          ghi_chu TEXT,
+          created_at TEXT DEFAULT CURRENT_TIMESTAMP
         )
       ''');
 
@@ -553,6 +605,8 @@ getIt.registerLazySingleton<LichSuChungTuLocalDatasource>(() => LichSuChungTuLoc
   getIt.registerLazySingleton<TienThueLocalDatasource>(() => TienThueLocalDatasourceImpl(database));
   getIt.registerLazySingleton<PhieuNopThueLocalDatasource>(() => PhieuNopThueLocalDatasourceImpl(database));
   getIt.registerLazySingleton<SoThueLocalDatasource>(() => SoThueLocalDatasourceImpl(database));
+  getIt.registerLazySingleton<SoTheoDoiTienLuongLocalDatasource>(() => SoTheoDoiTienLuongLocalDatasourceImpl(database));
+  getIt.registerLazySingleton<ThanhToanLuongLocalDatasource>(() => ThanhToanLuongLocalDatasourceImpl(database));
     
   // Register repositories
   getIt.registerLazySingleton<HkdInfoRepository>(() => HkdInfoRepositoryImpl(getIt.get<HkdInfoLocalDatasource>()));
@@ -581,6 +635,8 @@ getIt.registerLazySingleton<LichSuChungTuRepository>(() => LichSuChungTuReposito
   getIt.registerLazySingleton<TienThueTncnRepository>(() => TienThueTncnRepositoryImpl(getIt.get<TienThueLocalDatasource>()));
   getIt.registerLazySingleton<PhieuNopThueRepository>(() => PhieuNopThueRepositoryImpl(getIt.get<PhieuNopThueLocalDatasource>()));
   getIt.registerLazySingleton<SoThueRepository>(() => SoThueRepositoryImpl(getIt.get<SoThueLocalDatasource>()));
+  getIt.registerLazySingleton<SoTheoDoiTienLuongRepository>(() => SoTheoDoiTienLuongRepositoryImpl(getIt.get<SoTheoDoiTienLuongLocalDatasource>()));
+  getIt.registerLazySingleton<ThanhToanLuongRepository>(() => ThanhToanLuongRepositoryImpl(getIt.get<ThanhToanLuongLocalDatasource>()));
     
   // Register use cases
   getIt.registerLazySingleton<CreatePhieuThu>(() => CreatePhieuThu(getIt.get<PhieuThuRepository>()));
