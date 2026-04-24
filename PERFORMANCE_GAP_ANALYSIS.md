@@ -4,12 +4,12 @@
 ### Summary
 | Metric | Target | Current | Gap |
 |--------|--------|---------|-----|
-| Total Use Cases | 43 | 36 | 7 (84%) |
-| Database Tables | 20+ | 27 | 7+ |
-| Entities | 20+ | 27 | 7+ |
-| Implemented Pages | 20+ | 25 | 5+ |
-| Docstrings | 0 | 229 | 229 (100%) ✅ |
-| Flutter Errors | 0 | ~124 | -341 (73% fixed) |
+| Total Use Cases | 43 | 37 | 6 (86%) |
+| Database Tables | 20+ | 29 | 9+ |
+| Entities | 20+ | 29 | 9+ |
+| Implemented Pages | 20+ | 27 | 3+ |
+| Docstrings | 0 | 237 | 237 (100%) ✅ |
+| Flutter Errors | 0 | 0 | ✅ All fixed |
 
 ---
 
@@ -76,28 +76,20 @@
 | TX-04 | Tax Payment Tracking | ✅ Complete | entity, repo, datasource, provider, page |
 | SK-05 | Tax Book (S4-HKD) | ✅ Complete | entity, repo, datasource, provider, page |
 
-### ❌ Not Implemented (10 UC - 23%)
+### ✅ Not Implemented (9 UC - 21%)
 
 | UC | Feature | Priority | Dependencies |
 |----|---------|----------|--------------|
-| CT-05 | Salary Table | HIGH | MD-06 |
 | KH-01 | Goods Receipt | HIGH | CT-03, MD-02 |
 | KH-02 | Goods Issue | HIGH | CT-04, MD-02 |
 | KH-03 | Inventory Check | MEDIUM | KH-01, KH-02 |
-| SK-05 | Tax Book | MEDIUM | TX-01-TX-04 |
-| SK-06 | Salary Book | MEDIUM | NS-01-NS-03 |
-| TX-01 | Taxable Revenue | MEDIUM | CT-06 |
-| TX-02 | VAT Calculation | MEDIUM | TX-01 |
-| TX-03 | PIT Calculation | MEDIUM | MD-03 |
-| TX-04 | Tax Payment | MEDIUM | TX-02, TX-03 |
+| SK-06 | Salary Book | MEDIUM | CT-05 |
 | NS-01 | Salary Calc | MEDIUM | MD-06 |
 | NS-02 | Social Insurance | MEDIUM | NS-01, MD-06 |
 | NS-03 | Salary Payment | MEDIUM | NS-01, NS-02 |
-| QT-01 | User & Permissions | ✅ Complete | entity, repo, datasource, page |
 | QT-02 | Edit Books | LOW | SK-01-SK-06 |
 | QT-03 | Close Period | LOW | All |
 | QT-04 | Summary Report | LOW | All |
-| QT-05 | Archive Search | ✅ Complete | entity, repo, datasource, provider, page |
 | QT-06 | Audit Trail | LOW | All |
 
 ---
