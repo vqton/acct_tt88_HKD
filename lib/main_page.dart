@@ -19,6 +19,7 @@ import 'package:hkd_accounting/features/tt/presentation/pages/tien_gui_ngan_hang
 import 'package:hkd_accounting/features/qt/presentation/pages/tra_cuu_chung_tu_page.dart';
 import 'package:hkd_accounting/features/tx/presentation/pages/tra_cuu_thue_page.dart';
 import 'package:hkd_accounting/features/tx/presentation/pages/so_thue_page.dart';
+import 'package:hkd_accounting/features/ct/presentation/pages/bang_luong_page.dart';
 
 class MainPage extends ConsumerStatefulWidget {
   const MainPage({super.key});
@@ -40,6 +41,7 @@ class _MainPageState extends ConsumerState<MainPage> {
     NguoiLaoDongPage(),
     TaiKhoanNganHangPage(),
     PhieuChiPage(),
+    BangLuongPage(),
     QuyTienMatPage(),
     TienGuiNganHangPage(),
     TraCuuChungTuPage(),
@@ -83,6 +85,10 @@ class _MainPageState extends ConsumerState<MainPage> {
     BottomNavigationBarItem(
       icon: Icon(Icons.receipt),
       label: 'Phiếu chi',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.payments),
+      label: 'Bảng lương',
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.account_balance_wallet),

@@ -82,9 +82,12 @@ import 'package:hkd_accounting/features/ct/domain/usecases/approve_phieu_thu.dar
 import 'package:hkd_accounting/features/ct/domain/usecases/create_phieu_thu.dart';
 import 'package:hkd_accounting/features/ct/domain/usecases/approve_phieu_chi.dart';
 import 'package:hkd_accounting/features/ct/domain/usecases/create_phieu_chi.dart';
-import 'package:hkd_accounting/features/ct/domain/repositories/phieu_thu_repository.dart';
-import 'package:hkd_accounting/features/ct/data/repositories/phieu_thu_repository_impl.dart';
 import 'package:hkd_accounting/features/ct/data/datasources/phieu_thu_local_datasource.dart';
+import 'package:hkd_accounting/features/ct/data/repositories/phieu_thu_repository_impl.dart';
+import 'package:hkd_accounting/features/ct/domain/repositories/phieu_thu_repository.dart';
+import 'package:hkd_accounting/features/ct/data/datasources/bang_luong_local_datasource.dart';
+import 'package:hkd_accounting/features/ct/data/repositories/bang_luong_repository_impl.dart';
+import 'package:hkd_accounting/features/ct/domain/repositories/bang_luong_repository.dart';
 import 'package:hkd_accounting/main_page.dart';
 import 'dart:io' show Directory;
 import 'package:path_provider/path_provider.dart';
@@ -230,6 +233,63 @@ Future<Database> _initializeDatabase() async {
           trang_thai TEXT DEFAULT 'MOI',
           created_at TEXT DEFAULT CURRENT_TIMESTAMP,
           updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+        )
+      ''');
+
+      // CT-05: Bảng lương & thu nhập NLĐ
+      await db.execute('''
+        CREATE TABLE bang_luong (
+          id TEXT PRIMARY KEY,
+          ma_bang_luong TEXT NOT NULL,
+          ky_ke_toan_id TEXT,
+          thang_nam TEXT NOT NULL,
+          ngay_lap TEXT NOT NULL,
+          tong_luong_san_pham REAL DEFAULT 0,
+          tong_luong_thoi_gian REAL DEFAULT 0,
+          tong_phu_cap_quy_luong REAL DEFAULT 0,
+          tong_phu_cap_ngoai_quy REAL DEFAULT 0,
+          tong_tien_thuong REAL DEFAULT 0,
+          tong_thu_nhap REAL DEFAULT 0,
+          tong_bhxh REAL DEFAULT 0,
+          tong_bhyt REAL DEFAULT 0,
+          tong_bhtn REAL DEFAULT 0,
+          tong_thue_tncn REAL DEFAULT 0,
+          tong_khau_tru REAL DEFAULT 0,
+          tong_tra_nhan_vien REAL DEFAULT 0,
+          trang_thai TEXT DEFAULT 'CHO_DUYET',
+          nguoi_lap TEXT,
+          nguoi_duyet TEXT,
+          ngay_duyet TEXT,
+          created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+          updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+        )
+      ''');
+
+      // CT-05: Chi tiết bảng lương
+      await db.execute('''
+        CREATE TABLE chi_tiet_bang_luong (
+          id TEXT PRIMARY KEY,
+          bang_luong_id TEXT NOT NULL,
+          nguoi_lao_dong_id TEXT NOT NULL,
+          ma_nld TEXT NOT NULL,
+          ho_ten TEXT NOT NULL,
+          so_cong REAL DEFAULT 0,
+          don_gia_luong REAL DEFAULT 0,
+          luong_san_pham REAL DEFAULT 0,
+          luong_co_ban REAL DEFAULT 0,
+          he_so_luong REAL DEFAULT 0,
+          phu_cap_quy_luong REAL DEFAULT 0,
+          phu_cap_ngoai_quy REAL DEFAULT 0,
+          tien_thuong REAL DEFAULT 0,
+          thu_nhap REAL DEFAULT 0,
+          bhxh REAL DEFAULT 0,
+          bhyt REAL DEFAULT 0,
+          bhtn REAL DEFAULT 0,
+          thue_tncn REAL DEFAULT 0,
+          tong_khau_tru REAL DEFAULT 0,
+          so_phai_tra REAL DEFAULT 0,
+          ky_nhan TEXT,
+          ngay_nhan TEXT
         )
       ''');
 
@@ -477,6 +537,7 @@ void setupDependencies(Database database) {
   getIt.registerLazySingleton<TaiKhoanNganHangLocalDatasource>(() => TaiKhoanNganHangLocalDatasourceImpl(database));
   getIt.registerLazySingleton<PhieuChiLocalDatasource>(() => PhieuChiLocalDatasourceImpl(database));
   getIt.registerLazySingleton<PhieuThuLocalDatasource>(() => PhieuThuLocalDatasourceImpl(database));
+  getIt.registerLazySingleton<BangLuongLocalDatasource>(() => BangLuongLocalDatasourceImpl(database));
   getIt.registerLazySingleton<PhieuNhapKhoLocalDatasource>(() => PhieuNhapKhoLocalDatasourceImpl(database));
   getIt.registerLazySingleton<PhieuXuatKhoLocalDatasource>(() => PhieuXuatKhoLocalDatasourceImpl(database));
   getIt.registerLazySingleton<HoaDonLocalDatasource>(() => HoaDonLocalDatasourceImpl(database));
@@ -503,6 +564,7 @@ getIt.registerLazySingleton<LichSuChungTuLocalDatasource>(() => LichSuChungTuLoc
   getIt.registerLazySingleton<TaiKhoanNganHangRepository>(() => TaiKhoanNganHangRepositoryImpl(getIt.get<TaiKhoanNganHangLocalDatasource>()));
   getIt.registerLazySingleton<PhieuChiRepository>(() => PhieuChiRepositoryImpl(getIt.get<PhieuChiLocalDatasource>()));
   getIt.registerLazySingleton<PhieuThuRepository>(() => PhieuThuRepositoryImpl(getIt.get<PhieuThuLocalDatasource>()));
+  getIt.registerLazySingleton<BangLuongRepository>(() => BangLuongRepositoryImpl(getIt.get<BangLuongLocalDatasource>()));
   getIt.registerLazySingleton<PhieuNhapKhoRepository>(() => PhieuNhapKhoRepositoryImpl(getIt.get<PhieuNhapKhoLocalDatasource>()));
   getIt.registerLazySingleton<PhieuXuatKhoRepository>(() => PhieuXuatKhoRepositoryImpl(getIt.get<PhieuXuatKhoLocalDatasource>()));
   getIt.registerLazySingleton<HoaDonRepository>(() => HoaDonRepositoryImpl(getIt.get<HoaDonLocalDatasource>()));

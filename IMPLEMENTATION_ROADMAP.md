@@ -4,7 +4,7 @@
 Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_HKD_TT88_2021.md), danh sách use cases (UC_HKD_TT88_2021.md), và tiêu chuẩn chất lượng mã nguồn (CODE_QUALITY.md), cùng với việc đánh giá mã nguồn hiện tại, tài liệu này cung cấp lộ trình triển khai chi tiết và kế hoạch thực thi cho dự án.
 
 ## Trạng Thái Hiện Tại (Cập nhật 2026-04-24)
-- **Mã nguồn đã triển khai**: 36/43 use cases hoàn thành (84%)
+- **Mã nguồn đã triển khai**: 37/43 use cases hoàn thành (86%)
 - **Docstrings**: 229/229 files (100%) - Tất cả files đã có docstring theo chuẩn
 - **Sprint 0 - Master Data**: Hoàn thành 9/9 UC (MD-01→MD-08, QT-01) ✅
 - **Sprint 1 - Chứng từ & Quỹ**: Hoàn thành 10/10 UC ✅
@@ -53,10 +53,11 @@ Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_
 | 10 | CT-08 | Phê duyệt chứng từ (ký duyệt) | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
 | 11 | CT-01 | Lập phiếu thu | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
 | 12 | CT-02 | Lập phiếu chi | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
-| 13 | SK-07 | Ghi sổ quỹ tiền mặt (S6-HKD) | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
-| 14 | TT-01 | Quản lý quỹ tiền mặt | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
-| 15 | SK-08 | Ghi sổ tiền gửi ngân hàng (S7-HKD) | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
-| 16 | TT-02 | Quản lý tiền gửi ngân hàng | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
+| 13 | CT-05 | Lập bảng thanh toán tiền lương & thu nhập NLĐ | Đã triển khai mới | ✅ Hoàn thành |
+| 14 | SK-07 | Ghi sổ quỹ tiền mặt (S6-HKD) | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
+| 15 | TT-01 | Quản lý quỹ tiền mặt | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
+| 16 | SK-08 | Ghi sổ tiền gửi ngân hàng (S7-HKD) | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
+| 17 | TT-02 | Quản lý tiền gửi ngân hàng | Đã triển khai hoàn chỉnh | ✅ Hoàn thành |
 
 ### Sprint 2 - Kho hàng (Tuần 6-8)
 **Mục tiêu**: Triển khai các chức năng quản lý kho hàng và tồn kho
