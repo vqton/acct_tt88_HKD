@@ -145,7 +145,7 @@ class _NguoiLaoDongFormDialogState extends State<NguoiLaoDongFormDialog> {
               if (_ngaySinh != null)
                 Text(
                   'Ngày sinh: ${_ngaySinh!.day}/${_ngaySinh!.month}/${_ngaySinh!.year}',
-                  style: const FontStyle(),
+                  style: const TextStyle(fontStyle: FontStyle.italic),
                 ),
               const SizedBox(height: 16),
               DropdownButtonFormField<String>(
@@ -265,7 +265,7 @@ class _NguoiLaoDongFormDialogState extends State<NguoiLaoDongFormDialog> {
               if (_ngayVaoLam != null)
                 Text(
                   'Ngày vào làm: ${_ngayVaoLam!.day}/${_ngayVaoLam!.month}/${_ngayVaoLam!.year}',
-                  style: const FontStyle(),
+                  style: const TextStyle(fontStyle: FontStyle.italic),
                 ),
               const SizedBox(height: 16),
               ListTile(
@@ -291,7 +291,7 @@ class _NguoiLaoDongFormDialogState extends State<NguoiLaoDongFormDialog> {
               if (_ngayNgungHopDong != null)
                 Text(
                   'Ngày ngừng hợp đồng: ${_ngayNgungHopDong!.day}/${_ngayNgungHopDong!.month}/${_ngayNgungHopDong!.year}',
-                  style: const FontStyle(),
+                  style: const TextStyle(fontStyle: FontStyle.italic),
                 ),
               const SizedBox(height: 16),
               TextFormField(

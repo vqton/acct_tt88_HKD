@@ -4,6 +4,7 @@
 // ============================================================================
 
 import 'package:dartz/dartz.dart';
+import 'package:hkd_accounting/core/error/failures.dart';
 import 'package:hkd_accounting/features/qt/domain/entities/lich_su_chung_tu.dart';
 
 abstract class LichSuChungTuRepository {

@@ -3,7 +3,7 @@
 ## Tóm Tắt
 Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_HKD_TT88_2021.md), danh sách use cases (UC_HKD_TT88_2021.md), và tiêu chuẩn chất lượng mã nguồn (CODE_QUALITY.md), cùng với việc đánh giá mã nguồn hiện tại, tài liệu này cung cấp lộ trình triển khai chi tiết và kế hoạch thực thi cho dự án.
 
-## Trạng Thái Hiện Tại (Cập nhật 2026-04-23)
+## Trạng Thái Hiện Tại (Cập nhật 2026-04-24)
 - **Mã nguồn đã triển khai**: 36/43 use cases hoàn thành (84%)
 - **Docstrings**: 229/229 files (100%) - Tất cả files đã có docstring theo chuẩn
 - **Sprint 0 - Master Data**: Hoàn thành 9/9 UC (MD-01→MD-08, QT-01) ✅
@@ -13,15 +13,17 @@ Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_
 - **Sprint 4 - Thuế**: Hoàn thành 5/5 UC ✅
 - **Cơ sở dữ liệu**: 27 bảng đã tạo
 - **Flutter**: 3.27.1 tại /tmp/flutter (Linux)
-- **Các lỗi hiện tại**: ~465 lỗi (đã giảm ~115 lỗi từ 580)
+- **Các lỗi hiện tại**: ~124 lỗi (đã giảm ~341 lỗi từ 465)
   - Đã fix Phase 1A: DateTime/String types, fromEntity/toEntity, datasource methods, imports
   - Đã fix Phase 1B: Entity assertions, Provider Either.fold() patterns, Extension this.
   - Đã fix Phase 1C: Page provider imports, form dialog init parameters, form dialogs created
-  - Còn lại: SK/TT domain entities, main.dart DI, tests
+  - Đã fix Phase 1D: HkdInfoFormDialog, PhieuThu providers, luu_tru_chung_tu_page provider types
+  - Còn lại: SK/TT domain entities, Right class, Key class usage
 
-## Cập Nhật Gần Đây (2026-04-23)
+## Cập Nhật Gần Đây (2026-04-24)
 | Ngày | Thay đổi | Số lỗi |
 |------|----------|---------|
+| 2026-04-24 | Fix Phase 1D: HkdInfoFormDialog, PhieuThu providers, luu_tru_chung_tu_page | -341 (465→124) |
 | 2026-04-23 | Fix Phase 1A-C: Entity imports, Provider patterns, form dialogs | -115 (580→465) |
 | 2026-04-22 | Fix Phase 1: DateTime/String, fromEntity/toEntity, Double class | -30 (610→580) |
 

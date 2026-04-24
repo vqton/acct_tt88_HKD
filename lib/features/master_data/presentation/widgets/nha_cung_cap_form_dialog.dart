@@ -29,7 +29,7 @@ class _NhaCungCapFormDialogState extends State<NhaCungCapFormDialog> {
   String? _soDienThoai;
   String? _email;
   String? _nguoiDaiDien;
-  DateTime? _ngaySinhNguoiDaiDien;
+  String? _ngaySinhNguoiDaiDien;
   String? _soCccdNguoiDaiDien;
   String? _taiKhoanNganHang;
   String? _tenNganHang;
@@ -181,7 +181,7 @@ class _NhaCungCapFormDialogState extends State<NhaCungCapFormDialog> {
               if (_ngaySinhNguoiDaiDien != null)
                 Text(
                   'Ngày sinh: ${_ngaySinhNguoiDaiDien!.day}/${_ngaySinhNguoiDaiDien!.month}/${_ngaySinhNguoiDaiDien!.year}',
-                  style: const FontStyle(),
+                  style: const TextStyle(fontStyle: FontStyle.italic),
                 ),
               const SizedBox(height: 16),
               TextFormField(

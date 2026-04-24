@@ -62,14 +62,7 @@ class SoQuyTienMat extends Equatable {
     required this.kyKeToanId,
     this.createdAt,
     this.updatedAt,
-  }) : assert(soTien > 0, 'So tien phai lon hon 0'),
-       assert(id.isNotEmpty, 'Id khong duoc de trong'),
-       assert(soChungTu.isNotEmpty, 'So chung tu khong duoc de trong'),
-       assert(loaiChungTu == 'PHIEU_THU' || loaiChungTu == 'PHIEU_CHI', 
-              'Loai chung tu phai la PHIEU_THU hoac PHIEU_CHI'),
-       assert(lyDo.isNotEmpty, 'Ly do khong duoc de trong'),
-       assert(quyTienMatId.isNotEmpty, 'Quy tien mat id khong duoc de trong'),
-       assert(kyKeToanId.isNotEmpty, 'Ky ke toan id khong duoc de trong');
+  });
 
   /// Kiểm tra đây có phải là nghiệp vụ thu tiền không
   /// @return true nếu loaiChungTu là PHIEU_THU

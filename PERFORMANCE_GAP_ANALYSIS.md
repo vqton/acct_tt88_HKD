@@ -9,13 +9,14 @@
 | Entities | 20+ | 27 | 7+ |
 | Implemented Pages | 20+ | 25 | 5+ |
 | Docstrings | 0 | 229 | 229 (100%) ✅ |
-| Flutter Errors | 0 | ~465 | Must fix |
+| Flutter Errors | 0 | ~124 | -341 (73% fixed) |
 
 ---
 
-## Recent Updates (2026-04-23)
+## Recent Updates (2026-04-24)
 | Date | Change | Impact |
 |------|-------|--------|
+| 2026-04-24 | Fix Phase 1D: HkdInfoFormDialog, PhieuThu providers, luu_tru_chung_tu_page | -341 errors (465→124) |
 | 2026-04-23 | Fix Phase 1A-C: Entity imports, Provider patterns, form dialogs | -115 errors (580→465) |
 | 2026-04-22 | Fix Phase 1: DateTime/String, fromEntity/toEntity, Double class | -30 errors (610→580) |
 
@@ -103,6 +104,7 @@
 ## Recent Updates (Maintenance & Bug Fixes)
 | Date | Change | Description |
 |------|--------|-------------|
+| 2026-04-24 | Phase 1D Fixes | Fixed HkdInfoFormDialog field names (21 errors), PhieuThu ngayDuyet field & tongTien getter, luu_tru_chung_tu_page provider types |
 | 2026-04-23 | Flutter Linux Setup | Installed Flutter 3.27.1 to /tmp/flutter |
 | 2026-04-23 | CustomScaffold | Created core/widgets/custom_scaffold.dart |
 | 2026-04-23 | dartz imports | Fixed missing Either imports in master_data providers |
@@ -119,7 +121,7 @@
 | 2026-04-23 | DatabaseFailure | Fixed constructor (44 errors in repos) |
 | 2026-04-23 | Either.fold() | Fixed pattern in 27 providers |
 | 2026-04-23 | DatabaseHelpers | Removed redundant classes from 6 datasources |
-| 2026-04-23 | Flutter Errors | Reduced from 580 to ~230 |
+| 2026-04-23 | Flutter Errors | Reduced from 580 to ~124 (73% fixed) |
 
 ---
 

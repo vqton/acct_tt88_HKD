@@ -43,12 +43,8 @@ class NguoiDungModel extends NguoiDung {
       trangThai: entity.trangThai,
       matKhauHash: entity.matKhauHash,
       hkdId: entity.hkdId,
-      createdAt: entity.createdAt != null
-          ? DateTime.tryParse(entity.createdAt!)
-          : null,
-      updatedAt: entity.updatedAt != null
-          ? DateTime.tryParse(entity.updatedAt!)
-          : null,
+      createdAt: entity.createdAt,
+      updatedAt: entity.updatedAt,
     );
   }
 
@@ -63,8 +59,8 @@ class NguoiDungModel extends NguoiDung {
       trangThai: trangThai,
       matKhauHash: matKhauHash,
       hkdId: hkdId,
-      createdAt: createdAt?.toIso8601String(),
-      updatedAt: updatedAt?.toIso8601String(),
+      createdAt: createdAt,
+      updatedAt: updatedAt,
     );
   }
 

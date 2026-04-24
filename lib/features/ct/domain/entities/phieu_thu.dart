@@ -19,6 +19,7 @@ class PhieuThu extends Equatable {
   final String khachHangId;
   final String kyKeToanId;
   final String trangThai;
+  final DateTime? ngayDuyet;
   final DateTime? createdAt;
   final DateTime? updatedAt;
 
@@ -35,10 +36,16 @@ class PhieuThu extends Equatable {
     required this.hkdInfoId,
     required this.khachHangId,
     required this.kyKeToanId,
-    required this.trangThai,
+    this.trangThai = 'CHO_DUYET',
+    this.ngayDuyet,
     this.createdAt,
     this.updatedAt,
   });
+
+  int get tongTien => soTien;
+
+  bool get isDaDuyet => trangThai == 'DA_DUYET';
+  bool get isChoDuyet => trangThai == 'CHO_DUYET';
 
   PhieuThu copyWith({
     String? id,
@@ -54,6 +61,7 @@ class PhieuThu extends Equatable {
     String? khachHangId,
     String? kyKeToanId,
     String? trangThai,
+    DateTime? ngayDuyet,
     DateTime? createdAt,
     DateTime? updatedAt,
   }) {
@@ -71,6 +79,7 @@ class PhieuThu extends Equatable {
       khachHangId: khachHangId ?? this.khachHangId,
       kyKeToanId: kyKeToanId ?? this.kyKeToanId,
       trangThai: trangThai ?? this.trangThai,
+      ngayDuyet: ngayDuyet ?? this.ngayDuyet,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
     );
@@ -91,6 +100,7 @@ class PhieuThu extends Equatable {
         khachHangId,
         kyKeToanId,
         trangThai,
+        ngayDuyet,
         createdAt,
         updatedAt,
       ];

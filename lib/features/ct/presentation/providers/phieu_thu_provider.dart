@@ -100,3 +100,12 @@ class PhieuThuNotifier extends StateNotifier<PhieuThuFormState> {
 final phieuThuProvider = StateNotifierProvider<PhieuThuNotifier, PhieuThuFormState>((ref) {
   return PhieuThuNotifier();
 });
+
+final phieuThuListProvider = FutureProvider<List<PhieuThu>>((ref) async {
+  final repository = GetIt.instance.get<PhieuThuRepository>();
+  final result = await repository.getPhieuThuList();
+  return result.fold(
+    (failure) => [],
+    (list) => list,
+  );
+});

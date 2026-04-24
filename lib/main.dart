@@ -91,6 +91,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
+final getIt = GetIt.instance;
+
 Future<Database> _initializeDatabase() async {
   WidgetsFlutterBinding.ensureInitialized();
   final Directory documentsDirectory = await getApplicationDocumentsDirectory();

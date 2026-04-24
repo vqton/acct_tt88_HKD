@@ -62,14 +62,7 @@ class SoTienGuiNganHang extends Equatable {
     required this.kyKeToanId,
     this.createdAt,
     this.updatedAt,
-  }) : assert(soTien > 0, 'So tien phai lon hon 0'),
-       assert(id.isNotEmpty, 'Id khong duoc de trong'),
-       assert(soChungTu.isNotEmpty, 'So chung tu khong duoc de trong'),
-       assert(loaiChungTu == 'GUI_TIEN' || loaiChungTu == 'RUT_TIEN', 
-              'Loai chung tu phai la GUI_TIEN hoac RUT_TIEN'),
-       assert(lyDo.isNotEmpty, 'Ly do khong duoc de trong'),
-       assert(taiKhoanNganHangId.isNotEmpty, 'Tai khoan ngan hang id khong duoc de trong'),
-       assert(kyKeToanId.isNotEmpty, 'Ky ke toan id khong duoc de trong');
+  });
 
   /// Kiểm tra đây có phải là nghiệp vụ gửi tiền không
   /// @return true nếu loaiChungTu là GUI_TIEN

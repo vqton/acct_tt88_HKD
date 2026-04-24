@@ -29,9 +29,9 @@ class LuuTruChungTuPage extends ConsumerWidget {
             ]),
             Expanded(
               child: TabBarView(children: [
-                _buildVoucherList(ref.watch(phieuThuProvider), context),
-                _buildVoucherList(ref.watch(phieuChiProvider), context),
-                _buildVoucherList(ref.watch(hoaDonProvider), context),
+                _buildPhieuThuList(context),
+                _buildVoucherList(ref.watch(phieuChiListProvider).whenOrNull(data: (s) => s) ?? [], context),
+                _buildVoucherList(ref.watch(hoaDonProvider).whenOrNull(data: (s) => s) ?? [], context),
                 const Center(child: Text('Nhập/Xuất kho')),
               ]),
             ),
@@ -41,24 +41,29 @@ class LuuTruChungTuPage extends ConsumerWidget {
     );
   }
 
-  Widget _buildVoucherList(AsyncValue list, BuildContext context) {
-    return list.when(
+  Widget _buildVoucherList(List list, BuildContext context) {
+    if (list.isEmpty) {
+      return const Center(child: Text('Không có chứng từ'));
+    }
+    return ListView.builder(itemCount: list.length, itemBuilder: (ctx, i) {
+      final item = list[i];
+      return ListTile(
+        leading: CircleAvatar(child: Icon(_getIcon(item.runtimeType.toString()))),
+        title: Text(item.soPhieu ?? item.soHoaDon ?? '...'),
+        subtitle: Text(DateFormat('dd/MM/yyyy').format(item.ngayLap)),
+        trailing: Chip(
+          label: Text(_getStatusLabel(item.trangThai)),
+          backgroundColor: _getStatusColor(item.trangThai),
+        ),
+      );
+    });
+  }
+
+  Widget _buildPhieuThuList(BuildContext context) {
+    return ref.watch(phieuThuListProvider).when(
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (e, _) => Center(child: Text('Lỗi: $e')),
-      data: (items) => items.isEmpty
-        ? const Center(child: Text('Không có chứng từ'))
-        : ListView.builder(itemCount: items.length, itemBuilder: (ctx, i) {
-          final item = items[i];
-          return ListTile(
-            leading: CircleAvatar(child: Icon(_getIcon(item.runtimeType.toString()))),
-            title: Text(item.soPhieu ?? item.soHoaDon ?? '...'),
-            subtitle: Text(DateFormat('dd/MM/yyyy').format(item.ngayLap)),
-            trailing: Chip(
-              label: Text(_getStatusLabel(item.trangThai)),
-              backgroundColor: _getStatusColor(item.trangThai),
-            ),
-          );
-        }),
+      data: (list) => _buildVoucherList(list, context),
     );
   }
 

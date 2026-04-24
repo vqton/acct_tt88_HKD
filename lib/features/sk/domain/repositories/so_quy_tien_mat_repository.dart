@@ -3,6 +3,10 @@
 // Based on UC_HKD_TT88_2021 - SK-07: Ghi sổ quỹ tiền mặt (S6-HKD)
 // ============================================================================
 
+import 'package:dartz/dartz.dart';
+import 'package:hkd_accounting/core/error/failures.dart';
+import 'package:hkd_accounting/features/sk/domain/entities/so_quy_tien_mat.dart';
+
 /// Repository interface cho các thao tác dữ liệu Sổ quỹ tiền mặt (S6-HKD).
 /// 
 /// Interface này định nghĩa contract để truy xuất và lưu trữ dữ liệu sổ quỹ tiền mặt

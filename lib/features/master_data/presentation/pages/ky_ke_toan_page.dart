@@ -66,7 +66,7 @@ class KyKeToanPage extends ConsumerWidget {
                       title: Text('Trạng thái: ${kyKeToan.trangThaiKy}'),
                       subtitle: kyKeToan.ngayKhoaSoThucTe != null
                           ? Text(
-                              'Ngày khóa sổ: ${kyKeToan.ngayKhoaSoThucTe.day}/${kyKeToan.ngayKhoaSoThucTe.month}/${kyKeToan.ngayKhoaSoThucTe.year}',
+                              'Ngày khóa sổ: ${kyKeToan.ngayKhoaSoThucTe!.day}/${kyKeToan.ngayKhoaSoThucTe!.month}/${kyKeToan.ngayKhoaSoThucTe!.year}',
                             )
                           : null,
                     ),

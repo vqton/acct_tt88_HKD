@@ -3,6 +3,10 @@
 // Based on UC_HKD_TT88_2021 - SK-08: Ghi sổ tiền gửi ngân hàng (S7-HKD)
 // ============================================================================
 
+import 'package:dartz/dartz.dart';
+import 'package:hkd_accounting/core/error/failures.dart';
+import 'package:hkd_accounting/features/sk/domain/entities/so_tien_gui_ngan_hang.dart';
+
 /// Repository interface cho các thao tác dữ liệu Sổ tiền gửi ngân hàng (S7-HKD).
 /// 
 /// Interface này định nghĩa contract để truy xuất và lưu trữ dữ liệu sổ tiền gửi ngân hàng

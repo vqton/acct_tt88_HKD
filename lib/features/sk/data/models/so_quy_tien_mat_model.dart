@@ -3,6 +3,8 @@
 // Based on UC_HKD_TT88_2021 - SK-07: Ghi sổ quỹ tiền mặt (S6-HKD)
 // ============================================================================
 
+import 'package:hkd_accounting/features/sk/domain/entities/so_quy_tien_mat.dart';
+
 /// Model đại diện cho dữ liệu Sổ quỹ tiền mặt (S6-HKD) trong database.
 /// 
 /// Model này xử lý việc chuyển đổi giữa entity domain và database map

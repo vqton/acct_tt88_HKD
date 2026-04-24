@@ -49,6 +49,7 @@ class LichSuChungTuLocalDatasource {
   ) async {
     final conditions = <String>[];
     final args = <dynamic>[];
+    final now = DateTime.now();
 
     conditions.add('1=1');
     if (query != null && query.isNotEmpty) {
@@ -103,6 +104,7 @@ class LichSuChungTuLocalDatasource {
   ) async {
     final conditions = <String>[];
     final args = <dynamic>[];
+    final now = DateTime.now();
 
     conditions.add('1=1');
     if (query != null && query.isNotEmpty) {
@@ -157,6 +159,7 @@ class LichSuChungTuLocalDatasource {
   ) async {
     final conditions = <String>[];
     final args = <dynamic>[];
+    final now = DateTime.now();
 
     conditions.add('1=1');
     if (query != null && query.isNotEmpty) {
@@ -211,6 +214,7 @@ class LichSuChungTuLocalDatasource {
   ) async {
     final conditions = <String>[];
     final args = <dynamic>[];
+    final now = DateTime.now();
 
     conditions.add('1=1');
     if (query != null && query.isNotEmpty) {
@@ -265,6 +269,7 @@ class LichSuChungTuLocalDatasource {
   ) async {
     final conditions = <String>[];
     final args = <dynamic>[];
+    final now = DateTime.now();
 
     conditions.add('1=1');
     if (query != null && query.isNotEmpty) {

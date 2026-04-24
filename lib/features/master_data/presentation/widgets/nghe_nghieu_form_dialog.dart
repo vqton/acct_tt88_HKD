@@ -178,7 +178,7 @@ class _NgheNghiepFormDialogState extends State<NgheNghiepFormDialog> {
               if (_ngayHetHieuLuc != null)
                 Text(
                   'Ngày hết hiệu lực: ${_ngayHetHieuLuc!.day}/${_ngayHetHieuLuc!.month}/${_ngayHetHieuLuc!.year}',
-                  style: const FontStyle(),
+                  style: const TextStyle(fontStyle: FontStyle.italic),
                 ),
             ],
           ),

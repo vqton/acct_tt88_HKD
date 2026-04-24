@@ -22,40 +22,34 @@ class HkdInfoFormDialog extends StatefulWidget {
 
 class _HkdInfoFormDialogState extends State<HkdInfoFormDialog> {
   final _formKey = GlobalKey<FormState>();
-  late String _maHkd;
   late String _tenHkd;
-  late String _diaChi;
+  late String _diaChiTruSo;
   late String _maSoThue;
   String? _soDienThoai;
   String? _email;
-  late String _loaiHkd; // HKD, CNKD
-  late String _nguoiDaiDien;
-  late String _dienGiai;
+  late String _phuongPhapTinhGiaXuatKho;
+  late String _trangThai;
 
   @override
   void initState() {
     super.initState();
     if (widget.initialHkdInfo != null) {
       final hkd = widget.initialHkdInfo!;
-      _maHkd = hkd.maHkd;
       _tenHkd = hkd.tenHkd;
-      _diaChi = hkd.diaChi;
+      _diaChiTruSo = hkd.diaChiTruSo ?? '';
       _maSoThue = hkd.maSoThue;
-      _soDienThoai = hkd.soDienThoai;
-      _email = hkd.email;
-      _loaiHkd = hkd.loaiHkd;
-      _nguoiDaiDien = hkd.nguoiDaiDien;
-      _dienGiai = hkd.dienGiai;
+      _soDienThoai = hkd.hoTenNguoiDaiDien;
+      _email = null;
+      _phuongPhapTinhGiaXuatKho = hkd.phuongPhapTinhGiaXuatKho;
+      _trangThai = hkd.trangThai;
     } else {
-      _maHkd = '';
       _tenHkd = '';
-      _diaChi = '';
+      _diaChiTruSo = '';
       _maSoThue = '';
       _soDienThoai = null;
       _email = null;
-      _loaiHkd = 'HKD';
-      _nguoiDaiDien = '';
-      _dienGiai = '';
+      _phuongPhapTinhGiaXuatKho = 'BINH_QUAN';
+      _trangThai = 'HOAT_DONG';
     }
   }
 
@@ -70,22 +64,16 @@ class _HkdInfoFormDialogState extends State<HkdInfoFormDialog> {
             mainAxisSize: MainAxisSize.min,
             children: [
               TextFormField(
-                initialValue: _maHkd,
-                decoration: const InputDecoration(labelText: 'Mã HKD'),
-                validator: (value) => value!.isEmpty ? 'Required' : null,
-                onSaved: (value) => _maHkd = value!,
-              ),
-              TextFormField(
                 initialValue: _tenHkd,
                 decoration: const InputDecoration(labelText: 'Tên HKD'),
                 validator: (value) => value!.isEmpty ? 'Required' : null,
                 onSaved: (value) => _tenHkd = value!,
               ),
               TextFormField(
-                initialValue: _diaChi,
-                decoration: const InputDecoration(labelText: 'Địa chỉ'),
+                initialValue: _diaChiTruSo,
+                decoration: const InputDecoration(labelText: 'Địa chỉ trụ sở'),
                 validator: (value) => value!.isEmpty ? 'Required' : null,
-                onSaved: (value) => _diaChi = value!,
+                onSaved: (value) => _diaChiTruSo = value!,
               ),
               TextFormField(
                 initialValue: _maSoThue,
@@ -93,36 +81,15 @@ class _HkdInfoFormDialogState extends State<HkdInfoFormDialog> {
                 validator: (value) => value!.isEmpty ? 'Required' : null,
                 onSaved: (value) => _maSoThue = value!,
               ),
-              TextFormField(
-                initialValue: _soDienThoai,
-                decoration: const InputDecoration(labelText: 'Số điện thoại'),
-                onSaved: (value) => _soDienThoai = value,
-              ),
-              TextFormField(
-                initialValue: _email,
-                decoration: const InputDecoration(labelText: 'Email'),
-                onSaved: (value) => _email = value,
-              ),
               DropdownButtonFormField<String>(
-                value: _loaiHkd,
-                decoration: const InputDecoration(labelText: 'Loại HKD'),
+                value: _phuongPhapTinhGiaXuatKho,
+                decoration: const InputDecoration(labelText: 'Phương pháp tính giá xuất kho'),
                 items: const [
-                  DropdownMenuItem(value: 'HKD', child: Text('Hộ kinh doanh')),
-                  DropdownMenuItem(value: 'CNKD', child: Text('Cá nhân kinh doanh')),
+                  DropdownMenuItem(value: 'BINH_QUAN', child: Text('Bình quân')),
+                  DropdownMenuItem(value: 'FIFO', child: Text('FIFO')),
                 ],
-                onChanged: (value) => setState(() => _loaiHkd = value!),
-                onSaved: (value) => _loaiHkd = value!,
-              ),
-              TextFormField(
-                initialValue: _nguoiDaiDien,
-                decoration: const InputDecoration(labelText: 'Người đại diện'),
-                validator: (value) => value!.isEmpty ? 'Required' : null,
-                onSaved: (value) => _nguoiDaiDien = value!,
-              ),
-              TextFormField(
-                initialValue: _dienGiai,
-                decoration: const InputDecoration(labelText: 'Diễn giải'),
-                onSaved: (value) => _dienGiai = value!,
+                onChanged: (value) => setState(() => _phuongPhapTinhGiaXuatKho = value!),
+                onSaved: (value) => _phuongPhapTinhGiaXuatKho = value!,
               ),
             ],
           ),
@@ -137,30 +104,14 @@ class _HkdInfoFormDialogState extends State<HkdInfoFormDialog> {
           onPressed: () {
             if (_formKey.currentState!.validate()) {
               _formKey.currentState!.save();
-              final hkdInfo = widget.initialHkdInfo != null
-                  ? widget.initialHkdInfo!.copyWith(
-                      maHkd: _maHkd,
-                      tenHkd: _tenHkd,
-                      diaChi: _diaChi,
-                      maSoThue: _maSoThue,
-                      soDienThoai: _soDienThoai,
-                      email: _email,
-                      loaiHkd: _loaiHkd,
-                      nguoiDaiDien: _nguoiDaiDien,
-                      dienGiai: _dienGiai,
-                    )
-                  : HkdInfo(
-                      id: DateTime.now().millisecondsSinceEpoch.toString(),
-                      maHkd: _maHkd,
-                      tenHkd: _tenHkd,
-                      diaChi: _diaChi,
-                      maSoThue: _maSoThue,
-                      soDienThoai: _soDienThoai,
-                      email: _email,
-                      loaiHkd: _loaiHkd,
-                      nguoiDaiDien: _nguoiDaiDien,
-                      dienGiai: _dienGiai,
-                    );
+              final hkdInfo = HkdInfo(
+                id: widget.initialHkdInfo?.id ?? DateTime.now().millisecondsSinceEpoch.toString(),
+                tenHkd: _tenHkd,
+                diaChiTruSo: _diaChiTruSo,
+                maSoThue: _maSoThue,
+                phuongPhapTinhGiaXuatKho: _phuongPhapTinhGiaXuatKho,
+                trangThai: _trangThai,
+              );
               widget.onSave(hkdInfo);
             }
           },
