@@ -4,10 +4,10 @@
 ### Summary
 | Metric | Target | Current | Gap |
 |--------|--------|---------|-----|
-| Total Use Cases | 43 | 37 | 6 (86%) |
+| Total Use Cases | 43 | 39 | 4 (91%) |
 | Database Tables | 20+ | 29 | 9+ |
 | Entities | 20+ | 29 | 9+ |
-| Implemented Pages | 20+ | 27 | 3+ |
+| Implemented Pages | 20+ | 29 | 3+ |
 | Docstrings | 0 | 237 | 237 (100%) ✅ |
 | Flutter Errors | 0 | 0 | ✅ All fixed |
 
@@ -62,9 +62,12 @@
 | SK-07 | Cash Book (S6-HKD) | ✅ Complete | entity, page |
 | SK-08 | Bank Book (S7-HKD) | ✅ Complete | entity, page |
 
-### ✅ Warehouse (1/4 - 25%)
+### ✅ Warehouse (4/4 - 100%)
 | UC | Feature | Status | Files |
 |----|---------|--------|-------|
+| KH-01 | Goods Receipt (Nhập kho) | ✅ Complete | page, nav integrated |
+| KH-02 | Goods Issue (Xuất kho) | ✅ Complete | page, nav integrated |
+| KH-03 | Inventory Check (Kiểm kê) | ✅ Complete | page, nav integrated |
 | KH-04 | COGS Calculation | ✅ Complete | entity, service, provider, page |
 
 ### ✅ Tax (5/5 - 100%)
@@ -76,13 +79,10 @@
 | TX-04 | Tax Payment Tracking | ✅ Complete | entity, repo, datasource, provider, page |
 | SK-05 | Tax Book (S4-HKD) | ✅ Complete | entity, repo, datasource, provider, page |
 
-### ✅ Not Implemented (9 UC - 21%)
+### ✅ Not Implemented (4 UC - 9%)
 
 | UC | Feature | Priority | Dependencies |
 |----|---------|----------|--------------|
-| KH-01 | Goods Receipt | HIGH | CT-03, MD-02 |
-| KH-02 | Goods Issue | HIGH | CT-04, MD-02 |
-| KH-03 | Inventory Check | MEDIUM | KH-01, KH-02 |
 | SK-06 | Salary Book | MEDIUM | CT-05 |
 | NS-01 | Salary Calc | MEDIUM | MD-06 |
 | NS-02 | Social Insurance | MEDIUM | NS-01, MD-06 |
