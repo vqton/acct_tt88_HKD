@@ -166,7 +166,6 @@ class _HangHoaFormDialogState extends State<HangHoaFormDialog> {
                 decoration: const InputDecoration(
                   labelText: 'Mô tả (tùy chọn)',
                   border: OutlineInputBorder(),
-                  maxLines: 3,
                 ),
                 initialValue: _moTa,
                 maxLines: 3,

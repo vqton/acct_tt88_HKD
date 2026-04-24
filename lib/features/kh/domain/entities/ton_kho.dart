@@ -38,6 +38,14 @@ class TonKho extends Equatable {
     this.updatedAt,
   });
 
+  factory TonKho.empty({required String kyKeToanId, required String hangHoaId}) {
+    return TonKho(
+      id: '',
+      kyKeToanId: kyKeToanId,
+      hangHoaId: hangHoaId,
+    );
+  }
+
   double get tonDauDonGia =>
       tonDauSoLuong > 0 ? tonDauThanhTien / tonDauSoLuong : 0;
 

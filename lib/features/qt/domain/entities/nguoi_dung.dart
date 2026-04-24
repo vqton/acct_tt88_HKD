@@ -63,14 +63,14 @@ class NguoiDung extends Equatable {
   bool get isThuKho => vaiTro == 'THU_KHO';
   bool get isNguoiDaiDien => vaiTro == 'NGUOI_DAI_DIEN';
 
-  bool coTheLapChungTu => isKeToan;
-  bool coThePheDuyetChungTu => isNguoiDaiDien;
-  bool coTheThuChiTienMat => isThuQuy;
-  bool coTheNhapXuatKho => isThuKho;
-  bool coTheGhiSoKeToan => isKeToan;
-  bool coTheTinhThue => isKeToan;
-  bool coTheCauHinhHeThong => isAdmin;
-  bool coThePhanQuyen => isAdmin;
+  bool get coTheLapChungTu => isKeToan;
+  bool get coThePheDuyetChungTu => isNguoiDaiDien;
+  bool get coTheThuChiTienMat => isThuQuy;
+  bool get coTheNhapXuatKho => isThuKho;
+  bool get coTheGhiSoKeToan => isKeToan;
+  bool get coTheTinhThue => isKeToan;
+  bool get coTheCauHinhHeThong => isAdmin;
+  bool get coThePhanQuyen => isAdmin;
 
   NguoiDung copyWith({
     String? id,

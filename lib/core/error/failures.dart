@@ -31,3 +31,7 @@ class ValidationFailure extends Failure {
 class EmptyFailure extends Failure {
   const EmptyFailure([String message = 'No data found']) : super(message);
 }
+
+class NotFoundFailure extends Failure {
+  const NotFoundFailure([String message = 'Not found']) : super(message);
+}

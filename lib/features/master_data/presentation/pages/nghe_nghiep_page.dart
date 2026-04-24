@@ -54,7 +54,7 @@ class NgheNghiepPage extends ConsumerWidget {
               return _NgheNghiepTile(
                 ngheNghieu: ngheNghieu,
                 onEdit: () => _showFormDialog(context, ref, ngheNghieu),
-                onDelete: () => _deleteNgheNghiep(context, ref, ngheNghieu.id),
+                onDelete: () => ref.read(ngheNghieuProvider.notifier).deleteNgheNghiep(ngheNghieu.id),
               );
             },
           );
@@ -75,10 +75,6 @@ class NgheNghiepPage extends ConsumerWidget {
         },
       ),
     );
-  }
-
-  Future<void> _deleteNgheNghiep(WidgetRef ref, String id) async {
-    await ref.read(ngheNghieuProvider.notifier).deleteNgheNghiep(id);
   }
 }
 

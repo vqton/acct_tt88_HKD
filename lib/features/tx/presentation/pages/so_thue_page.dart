@@ -30,17 +30,17 @@ class SoThuePage extends ConsumerWidget {
         error: (e, _) => Center(child: Text('Lỗi: $e')),
         data: (list) {
           if (list.isEmpty) {
-            return const Center(
+            return Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(Icons.book, size: 48, color: Colors.grey),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text('Chưa có dữ liệu S4-HKD'),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                   Text(
                     'Cần chạy TX-01, TX-02, TX-03 trước',
-                    style: TextStyle(color: Colors.grey.shade600),
+                    style: TextStyle(color: Colors.grey[600]),
                   ),
                 ],
               ),

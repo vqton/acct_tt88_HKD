@@ -29,7 +29,7 @@ class _NhaCungCapFormDialogState extends State<NhaCungCapFormDialog> {
   String? _soDienThoai;
   String? _email;
   String? _nguoiDaiDien;
-  String? _ngaySinhNguoiDaiDien;
+  DateTime? _ngaySinhNguoiDaiDien;
   String? _soCccdNguoiDaiDien;
   String? _taiKhoanNganHang;
   String? _tenNganHang;
@@ -48,7 +48,9 @@ class _NhaCungCapFormDialogState extends State<NhaCungCapFormDialog> {
       _soDienThoai = nhaCungCap.soDienThoai;
       _email = nhaCungCap.email;
       _nguoiDaiDien = nhaCungCap.nguoiDaiDien;
-      _ngaySinhNguoiDaiDien = nhaCungCap.ngaySinhNguoiDaiDien;
+      _ngaySinhNguoiDaiDien = nhaCungCap.ngaySinhNguoiDaiDien != null 
+          ? DateTime.tryParse(nhaCungCap.ngaySinhNguoiDaiDien!) 
+          : null;
       _soCccdNguoiDaiDien = nhaCungCap.soCccdNguoiDaiDien;
       _taiKhoanNganHang = nhaCungCap.taiKhoanNganHang;
       _tenNganHang = nhaCungCap.tenNganHang;
@@ -264,7 +266,7 @@ class _NhaCungCapFormDialogState extends State<NhaCungCapFormDialog> {
                 soDienThoai: _soDienThoai,
                 email: _email,
                 nguoiDaiDien: _nguoiDaiDien,
-                ngaySinhNguoiDaiDien: _ngaySinhNguoiDaiDien,
+                ngaySinhNguoiDaiDien: _ngaySinhNguoiDaiDien?.toIso8601String(),
                 soCccdNguoiDaiDien: _soCccdNguoiDaiDien,
                 taiKhoanNganHang: _taiKhoanNganHang,
                 tenNganHang: _tenNganHang,

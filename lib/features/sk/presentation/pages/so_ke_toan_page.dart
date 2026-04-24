@@ -28,7 +28,7 @@ class SoKeToanPage extends ConsumerWidget {
           const SizedBox(height: 12),
           _buildSoCard(context, 'S6-HKD', 'Sổ quỹ tiền mặt', Icons.payments),
           const SizedBox(height: 12),
-          _buildSoCard(context, 'S7-HKD', 'Sổ tiền gửi ngân hàng', Icons.account_balance_bank),
+          _buildSoCard(context, 'S7-HKD', 'Sổ tiền gửi ngân hàng', Icons.account_balance),
           const SizedBox(height: 24),
           ElevatedButton.icon(
             onPressed: () => _showOpenBooksDialog(context),

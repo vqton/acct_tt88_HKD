@@ -126,7 +126,6 @@ class SoVatTuHangHoaPage extends ConsumerWidget {
           style: Theme.of(context).textTheme.bodySmall,
         ),
       ],
-      );
-    }
+    );
   }
 }

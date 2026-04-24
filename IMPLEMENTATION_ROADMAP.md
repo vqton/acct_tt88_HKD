@@ -13,7 +13,7 @@ Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_
 - **Sprint 4 - Thuế**: Hoàn thành 5/5 UC ✅
 - **Cơ sở dữ liệu**: 27 bảng đã tạo
 - **Flutter**: 3.27.1 tại /tmp/flutter (Linux)
-- **Các lỗi hiện tại**: ~124 lỗi (đã giảm ~341 lỗi từ 465)
+- **Các lỗi hiện tại**: 0 lỗi app (67 lỗi test - chưa fix)
   - Đã fix Phase 1A: DateTime/String types, fromEntity/toEntity, datasource methods, imports
   - Đã fix Phase 1B: Entity assertions, Provider Either.fold() patterns, Extension this.
   - Đã fix Phase 1C: Page provider imports, form dialog init parameters, form dialogs created
@@ -23,8 +23,8 @@ Dựa trên phân tích toàn diện tài liệu thiết kế hệ thống (SDD_
 ## Cập Nhật Gần Đây (2026-04-24)
 | Ngày | Thay đổi | Số lỗi |
 |------|----------|---------|
-| 2026-04-24 | Fix Phase 1D: HkdInfoFormDialog, PhieuThu providers, luu_tru_chung_tu_page | -341 (465→124) |
 | 2026-04-24 | Fix TT (Quỹ/Tiền): entity constants, datasources, pages, deprecated withOpacity | -15 (124→105) |
+| 2026-04-24 | Fix Master Data, CT, SK, QT, TX, main_page: all remaining errors | -105→0 app errors |
 | 2026-04-23 | Fix Phase 1A-C: Entity imports, Provider patterns, form dialogs | -115 (580→465) |
 | 2026-04-22 | Fix Phase 1: DateTime/String, fromEntity/toEntity, Double class | -30 (610→580) |
 

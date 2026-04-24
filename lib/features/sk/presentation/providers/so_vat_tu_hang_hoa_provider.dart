@@ -50,9 +50,9 @@ class SoVatTuHangHoaNotifier extends StateNotifier<AsyncValue<List<TonKho>>> {
       (failure) async {},
       (currentTonKho) async {
         final updated = service.calculateFromNhapKho(
-          currentTonKho ?? TonKho.empty(),
-          soLuongNhap,
-          thanhTienNhap,
+          currentTonKho: currentTonKho ?? TonKho.empty(kyKeToanId: kyKeToanId, hangHoaId: hangHoaId),
+          soLuongNhap: soLuongNhap,
+          thanhTienNhap: thanhTienNhap,
         );
         await repository.saveTonKho(updated);
       },
@@ -72,8 +72,8 @@ class SoVatTuHangHoaNotifier extends StateNotifier<AsyncValue<List<TonKho>>> {
       (failure) async {},
       (currentTonKho) async {
         final updated = service.calculateFromXuatKho(
-          currentTonKho ?? TonKho.empty(),
-          soLuongXuat,
+          currentTonKho: currentTonKho ?? TonKho.empty(kyKeToanId: kyKeToanId, hangHoaId: hangHoaId),
+          soLuongXuat: soLuongXuat,
         );
         await repository.saveTonKho(updated);
       },

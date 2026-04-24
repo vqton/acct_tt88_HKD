@@ -9,7 +9,8 @@ import 'package:hkd_accounting/features/kh/domain/services/tinh_gia_xuat_kho_ser
 class SoVatTuHangHoaService {
   final TinhGiaXuatKhoService cogsService;
 
-  SoVatTuHangHoaService({this.cogsService = const TinhGiaXuatKhoService()});
+  SoVatTuHangHoaService({TinhGiaXuatKhoService? cogsService}) 
+      : cogsService = cogsService ?? TinhGiaXuatKhoService();
 
   TonKho calculateFromNhapKho({
     required TonKho currentTonKho,

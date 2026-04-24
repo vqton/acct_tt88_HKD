@@ -8,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hkd_accounting/core/error/failures.dart';
 import 'package:hkd_accounting/features/ct/domain/entities/phieu_thu.dart';
+import 'package:hkd_accounting/features/ct/domain/repositories/phieu_thu_repository.dart';
 import 'package:hkd_accounting/features/ct/domain/usecases/create_phieu_thu.dart';
 import 'package:hkd_accounting/features/ct/domain/usecases/approve_phieu_thu.dart';
 

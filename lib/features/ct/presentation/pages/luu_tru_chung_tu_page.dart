@@ -29,9 +29,9 @@ class LuuTruChungTuPage extends ConsumerWidget {
             ]),
             Expanded(
               child: TabBarView(children: [
-                _buildPhieuThuList(context),
-                _buildVoucherList(ref.watch(phieuChiListProvider).whenOrNull(data: (s) => s) ?? [], context),
-                _buildVoucherList(ref.watch(hoaDonProvider).whenOrNull(data: (s) => s) ?? [], context),
+                _buildPhieuThuList(ref),
+                _buildVoucherList(ref.watch(phieuChiListProvider).whenOrNull(data: (s) => s) ?? []),
+                _buildVoucherList(ref.watch(hoaDonProvider).whenOrNull(data: (s) => s) ?? []),
                 const Center(child: Text('Nhập/Xuất kho')),
               ]),
             ),
@@ -41,7 +41,7 @@ class LuuTruChungTuPage extends ConsumerWidget {
     );
   }
 
-  Widget _buildVoucherList(List list, BuildContext context) {
+  Widget _buildVoucherList(List list) {
     if (list.isEmpty) {
       return const Center(child: Text('Không có chứng từ'));
     }
@@ -59,11 +59,11 @@ class LuuTruChungTuPage extends ConsumerWidget {
     });
   }
 
-  Widget _buildPhieuThuList(BuildContext context) {
+  Widget _buildPhieuThuList(WidgetRef ref) {
     return ref.watch(phieuThuListProvider).when(
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (e, _) => Center(child: Text('Lỗi: $e')),
-      data: (list) => _buildVoucherList(list, context),
+      data: (list) => _buildVoucherList(list),
     );
   }
 

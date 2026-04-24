@@ -43,9 +43,9 @@ import 'package:hkd_accounting/features/ct/domain/repositories/hoa_don_repositor
 import 'package:hkd_accounting/features/sk/data/datasources/so_doanh_thu_local_datasource.dart';
 import 'package:hkd_accounting/features/sk/data/repositories/so_doanh_thu_repository_impl.dart';
 import 'package:hkd_accounting/features/sk/domain/repositories/so_doanh_thu_repository.dart';
-import 'package:hkd_accounting/features/sk/data/datasources/so_chi_phi_local_datasource.dart';
-import 'package:hkd_accounting/features/sk/data/repositories/so_chi_phi_repository_impl.dart';
-import 'package:hkd_accounting/features/sk/domain/repositories/so_chi_phi_repository.dart';
+// import 'package:hkd_accounting/features/sk/data/datasources/so_chi_phi_local_datasource.dart';
+// import 'package:hkd_accounting/features/sk/data/repositories/so_chi_phi_repository_impl.dart';
+// import 'package:hkd_accounting/features/sk/domain/repositories/so_chi_phi_repository.dart';
 import 'package:hkd_accounting/features/kh/data/datasources/ton_kho_local_datasource.dart';
 import 'package:hkd_accounting/features/kh/data/repositories/ton_kho_repository_impl.dart';
 import 'package:hkd_accounting/features/kh/domain/repositories/ton_kho_repository.dart';
@@ -85,7 +85,7 @@ import 'package:hkd_accounting/features/ct/domain/usecases/create_phieu_chi.dart
 import 'package:hkd_accounting/features/ct/domain/repositories/phieu_thu_repository.dart';
 import 'package:hkd_accounting/features/ct/data/repositories/phieu_thu_repository_impl.dart';
 import 'package:hkd_accounting/features/ct/data/datasources/phieu_thu_local_datasource.dart';
-import 'package:hkd_accounting/lib/main_page.dart';
+import 'package:hkd_accounting/main_page.dart';
 import 'dart:io' show Directory;
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -481,7 +481,7 @@ void setupDependencies(Database database) {
   getIt.registerLazySingleton<PhieuXuatKhoLocalDatasource>(() => PhieuXuatKhoLocalDatasourceImpl(database));
   getIt.registerLazySingleton<HoaDonLocalDatasource>(() => HoaDonLocalDatasourceImpl(database));
   getIt.registerLazySingleton<SoDoanhThuLocalDatasource>(() => SoDoanhThuLocalDatasourceImpl(database));
-  getIt.registerLazySingleton<SoChiPhiLocalDatasource>(() => SoChiPhiLocalDatasourceImpl(database));
+  // getIt.registerLazySingleton<SoChiPhiLocalDatasource>(() => SoChiPhiLocalDatasourceImpl(database));
   getIt.registerLazySingleton<TonKhoLocalDatasource>(() => TonKhoLocalDatasourceImpl(database));
   getIt.registerLazySingleton<QuyTienMatLocalDatasource>(() => QuyTienMatLocalDatasourceImpl(database));
   getIt.registerLazySingleton<TienGuiNganHangLocalDatasource>(() => TienGuiNganHangLocalDatasourceImpl(database));
@@ -507,7 +507,7 @@ getIt.registerLazySingleton<LichSuChungTuLocalDatasource>(() => LichSuChungTuLoc
   getIt.registerLazySingleton<PhieuXuatKhoRepository>(() => PhieuXuatKhoRepositoryImpl(getIt.get<PhieuXuatKhoLocalDatasource>()));
   getIt.registerLazySingleton<HoaDonRepository>(() => HoaDonRepositoryImpl(getIt.get<HoaDonLocalDatasource>()));
   getIt.registerLazySingleton<SoDoanhThuRepository>(() => SoDoanhThuRepositoryImpl(getIt.get<SoDoanhThuLocalDatasource>()));
-  getIt.registerLazySingleton<SoChiPhiRepository>(() => SoChiPhiRepositoryImpl(getIt.get<SoChiPhiLocalDatasource>()));
+  // getIt.registerLazySingleton<SoChiPhiRepository>(() => SoChiPhiRepositoryImpl(getIt.get<SoChiPhiLocalDatasource>()));
   getIt.registerLazySingleton<TonKhoRepository>(() => TonKhoRepositoryImpl(getIt.get<TonKhoLocalDatasource>()));
   getIt.registerLazySingleton<QuyTienMatRepository>(() => QuyTienMatRepositoryImpl(getIt.get<QuyTienMatLocalDatasource>()));
   getIt.registerLazySingleton<TienGuiNganHangRepository>(() => TienGuiNganHangRepositoryImpl(getIt.get<TienGuiNganHangLocalDatasource>()));
