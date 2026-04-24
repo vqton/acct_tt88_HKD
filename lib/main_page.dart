@@ -9,6 +9,10 @@ import 'package:hkd_accounting/features/master_data/presentation/pages/hkd_info_
 import 'package:hkd_accounting/features/master_data/presentation/pages/ky_ke_toan_page.dart';
 import 'package:hkd_accounting/features/master_data/presentation/pages/nghe_nghiep_page.dart';
 import 'package:hkd_accounting/features/master_data/presentation/pages/hang_hoa_page.dart';
+import 'package:hkd_accounting/features/kh/presentation/pages/nhap_kho_page.dart';
+import 'package:hkd_accounting/features/kh/presentation/pages/xuat_kho_page.dart';
+import 'package:hkd_accounting/features/kh/presentation/pages/ton_kho_page.dart';
+import 'package:hkd_accounting/features/kh/presentation/pages/kiem_ke_page.dart';
 import 'package:hkd_accounting/features/master_data/presentation/pages/nha_cung_cap_page.dart';
 import 'package:hkd_accounting/features/master_data/presentation/pages/khach_hang_page.dart';
 import 'package:hkd_accounting/features/master_data/presentation/pages/nguoi_lao_dong_page.dart';
@@ -44,10 +48,30 @@ class _MainPageState extends ConsumerState<MainPage> {
     BangLuongPage(),
     QuyTienMatPage(),
     TienGuiNganHangPage(),
+    TonKhoPage(),
+    NhapKhoPage(),
+    XuatKhoPage(),
+    KiemKePage(),
     TraCuuChungTuPage(),
     TraCuuThuePage(),
     SoThuePage(),
   ];
+
+  // Separate pages for navigation (not in bottom nav)
+  Widget getKhoPage(int index) {
+    switch (index) {
+      case 0:
+        return const TonKhoPage();
+      case 1:
+        return const NhapKhoPage();
+      case 2:
+        return const XuatKhoPage();
+      case 3:
+        return const KiemKePage();
+      default:
+        return const TonKhoPage();
+    }
+  }
 
   static const List<BottomNavigationBarItem> _bottomNavigationBarItems = <BottomNavigationBarItem>[
     BottomNavigationBarItem(
@@ -97,6 +121,22 @@ class _MainPageState extends ConsumerState<MainPage> {
     BottomNavigationBarItem(
       icon: Icon(Icons.account_balance),
       label: 'Tiền gửi NH',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.inventory_2),
+      label: 'Tồn kho',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.move_to_inbox),
+      label: 'Nhập kho',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.unarchive),
+      label: 'Xuất kho',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.fact_check),
+      label: 'Kiểm kê',
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.search),
