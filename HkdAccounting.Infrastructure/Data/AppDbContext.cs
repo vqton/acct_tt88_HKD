@@ -33,6 +33,11 @@ namespace HkdAccounting.Infrastructure.Data
         public DbSet<DmHangHoa> DmHangHoas { get; set; }
 
         /// <summary>
+        /// DoiTac table
+        /// </summary>
+        public DbSet<DoiTac> DoiTacs { get; set; }
+
+        /// <summary>
         /// Configure database schema and relationships
         /// </summary>
         /// <param name="modelBuilder">Model builder</param>
@@ -139,6 +144,44 @@ namespace HkdAccounting.Infrastructure.Data
                     .WithMany()
                     .HasForeignKey(e => e.NhomNgheId)
                     .OnDelete(DeleteBehavior.SetNull);
+            });
+
+            // Configure DoiTac
+            modelBuilder.Entity<DoiTac>(entity =>
+            {
+                entity.ToTable("doi_tac");
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.MaDoiTac)
+                    .IsRequired()
+                    .HasMaxLength(20);
+                entity.Property(e => e.TenDoiTac)
+                    .IsRequired()
+                    .HasMaxLength(255);
+                entity.Property(e => e.MaSoThue)
+                    .HasMaxLength(20);
+                entity.Property(e => e.DiaChi)
+                    .HasMaxLength(500);
+                entity.Property(e => e.SoDienThoai)
+                    .HasMaxLength(20);
+                entity.Property(e => e.Email)
+                    .HasMaxLength(100);
+                entity.Property(e => e.HkdInfoId)
+                    .IsRequired();
+                entity.Property(e => e.TrangThai)
+                    .HasMaxLength(20)
+                    .HasDefaultValue("DANG_HOP_TAC");
+                entity.Property(e => e.CreatedAt)
+                    .HasDefaultValue(DateTime.UtcNow);
+                entity.Property(e => e.UpdatedAt)
+                    .HasDefaultValue(DateTime.UtcNow);
+
+                entity.HasIndex(e => e.MaDoiTac)
+                    .IsUnique();
+
+                entity.HasOne(e => e.HkdInfo)
+                    .WithMany()
+                    .HasForeignKey(e => e.HkdInfoId)
+                    .OnDelete(DeleteBehavior.Cascade);
             });
         }
     }
