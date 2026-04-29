@@ -48,7 +48,7 @@
 | MD-04 | Partners (Suppliers) | 3 | MD-01 | 🔶 Ready to start |
 | MD-05 | Customers | 3 | MD-01 | 🔶 Ready to start |
 | MD-06 | Employees | 3 | MD-01 | ✅ Complete |
-| MD-07 | Bank Accounts | 2 | MD-01 | 📋 Pending |
+| MD-07 | Bank Accounts | 2 | MD-01 | ✅ Complete |
 | MD-08 | Accounting Periods | 2 | MD-01 | 📋 Pending |
 
 **Phase 1 Success Criteria:**

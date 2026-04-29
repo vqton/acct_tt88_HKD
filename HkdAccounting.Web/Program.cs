@@ -15,9 +15,11 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 // Register repositories
 builder.Services.AddScoped<INhanVienRepository, NhanVienRepository>();
+builder.Services.AddScoped<ITaiKhoanNganHangRepository, TaiKhoanNganHangRepository>();
 
 // Register application services
 builder.Services.AddScoped<INhanVienService, NhanVienService>();
+builder.Services.AddScoped<ITaiKhoanNganHangService, TaiKhoanNganHangService>();
 
 var app = builder.Build();
 

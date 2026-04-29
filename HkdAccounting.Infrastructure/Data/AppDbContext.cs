@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using HkdAccounting.Domain.Entities;
-using HkdAccounting.Domain.Entities;
 
 namespace HkdAccounting.Infrastructure.Data
 {
@@ -47,6 +46,11 @@ namespace HkdAccounting.Infrastructure.Data
         /// NhanVien table
         /// </summary>
         public DbSet<NhanVien> NhanViens { get; set; }
+
+        /// <summary>
+        /// TaiKhoanNganHang table
+        /// </summary>
+        public DbSet<TaiKhoanNganHang> TaiKhoanNganHangs { get; set; }
 
         /// <summary>
         /// Configure database schema and relationships
@@ -274,6 +278,44 @@ namespace HkdAccounting.Infrastructure.Data
                     .HasDefaultValue(DateTime.UtcNow);
 
                 entity.HasIndex(e => e.MaNhanVien)
+                    .IsUnique();
+
+                entity.HasOne(e => e.HkdInfo)
+                    .WithMany()
+                    .HasForeignKey(e => e.HkdInfoId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            // Configure TaiKhoanNganHang
+            modelBuilder.Entity<TaiKhoanNganHang>(entity =>
+            {
+                entity.ToTable("tai_khoan_ngan_hang");
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.MaTaiKhoan)
+                    .IsRequired()
+                    .HasMaxLength(20);
+                entity.Property(e => e.SoTaiKhoan)
+                    .IsRequired()
+                    .HasMaxLength(50);
+                entity.Property(e => e.TenNganHang)
+                    .IsRequired()
+                    .HasMaxLength(255);
+                entity.Property(e => e.ChiNhanh)
+                    .HasMaxLength(255);
+                entity.Property(e => e.SoDuHienTai)
+                    .HasColumnType("decimal(18,2)")
+                    .HasDefaultValue(0m);
+                entity.Property(e => e.HkdInfoId)
+                    .IsRequired();
+                entity.Property(e => e.TrangThai)
+                    .HasMaxLength(20)
+                    .HasDefaultValue("DANG_SU_DUNG");
+                entity.Property(e => e.CreatedAt)
+                    .HasDefaultValue(DateTime.UtcNow);
+                entity.Property(e => e.UpdatedAt)
+                    .HasDefaultValue(DateTime.UtcNow);
+
+                entity.HasIndex(e => e.MaTaiKhoan)
                     .IsUnique();
 
                 entity.HasOne(e => e.HkdInfo)
