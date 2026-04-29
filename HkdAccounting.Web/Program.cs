@@ -1,7 +1,23 @@
+using Microsoft.EntityFrameworkCore;
+using HkdAccounting.Application.Services;
+using HkdAccounting.Domain.Repositories;
+using HkdAccounting.Infrastructure.Data;
+using HkdAccounting.Infrastructure.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Database context
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Register repositories
+builder.Services.AddScoped<INhanVienRepository, NhanVienRepository>();
+
+// Register application services
+builder.Services.AddScoped<INhanVienService, NhanVienService>();
 
 var app = builder.Build();
 

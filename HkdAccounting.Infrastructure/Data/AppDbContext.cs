@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using HkdAccounting.Domain.Entities;
+using HkdAccounting.Domain.Entities;
 
 namespace HkdAccounting.Infrastructure.Data
 {
@@ -41,6 +42,11 @@ namespace HkdAccounting.Infrastructure.Data
         /// KhachHang table
         /// </summary>
         public DbSet<KhachHang> KhachHangs { get; set; }
+
+        /// <summary>
+        /// NhanVien table
+        /// </summary>
+        public DbSet<NhanVien> NhanViens { get; set; }
 
         /// <summary>
         /// Configure database schema and relationships
@@ -219,6 +225,55 @@ namespace HkdAccounting.Infrastructure.Data
                     .HasDefaultValue(DateTime.UtcNow);
 
                 entity.HasIndex(e => e.MaKhachHang)
+                    .IsUnique();
+
+                entity.HasOne(e => e.HkdInfo)
+                    .WithMany()
+                    .HasForeignKey(e => e.HkdInfoId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            // Configure NhanVien
+            modelBuilder.Entity<NhanVien>(entity =>
+            {
+                entity.ToTable("nhan_vien");
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.MaNhanVien)
+                    .IsRequired()
+                    .HasMaxLength(20);
+                entity.Property(e => e.HoTen)
+                    .IsRequired()
+                    .HasMaxLength(100);
+                entity.Property(e => e.SoCccd)
+                    .HasMaxLength(20);
+                entity.Property(e => e.DiaChi)
+                    .HasMaxLength(500);
+                entity.Property(e => e.SoDienThoai)
+                    .HasMaxLength(20);
+                entity.Property(e => e.Email)
+                    .HasMaxLength(100);
+                entity.Property(e => e.ChucVu)
+                    .HasMaxLength(50);
+                entity.Property(e => e.LoaiNhanVien)
+                    .HasMaxLength(20)
+                    .HasDefaultValue("CHINH_THUC");
+                entity.Property(e => e.LuongCoBan)
+                    .HasColumnType("decimal(18,2)");
+                entity.Property(e => e.DonGiaLuanSanPham)
+                    .HasColumnType("decimal(18,2)");
+                entity.Property(e => e.DonGiaLuanThoiGian)
+                    .HasColumnType("decimal(18,2)");
+                entity.Property(e => e.HkdInfoId)
+                    .IsRequired();
+                entity.Property(e => e.TrangThai)
+                    .HasMaxLength(20)
+                    .HasDefaultValue("DANG_LAM_VIEC");
+                entity.Property(e => e.CreatedAt)
+                    .HasDefaultValue(DateTime.UtcNow);
+                entity.Property(e => e.UpdatedAt)
+                    .HasDefaultValue(DateTime.UtcNow);
+
+                entity.HasIndex(e => e.MaNhanVien)
                     .IsUnique();
 
                 entity.HasOne(e => e.HkdInfo)
