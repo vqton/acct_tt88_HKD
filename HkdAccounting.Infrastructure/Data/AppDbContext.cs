@@ -64,12 +64,12 @@ namespace HkdAccounting.Infrastructure.Data
                     .HasMaxLength(20)
                     .HasDefaultValue("HOAT_DONG");
                 entity.Property(e => e.CreatedAt)
-                    .HasDefaultValueSql("CURRENT_TIMESTAMP");
-                entity.Property(e => e.UpdatedAt)
-                    .HasDefaultValueSql("CURRENT_TIMESTAMP");
-            });
-
-            // Configure DmNhomNghe
+                     .HasDefaultValue(DateTime.UtcNow);
+                 entity.Property(e => e.UpdatedAt)
+                     .HasDefaultValue(DateTime.UtcNow);
+             });
+ 
+             // Configure DmNhomNghe
             modelBuilder.Entity<DmNhomNghe>(entity =>
             {
                 entity.ToTable("dm_nhom_nghe");
@@ -91,11 +91,11 @@ namespace HkdAccounting.Infrastructure.Data
                     .HasMaxLength(20)
                     .HasDefaultValue("HOAT_DONG");
                 entity.Property(e => e.CreatedAt)
-                    .HasDefaultValueSql("CURRENT_TIMESTAMP");
-                entity.Property(e => e.UpdatedAt)
-                    .HasDefaultValueSql("CURRENT_TIMESTAMP");
-                
-                // Unique constraint for MaNhomNghe + NgayHieuLuc
+                     .HasDefaultValue(DateTime.UtcNow);
+                 entity.Property(e => e.UpdatedAt)
+                     .HasDefaultValue(DateTime.UtcNow);
+                 
+                 // Unique constraint for MaNhomNghe + NgayHieuLuc
                 entity.HasIndex(e => new { e.MaNhomNghe, e.NgayHieuLuc })
                     .IsUnique();
             });
@@ -126,11 +126,11 @@ namespace HkdAccounting.Infrastructure.Data
                     .HasMaxLength(20)
                     .HasDefaultValue("DANG_KINH_DOANH");
                 entity.Property(e => e.CreatedAt)
-                    .HasDefaultValueSql("CURRENT_TIMESTAMP");
-                entity.Property(e => e.UpdatedAt)
-                    .HasDefaultValueSql("CURRENT_TIMESTAMP");
-                
-                // Unique constraint for MaHang
+                     .HasDefaultValue(DateTime.UtcNow);
+                 entity.Property(e => e.UpdatedAt)
+                     .HasDefaultValue(DateTime.UtcNow);
+                 
+                 // Unique constraint for MaHang
                 entity.HasIndex(e => e.MaHang)
                     .IsUnique();
                 

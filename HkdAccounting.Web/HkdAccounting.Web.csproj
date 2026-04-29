@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HkdAccounting.Infrastructure\HkdAccounting.Infrastructure.csproj" />
+    <ProjectReference Include="..\HkdAccounting.Application\HkdAccounting.Application.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

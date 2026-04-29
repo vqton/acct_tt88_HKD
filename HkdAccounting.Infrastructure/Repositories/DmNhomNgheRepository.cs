@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using HkdAccounting.Domain.Entities;
 using HkdAccounting.Domain.Repositories;
+using HkdAccounting.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace HkdAccounting.Infrastructure.Repositories
