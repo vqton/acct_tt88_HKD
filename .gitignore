@@ -1,0 +1,12 @@
+*.db
+*.user
+*.suo
+bin/
+obj/
+.vs/
+*.log
+*.swp
+*.swo
+*~
+.DS_Store
+.Properties/launchSettings.json

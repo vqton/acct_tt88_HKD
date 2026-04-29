@@ -1,0 +1,145 @@
+using Microsoft.EntityFrameworkCore;
+using HkdAccounting.Domain.Entities;
+
+namespace HkdAccounting.Infrastructure.Data
+{
+    /// <summary>
+    /// Database context for HKD Accounting System
+    /// </summary>
+    public class AppDbContext : DbContext
+    {
+        /// <summary>
+        /// Constructor with options
+        /// </summary>
+        /// <param name="options">Database context options</param>
+        public AppDbContext(DbContextOptions<AppDbContext> options)
+            : base(options)
+        {
+        }
+
+        /// <summary>
+        /// HkdInfo table
+        /// </summary>
+        public DbSet<HkdInfo> HkdInfos { get; set; }
+
+        /// <summary>
+        /// DmNhomNghe table
+        /// </summary>
+        public DbSet<DmNhomNghe> DmNhomNghes { get; set; }
+
+        /// <summary>
+        /// DmHangHoa table
+        /// </summary>
+        public DbSet<DmHangHoa> DmHangHoas { get; set; }
+
+        /// <summary>
+        /// Configure database schema and relationships
+        /// </summary>
+        /// <param name="modelBuilder">Model builder</param>
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Configure HkdInfo
+            modelBuilder.Entity<HkdInfo>(entity =>
+            {
+                entity.ToTable("hkd_info");
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.TenHkd)
+                    .IsRequired()
+                    .HasMaxLength(255);
+                entity.Property(e => e.DiaChiTruSo)
+                    .HasMaxLength(500);
+                entity.Property(e => e.MaSoThue)
+                    .IsRequired()
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+                entity.Property(e => e.SoCccdNguoiDaiDien)
+                    .HasMaxLength(20);
+                entity.Property(e => e.HoTenNguoiDaiDien)
+                    .HasMaxLength(100);
+                entity.Property(e => e.PhuongPhapTinhGiaXuatKho)
+                    .IsRequired()
+                    .HasMaxLength(20)
+                    .HasDefaultValue("BINH_QUAN");
+                entity.Property(e => e.TrangThai)
+                    .HasMaxLength(20)
+                    .HasDefaultValue("HOAT_DONG");
+                entity.Property(e => e.CreatedAt)
+                    .HasDefaultValueSql("CURRENT_TIMESTAMP");
+                entity.Property(e => e.UpdatedAt)
+                    .HasDefaultValueSql("CURRENT_TIMESTAMP");
+            });
+
+            // Configure DmNhomNghe
+            modelBuilder.Entity<DmNhomNghe>(entity =>
+            {
+                entity.ToTable("dm_nhom_nghe");
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.MaNhomNghe)
+                    .IsRequired()
+                    .HasMaxLength(20);
+                entity.Property(e => e.TenNhomNghe)
+                    .IsRequired()
+                    .HasMaxLength(255);
+                entity.Property(e => e.TyLeThueGtgt)
+                    .IsRequired();
+                entity.Property(e => e.TyLeThueTncn)
+                    .IsRequired();
+                entity.Property(e => e.NgayHieuLuc)
+                    .IsRequired();
+                entity.Property(e => e.NgayHetHieuLuc);
+                entity.Property(e => e.TrangThai)
+                    .HasMaxLength(20)
+                    .HasDefaultValue("HOAT_DONG");
+                entity.Property(e => e.CreatedAt)
+                    .HasDefaultValueSql("CURRENT_TIMESTAMP");
+                entity.Property(e => e.UpdatedAt)
+                    .HasDefaultValueSql("CURRENT_TIMESTAMP");
+                
+                // Unique constraint for MaNhomNghe + NgayHieuLuc
+                entity.HasIndex(e => new { e.MaNhomNghe, e.NgayHieuLuc })
+                    .IsUnique();
+            });
+
+            // Configure DmHangHoa
+            modelBuilder.Entity<DmHangHoa>(entity =>
+            {
+                entity.ToTable("dm_hang_hoa");
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.MaHang)
+                    .IsRequired()
+                    .HasMaxLength(20);
+                entity.Property(e => e.TenHang)
+                    .IsRequired()
+                    .HasMaxLength(255);
+                entity.Property(e => e.NhanHieuQuyCach)
+                    .HasMaxLength(255);
+                entity.Property(e => e.DonViTinh)
+                    .IsRequired()
+                    .HasMaxLength(20);
+                entity.Property(e => e.NhomNgheId);
+                entity.Property(e => e.LoaiHang)
+                    .IsRequired()
+                    .HasMaxLength(20);
+                entity.Property(e => e.DonGiaMuaChuan)
+                    .HasColumnType("decimal(18,2)");
+                entity.Property(e => e.TrangThai)
+                    .HasMaxLength(20)
+                    .HasDefaultValue("DANG_KINH_DOANH");
+                entity.Property(e => e.CreatedAt)
+                    .HasDefaultValueSql("CURRENT_TIMESTAMP");
+                entity.Property(e => e.UpdatedAt)
+                    .HasDefaultValueSql("CURRENT_TIMESTAMP");
+                
+                // Unique constraint for MaHang
+                entity.HasIndex(e => e.MaHang)
+                    .IsUnique();
+                
+                // Foreign key to DmNhomNghe
+                entity.HasOne(e => e.NhomNghe)
+                    .WithMany()
+                    .HasForeignKey(e => e.NhomNgheId)
+                    .OnDelete(DeleteBehavior.SetNull);
+            });
+        }
+    }
+}
